@@ -1,0 +1,12 @@
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.pdb
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.xml
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbprojResolveAssemblyReference.cache
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.Resources.resources
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.PRINCIPAL.resources
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbproj.GenerateResource.Cache
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.exe
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.xml
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.pdb
+C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.LOGIN.resources

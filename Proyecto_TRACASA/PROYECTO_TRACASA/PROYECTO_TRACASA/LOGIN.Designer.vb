@@ -35,10 +35,11 @@ Partial Class LOGIN
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(66, 38)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(150, 25)
+        Me.Label1.Size = New System.Drawing.Size(164, 27)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Tipo de Usuario"
         '
@@ -54,10 +55,11 @@ Partial Class LOGIN
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(66, 156)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(114, 25)
+        Me.Label2.Size = New System.Drawing.Size(121, 27)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Contraseña"
         '
@@ -85,10 +87,11 @@ Partial Class LOGIN
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label3.Font = New System.Drawing.Font("Times New Roman", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(66, 104)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 25)
+        Me.Label3.Size = New System.Drawing.Size(61, 27)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Zona"
         '
@@ -114,6 +117,7 @@ Partial Class LOGIN
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.combo_tipoUsuario)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "LOGIN"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LOGIN"

@@ -101,11 +101,11 @@ Partial Class PRINCIPAL
         Me.tab_sob_fal.BackColor = System.Drawing.Color.AntiqueWhite
         Me.tab_sob_fal.Controls.Add(Me.GroupBox4)
         Me.tab_sob_fal.Controls.Add(Me.GroupBox3)
-        Me.tab_sob_fal.Location = New System.Drawing.Point(4, 22)
+        Me.tab_sob_fal.Location = New System.Drawing.Point(4, 24)
         Me.tab_sob_fal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tab_sob_fal.Name = "tab_sob_fal"
         Me.tab_sob_fal.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tab_sob_fal.Size = New System.Drawing.Size(953, 633)
+        Me.tab_sob_fal.Size = New System.Drawing.Size(953, 631)
         Me.tab_sob_fal.TabIndex = 1
         Me.tab_sob_fal.Text = "Sobrantes, Vales"
         '
@@ -223,7 +223,7 @@ Partial Class PRINCIPAL
         Me.combo_selec_sobfalt.Location = New System.Drawing.Point(190, 98)
         Me.combo_selec_sobfalt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.combo_selec_sobfalt.Name = "combo_selec_sobfalt"
-        Me.combo_selec_sobfalt.Size = New System.Drawing.Size(134, 21)
+        Me.combo_selec_sobfalt.Size = New System.Drawing.Size(134, 23)
         Me.combo_selec_sobfalt.TabIndex = 0
         '
         'TextBox1
@@ -254,11 +254,11 @@ Partial Class PRINCIPAL
         Me.tab_control.Controls.Add(Me.DataGridView1)
         Me.tab_control.Controls.Add(Me.GroupBox1)
         Me.tab_control.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tab_control.Location = New System.Drawing.Point(4, 22)
+        Me.tab_control.Location = New System.Drawing.Point(4, 24)
         Me.tab_control.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tab_control.Name = "tab_control"
         Me.tab_control.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tab_control.Size = New System.Drawing.Size(953, 633)
+        Me.tab_control.Size = New System.Drawing.Size(953, 631)
         Me.tab_control.TabIndex = 0
         Me.tab_control.Text = "Control"
         '
@@ -613,6 +613,7 @@ Partial Class PRINCIPAL
         Me.tab_sobrante_faltante.Controls.Add(Me.tab_planillas)
         Me.tab_sobrante_faltante.Controls.Add(Me.Tab_mantenimiento)
         Me.tab_sobrante_faltante.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.tab_sobrante_faltante.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tab_sobrante_faltante.Location = New System.Drawing.Point(9, 10)
         Me.tab_sobrante_faltante.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tab_sobrante_faltante.Name = "tab_sobrante_faltante"

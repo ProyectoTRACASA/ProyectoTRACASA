@@ -75,7 +75,7 @@ Partial Class LOGIN
         Me.btn_entrar.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btn_entrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_entrar.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.btn_entrar.Location = New System.Drawing.Point(305, 311)
+        Me.btn_entrar.Location = New System.Drawing.Point(291, 281)
         Me.btn_entrar.Name = "btn_entrar"
         Me.btn_entrar.Size = New System.Drawing.Size(163, 41)
         Me.btn_entrar.TabIndex = 4

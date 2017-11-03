@@ -10,3 +10,7 @@ C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TR
 C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.xml
 C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.pdb
 C:\Users\ENVY\Documents\Visual Studio 2015\Projects\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.LOGIN.resources
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.exe
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.xml
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.pdb

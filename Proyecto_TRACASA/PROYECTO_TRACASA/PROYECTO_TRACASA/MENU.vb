@@ -5,4 +5,10 @@
         Me.Hide()
         prin.Show()
     End Sub
+
+    Private Sub btn_mantenimiento_Click(sender As Object, e As EventArgs) Handles btn_mantenimiento.Click
+        Dim mant As New MANTENIMIENTO
+        mant.Show()
+        Me.Hide()
+    End Sub
 End Class

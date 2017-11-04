@@ -24,6 +24,8 @@ Partial Class PRINCIPAL
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PRINCIPAL))
         Me.tab_sob_fal = New System.Windows.Forms.TabPage()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btn_abonar = New System.Windows.Forms.Button()
         Me.txt_abono = New System.Windows.Forms.TextBox()
@@ -52,6 +54,7 @@ Partial Class PRINCIPAL
         Me.Label7 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.txt_Ruta = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.txt_adulto_mayor = New System.Windows.Forms.TextBox()
@@ -74,10 +77,8 @@ Partial Class PRINCIPAL
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.tab_sobrante_faltante = New System.Windows.Forms.TabControl()
         Me.tab_planillas = New System.Windows.Forms.TabPage()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.tab_sob_fal.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,7 +88,6 @@ Partial Class PRINCIPAL
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_sobrante_faltante.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tab_sob_fal
@@ -101,9 +101,30 @@ Partial Class PRINCIPAL
         Me.tab_sob_fal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tab_sob_fal.Name = "tab_sob_fal"
         Me.tab_sob_fal.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.tab_sob_fal.Size = New System.Drawing.Size(1599, 1041)
+        Me.tab_sob_fal.Size = New System.Drawing.Size(1605, 1041)
         Me.tab_sob_fal.TabIndex = 1
         Me.tab_sob_fal.Text = "Sobrantes, Vales"
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.AntiqueWhite
+        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button2.Location = New System.Drawing.Point(14, 710)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(90, 74)
+        Me.Button2.TabIndex = 10
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(-4, 654)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(1383, 50)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 9
+        Me.PictureBox2.TabStop = False
         '
         'GroupBox4
         '
@@ -253,7 +274,7 @@ Partial Class PRINCIPAL
         Me.tab_control.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tab_control.Name = "tab_control"
         Me.tab_control.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.tab_control.Size = New System.Drawing.Size(1599, 1041)
+        Me.tab_control.Size = New System.Drawing.Size(1605, 1041)
         Me.tab_control.TabIndex = 0
         Me.tab_control.Text = "Control"
         '
@@ -430,6 +451,16 @@ Partial Class PRINCIPAL
         Me.GroupBox1.Size = New System.Drawing.Size(452, 647)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Times New Roman", 13.2!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(58, 0)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(283, 25)
+        Me.Label19.TabIndex = 19
+        Me.Label19.Text = "Ingrese información del Chofer"
         '
         'txt_Ruta
         '
@@ -623,11 +654,11 @@ Partial Class PRINCIPAL
         Me.tab_sobrante_faltante.Controls.Add(Me.tab_planillas)
         Me.tab_sobrante_faltante.Cursor = System.Windows.Forms.Cursors.Hand
         Me.tab_sobrante_faltante.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tab_sobrante_faltante.Location = New System.Drawing.Point(-6, 11)
+        Me.tab_sobrante_faltante.Location = New System.Drawing.Point(6, 11)
         Me.tab_sobrante_faltante.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tab_sobrante_faltante.Name = "tab_sobrante_faltante"
         Me.tab_sobrante_faltante.SelectedIndex = 0
-        Me.tab_sobrante_faltante.Size = New System.Drawing.Size(1607, 1076)
+        Me.tab_sobrante_faltante.Size = New System.Drawing.Size(1613, 1076)
         Me.tab_sobrante_faltante.TabIndex = 0
         '
         'tab_planillas
@@ -636,41 +667,10 @@ Partial Class PRINCIPAL
         Me.tab_planillas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tab_planillas.Name = "tab_planillas"
         Me.tab_planillas.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.tab_planillas.Size = New System.Drawing.Size(1599, 1041)
+        Me.tab_planillas.Size = New System.Drawing.Size(1605, 1041)
         Me.tab_planillas.TabIndex = 2
         Me.tab_planillas.Text = "Planillas"
         Me.tab_planillas.UseVisualStyleBackColor = True
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Times New Roman", 13.2!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(58, 0)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(305, 26)
-        Me.Label19.TabIndex = 19
-        Me.Label19.Text = "Ingrese información del Chofer"
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(-4, 654)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(1383, 50)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 9
-        Me.PictureBox2.TabStop = False
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.AntiqueWhite
-        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.Location = New System.Drawing.Point(14, 710)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(90, 74)
-        Me.Button2.TabIndex = 10
-        Me.Button2.UseVisualStyleBackColor = False
         '
         'PRINCIPAL
         '
@@ -684,6 +684,7 @@ Partial Class PRINCIPAL
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Control de Ingresos"
         Me.tab_sob_fal.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -698,7 +699,6 @@ Partial Class PRINCIPAL
         Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_sobrante_faltante.ResumeLayout(False)
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

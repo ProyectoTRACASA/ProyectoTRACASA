@@ -50,6 +50,9 @@
     <ApplicationIcon>Iconblock-Remixed-Bus.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IrisSkin2">
+      <HintPath>..\..\..\Componentes Graficos Vb2\SKIN NET 2010 WIN 7\SkinVS.NET\IrisSkin2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -79,6 +82,12 @@
       <DependentUpon>LOGIN.vb</DependentUpon>
     </Compile>
     <Compile Include="LOGIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MANTENIMIENTO.Designer.vb">
+      <DependentUpon>MANTENIMIENTO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MANTENIMIENTO.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MENU.Designer.vb">
@@ -112,6 +121,9 @@
   <ItemGroup>
     <EmbeddedResource Include="LOGIN.resx">
       <DependentUpon>LOGIN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MANTENIMIENTO.resx">
+      <DependentUpon>MANTENIMIENTO.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MENU.resx">
       <DependentUpon>MENU.vb</DependentUpon>

@@ -24,6 +24,8 @@ Partial Class MANTENIMIENTO
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tab_M_choferes = New System.Windows.Forms.TabPage()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.btn_M_modificar = New System.Windows.Forms.Button()
         Me.btn_M_eliminar = New System.Windows.Forms.Button()
         Me.btn_M_agregar = New System.Windows.Forms.Button()
@@ -47,12 +49,10 @@ Partial Class MANTENIMIENTO
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_M_2apellido = New System.Windows.Forms.TextBox()
         Me.tab_M_usuario = New System.Windows.Forms.TabPage()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tab_M_choferes.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -82,6 +82,24 @@ Partial Class MANTENIMIENTO
         Me.tab_M_choferes.Size = New System.Drawing.Size(1347, 806)
         Me.tab_M_choferes.TabIndex = 0
         Me.tab_M_choferes.Text = "CHOFERES"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(794, 50)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(250, 22)
+        Me.Label10.TabIndex = 23
+        Me.Label10.Text = "DATOS DE LOS CHOFERES"
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(602, 87)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(722, 153)
+        Me.DataGridView1.TabIndex = 22
         '
         'btn_M_modificar
         '
@@ -191,6 +209,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_cedula.Name = "txt_M_cedula"
         Me.txt_M_cedula.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_cedula.TabIndex = 11
+        Me.txt_M_cedula.Text = "123"
         '
         'Label6
         '
@@ -208,6 +227,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_compania.Name = "txt_M_compania"
         Me.txt_M_compania.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_compania.TabIndex = 16
+        Me.txt_M_compania.Text = "hjk"
         '
         'Label5
         '
@@ -225,6 +245,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_codigo.Name = "txt_M_codigo"
         Me.txt_M_codigo.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_codigo.TabIndex = 10
+        Me.txt_M_codigo.Text = "123"
         '
         'Label4
         '
@@ -242,6 +263,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_boleta.Name = "txt_M_boleta"
         Me.txt_M_boleta.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_boleta.TabIndex = 15
+        Me.txt_M_boleta.Text = "123"
         '
         'Label3
         '
@@ -259,6 +281,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_nombre.Name = "txt_M_nombre"
         Me.txt_M_nombre.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_nombre.TabIndex = 9
+        Me.txt_M_nombre.Text = "asd"
         '
         'txt_M_folio
         '
@@ -266,6 +289,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_folio.Name = "txt_M_folio"
         Me.txt_M_folio.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_folio.TabIndex = 14
+        Me.txt_M_folio.Text = "123"
         '
         'txt_M_1apellido
         '
@@ -273,6 +297,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_1apellido.Name = "txt_M_1apellido"
         Me.txt_M_1apellido.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_1apellido.TabIndex = 12
+        Me.txt_M_1apellido.Text = "asd"
         '
         'Label1
         '
@@ -290,6 +315,7 @@ Partial Class MANTENIMIENTO
         Me.txt_M_2apellido.Name = "txt_M_2apellido"
         Me.txt_M_2apellido.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_2apellido.TabIndex = 13
+        Me.txt_M_2apellido.Text = "asd"
         '
         'tab_M_usuario
         '
@@ -300,24 +326,6 @@ Partial Class MANTENIMIENTO
         Me.tab_M_usuario.TabIndex = 1
         Me.tab_M_usuario.Text = "USUARIOS"
         Me.tab_M_usuario.UseVisualStyleBackColor = True
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(602, 87)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(722, 153)
-        Me.DataGridView1.TabIndex = 22
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(794, 50)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(250, 22)
-        Me.Label10.TabIndex = 23
-        Me.Label10.Text = "DATOS DE LOS CHOFERES"
         '
         'MANTENIMIENTO
         '
@@ -331,9 +339,9 @@ Partial Class MANTENIMIENTO
         Me.TabControl1.ResumeLayout(False)
         Me.tab_M_choferes.ResumeLayout(False)
         Me.tab_M_choferes.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

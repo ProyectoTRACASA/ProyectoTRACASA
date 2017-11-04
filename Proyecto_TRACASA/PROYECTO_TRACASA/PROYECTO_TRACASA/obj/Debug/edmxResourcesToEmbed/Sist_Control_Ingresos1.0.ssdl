@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="A_Abono">
+    <Key>
+      <PropertyRef Name="A_ID" />
+    </Key>
+    <Property Name="A_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="A_ID_Cho" Type="int" Nullable="false" />
+    <Property Name="A_Monto_Abono" Type="int" Nullable="false" />
+    <Property Name="A_Info_Vale" Type="int" />
+  </EntityType>
+  <EntityType Name="Ca_Carreras">
+    <Key>
+      <PropertyRef Name="Ca_ID" />
+    </Key>
+    <Property Name="Ca_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ca_Carrer" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Cho_Choferes">
+    <Key>
+      <PropertyRef Name="Cho_Cedula" />
+    </Key>
+    <Property Name="Cho_Cedula" Type="int" Nullable="false" />
+    <Property Name="Cho_Num_Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cho_Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cho_Apellido1" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cho_Apellido2" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cho_Num_folio" Type="int" Nullable="false" />
+    <Property Name="Cho_Boleta" Type="int" Nullable="false" />
+    <Property Name="Cho_Compania" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Info_Informe_Barras">
+    <Key>
+      <PropertyRef Name="Info_ID" />
+    </Key>
+    <Property Name="Info_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_ID_Carreras" Type="int" />
+    <Property Name="Info_ID_Chofer" Type="int" />
+    <Property Name="Info_Fecha_Hora" Type="datetime" />
+    <Property Name="Info_Ruta" Type="int" />
+    <Property Name="Info_Unidad" Type="int" />
+    <Property Name="Info_Cod_Usuario" Type="int" />
+    <Property Name="Info_Boleta" Type="int" />
+    <Property Name="Info_Sobrante" Type="float" />
+    <Property Name="Info_Vales" Type="float" />
+    <Property Name="Info_Adultos_Mayores" Type="int" />
+  </EntityType>
+  <EntityType Name="Pla_Planilla">
+    <Key>
+      <PropertyRef Name="Plan_ID" />
+    </Key>
+    <Property Name="Plan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pla_ID_Informes" Type="int" />
+    <Property Name="Pla_Saldo_Vales" Type="float" />
+    <Property Name="Pla_Saldo_Sobrantes" Type="float" />
+    <Property Name="Pla_Diferencia" Type="float" />
+    <Property Name="Pla_Bonificacion" Type="float" />
+    <Property Name="Pla_Monto_Reinte" Type="float" />
+    <Property Name="Pla_Monto_Rebajar" Type="float" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="U_Usuario">
+    <Key>
+      <PropertyRef Name="U_ID" />
+    </Key>
+    <Property Name="U_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_Usuario" Type="nvarchar" MaxLength="30" />
+    <Property Name="U_Contrasena" Type="nvarchar" MaxLength="30" />
+    <Property Name="U_ID_Zona" Type="int" />
+  </EntityType>
+  <EntityType Name="Zo_Zona">
+    <Key>
+      <PropertyRef Name="Zo_ID" />
+    </Key>
+    <Property Name="Zo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Zo_Zona" Type="nvarchar" MaxLength="20" />
+    <Property Name="Zo_ID_Carrera" Type="int" />
+  </EntityType>
+  <Association Name="FK_A_Abono_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="1" />
+    <End Role="A_Abono" Type="Self.A_Abono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="A_Abono">
+        <PropertyRef Name="A_ID_Cho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Info_Informe_Barras_Ca_Carreras">
+    <End Role="Ca_Carreras" Type="Self.Ca_Carreras" Multiplicity="0..1" />
+    <End Role="Info_Informe_Barras" Type="Self.Info_Informe_Barras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ca_Carreras">
+        <PropertyRef Name="Ca_ID" />
+      </Principal>
+      <Dependent Role="Info_Informe_Barras">
+        <PropertyRef Name="Info_ID_Carreras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Info_Informe_Barras_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="0..1" />
+    <End Role="Info_Informe_Barras" Type="Self.Info_Informe_Barras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="Info_Informe_Barras">
+        <PropertyRef Name="Info_ID_Chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pla_Planilla_Info_Informe_Barras">
+    <End Role="Info_Informe_Barras" Type="Self.Info_Informe_Barras" Multiplicity="0..1" />
+    <End Role="Pla_Planilla" Type="Self.Pla_Planilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Info_Informe_Barras">
+        <PropertyRef Name="Info_ID" />
+      </Principal>
+      <Dependent Role="Pla_Planilla">
+        <PropertyRef Name="Pla_ID_Informes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_U_Usuario_Zo_Zona">
+    <End Role="Zo_Zona" Type="Self.Zo_Zona" Multiplicity="0..1" />
+    <End Role="U_Usuario" Type="Self.U_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zo_Zona">
+        <PropertyRef Name="Zo_ID" />
+      </Principal>
+      <Dependent Role="U_Usuario">
+        <PropertyRef Name="U_ID_Zona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zo_Zona_Ca_Carreras">
+    <End Role="Ca_Carreras" Type="Self.Ca_Carreras" Multiplicity="1" />
+    <End Role="Zo_Zona" Type="Self.Zo_Zona" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ca_Carreras">
+        <PropertyRef Name="Ca_ID" />
+      </Principal>
+      <Dependent Role="Zo_Zona">
+        <PropertyRef Name="Zo_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="A_Abono" EntityType="Self.A_Abono" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ca_Carreras" EntityType="Self.Ca_Carreras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cho_Choferes" EntityType="Self.Cho_Choferes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Info_Informe_Barras" EntityType="Self.Info_Informe_Barras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pla_Planilla" EntityType="Self.Pla_Planilla" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="U_Usuario" EntityType="Self.U_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zo_Zona" EntityType="Self.Zo_Zona" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_A_Abono_Cho_Choferes" Association="Self.FK_A_Abono_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="A_Abono" EntitySet="A_Abono" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Info_Informe_Barras_Ca_Carreras" Association="Self.FK_Info_Informe_Barras_Ca_Carreras">
+      <End Role="Ca_Carreras" EntitySet="Ca_Carreras" />
+      <End Role="Info_Informe_Barras" EntitySet="Info_Informe_Barras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Info_Informe_Barras_Cho_Choferes" Association="Self.FK_Info_Informe_Barras_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="Info_Informe_Barras" EntitySet="Info_Informe_Barras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pla_Planilla_Info_Informe_Barras" Association="Self.FK_Pla_Planilla_Info_Informe_Barras">
+      <End Role="Info_Informe_Barras" EntitySet="Info_Informe_Barras" />
+      <End Role="Pla_Planilla" EntitySet="Pla_Planilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_U_Usuario_Zo_Zona" Association="Self.FK_U_Usuario_Zo_Zona">
+      <End Role="Zo_Zona" EntitySet="Zo_Zona" />
+      <End Role="U_Usuario" EntitySet="U_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zo_Zona_Ca_Carreras" Association="Self.FK_Zo_Zona_Ca_Carreras">
+      <End Role="Ca_Carreras" EntitySet="Ca_Carreras" />
+      <End Role="Zo_Zona" EntitySet="Zo_Zona" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

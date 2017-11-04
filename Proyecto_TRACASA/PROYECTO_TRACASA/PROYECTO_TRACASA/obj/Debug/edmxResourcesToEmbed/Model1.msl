@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="A_Abono">
+      <EntityTypeMapping TypeName="Model.A_Abono">
+        <MappingFragment StoreEntitySet="A_Abono">
+          <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+          <ScalarProperty Name="A_ID_Cho" ColumnName="A_ID_Cho" />
+          <ScalarProperty Name="A_Monto_Abono" ColumnName="A_Monto_Abono" />
+          <ScalarProperty Name="A_Info_Vale" ColumnName="A_Info_Vale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ca_Carreras">
+      <EntityTypeMapping TypeName="Model.Ca_Carreras">
+        <MappingFragment StoreEntitySet="Ca_Carreras">
+          <ScalarProperty Name="Ca_ID" ColumnName="Ca_ID" />
+          <ScalarProperty Name="Ca_Carrer" ColumnName="Ca_Carrer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cho_Choferes">
+      <EntityTypeMapping TypeName="Model.Cho_Choferes">
+        <MappingFragment StoreEntitySet="Cho_Choferes">
+          <ScalarProperty Name="Cho_Cedula" ColumnName="Cho_Cedula" />
+          <ScalarProperty Name="Cho_Num_Codigo" ColumnName="Cho_Num_Codigo" />
+          <ScalarProperty Name="Cho_Nombre" ColumnName="Cho_Nombre" />
+          <ScalarProperty Name="Cho_Apellido1" ColumnName="Cho_Apellido1" />
+          <ScalarProperty Name="Cho_Apellido2" ColumnName="Cho_Apellido2" />
+          <ScalarProperty Name="Cho_Num_folio" ColumnName="Cho_Num_folio" />
+          <ScalarProperty Name="Cho_Boleta" ColumnName="Cho_Boleta" />
+          <ScalarProperty Name="Cho_Compania" ColumnName="Cho_Compania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Info_Informe_Barras">
+      <EntityTypeMapping TypeName="Model.Info_Informe_Barras">
+        <MappingFragment StoreEntitySet="Info_Informe_Barras">
+          <ScalarProperty Name="Info_ID" ColumnName="Info_ID" />
+          <ScalarProperty Name="Info_ID_Carreras" ColumnName="Info_ID_Carreras" />
+          <ScalarProperty Name="Info_ID_Chofer" ColumnName="Info_ID_Chofer" />
+          <ScalarProperty Name="Info_Fecha_Hora" ColumnName="Info_Fecha_Hora" />
+          <ScalarProperty Name="Info_Ruta" ColumnName="Info_Ruta" />
+          <ScalarProperty Name="Info_Unidad" ColumnName="Info_Unidad" />
+          <ScalarProperty Name="Info_Cod_Usuario" ColumnName="Info_Cod_Usuario" />
+          <ScalarProperty Name="Info_Boleta" ColumnName="Info_Boleta" />
+          <ScalarProperty Name="Info_Sobrante" ColumnName="Info_Sobrante" />
+          <ScalarProperty Name="Info_Vales" ColumnName="Info_Vales" />
+          <ScalarProperty Name="Info_Adultos_Mayores" ColumnName="Info_Adultos_Mayores" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pla_Planilla">
+      <EntityTypeMapping TypeName="Model.Pla_Planilla">
+        <MappingFragment StoreEntitySet="Pla_Planilla">
+          <ScalarProperty Name="Plan_ID" ColumnName="Plan_ID" />
+          <ScalarProperty Name="Pla_ID_Informes" ColumnName="Pla_ID_Informes" />
+          <ScalarProperty Name="Pla_Saldo_Vales" ColumnName="Pla_Saldo_Vales" />
+          <ScalarProperty Name="Pla_Saldo_Sobrantes" ColumnName="Pla_Saldo_Sobrantes" />
+          <ScalarProperty Name="Pla_Diferencia" ColumnName="Pla_Diferencia" />
+          <ScalarProperty Name="Pla_Bonificacion" ColumnName="Pla_Bonificacion" />
+          <ScalarProperty Name="Pla_Monto_Reinte" ColumnName="Pla_Monto_Reinte" />
+          <ScalarProperty Name="Pla_Monto_Rebajar" ColumnName="Pla_Monto_Rebajar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Usuario">
+      <EntityTypeMapping TypeName="Model.U_Usuario">
+        <MappingFragment StoreEntitySet="U_Usuario">
+          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
+          <ScalarProperty Name="U_Usuario1" ColumnName="U_Usuario" />
+          <ScalarProperty Name="U_Contrasena" ColumnName="U_Contrasena" />
+          <ScalarProperty Name="U_ID_Zona" ColumnName="U_ID_Zona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zo_Zona">
+      <EntityTypeMapping TypeName="Model.Zo_Zona">
+        <MappingFragment StoreEntitySet="Zo_Zona">
+          <ScalarProperty Name="Zo_ID" ColumnName="Zo_ID" />
+          <ScalarProperty Name="Zo_Zona1" ColumnName="Zo_Zona" />
+          <ScalarProperty Name="Zo_ID_Carrera" ColumnName="Zo_ID_Carrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Model.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Model.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

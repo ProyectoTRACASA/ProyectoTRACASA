@@ -22,6 +22,7 @@ Partial Class MANTENIMIENTO
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MANTENIMIENTO))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tab_M_choferes = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -57,9 +58,12 @@ Partial Class MANTENIMIENTO
         Me.btn_agregar_usu = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.combo_usuario = New System.Windows.Forms.ComboBox()
-        Me.txt_zona = New System.Windows.Forms.TextBox()
         Me.txt_contra = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.tab_M_choferes.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -68,6 +72,7 @@ Partial Class MANTENIMIENTO
         Me.tab_M_usuario.SuspendLayout()
         CType(Me.datagridusuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -83,6 +88,7 @@ Partial Class MANTENIMIENTO
         'tab_M_choferes
         '
         Me.tab_M_choferes.BackColor = System.Drawing.Color.Transparent
+        Me.tab_M_choferes.Controls.Add(Me.PictureBox1)
         Me.tab_M_choferes.Controls.Add(Me.GroupBox3)
         Me.tab_M_choferes.Controls.Add(Me.Button2)
         Me.tab_M_choferes.Controls.Add(Me.Label10)
@@ -379,7 +385,7 @@ Partial Class MANTENIMIENTO
         'datagridusuarios
         '
         Me.datagridusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridusuarios.Location = New System.Drawing.Point(673, 52)
+        Me.datagridusuarios.Location = New System.Drawing.Point(609, 52)
         Me.datagridusuarios.Name = "datagridusuarios"
         Me.datagridusuarios.RowTemplate.Height = 24
         Me.datagridusuarios.Size = New System.Drawing.Size(431, 172)
@@ -387,20 +393,24 @@ Partial Class MANTENIMIENTO
         '
         'btn_agregar_usu
         '
-        Me.btn_agregar_usu.Location = New System.Drawing.Point(793, 268)
+        Me.btn_agregar_usu.Location = New System.Drawing.Point(741, 299)
         Me.btn_agregar_usu.Name = "btn_agregar_usu"
-        Me.btn_agregar_usu.Size = New System.Drawing.Size(204, 90)
+        Me.btn_agregar_usu.Size = New System.Drawing.Size(204, 50)
         Me.btn_agregar_usu.TabIndex = 1
         Me.btn_agregar_usu.Text = "Button2"
         Me.btn_agregar_usu.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.MediumAquamarine
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.combo_usuario)
-        Me.GroupBox1.Controls.Add(Me.txt_zona)
         Me.GroupBox1.Controls.Add(Me.txt_contra)
-        Me.GroupBox1.Location = New System.Drawing.Point(102, 52)
+        Me.GroupBox1.Font = New System.Drawing.Font("Times New Roman", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(65, 52)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(470, 344)
         Me.GroupBox1.TabIndex = 0
@@ -413,21 +423,14 @@ Partial Class MANTENIMIENTO
         Me.combo_usuario.Items.AddRange(New Object() {"ADMINISTRADOR", "RECIBIDOR"})
         Me.combo_usuario.Location = New System.Drawing.Point(233, 73)
         Me.combo_usuario.Name = "combo_usuario"
-        Me.combo_usuario.Size = New System.Drawing.Size(197, 24)
+        Me.combo_usuario.Size = New System.Drawing.Size(197, 27)
         Me.combo_usuario.TabIndex = 3
-        '
-        'txt_zona
-        '
-        Me.txt_zona.Location = New System.Drawing.Point(233, 189)
-        Me.txt_zona.Name = "txt_zona"
-        Me.txt_zona.Size = New System.Drawing.Size(197, 22)
-        Me.txt_zona.TabIndex = 2
         '
         'txt_contra
         '
-        Me.txt_contra.Location = New System.Drawing.Point(233, 134)
+        Me.txt_contra.Location = New System.Drawing.Point(233, 216)
         Me.txt_contra.Name = "txt_contra"
-        Me.txt_contra.Size = New System.Drawing.Size(197, 22)
+        Me.txt_contra.Size = New System.Drawing.Size(197, 27)
         Me.txt_contra.TabIndex = 1
         '
         'Label11
@@ -435,9 +438,46 @@ Partial Class MANTENIMIENTO
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(26, 79)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(129, 17)
+        Me.Label11.Size = New System.Drawing.Size(147, 19)
         Me.Label11.TabIndex = 4
         Me.Label11.Text = "TIPO DE USUARIO"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"GUAPILES", "SIQUIRRES", "LIMON"})
+        Me.ComboBox1.Location = New System.Drawing.Point(233, 145)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(197, 27)
+        Me.ComboBox1.TabIndex = 5
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(26, 153)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(120, 19)
+        Me.Label12.TabIndex = 6
+        Me.Label12.Text = "TIPO DE ZONA"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(26, 224)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(117, 19)
+        Me.Label13.TabIndex = 7
+        Me.Label13.Text = "CONTRASEÑA"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(-4, 615)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1348, 69)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 26
+        Me.PictureBox1.TabStop = False
         '
         'MANTENIMIENTO
         '
@@ -460,6 +500,7 @@ Partial Class MANTENIMIENTO
         CType(Me.datagridusuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -493,7 +534,6 @@ Partial Class MANTENIMIENTO
     Friend WithEvents Label10 As Label
     Friend WithEvents btn_agregar_usu As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents txt_zona As TextBox
     Friend WithEvents txt_contra As TextBox
     Friend WithEvents datagridusuarios As DataGridView
     Friend WithEvents Button2 As Button
@@ -502,4 +542,8 @@ Partial Class MANTENIMIENTO
     Friend WithEvents txt_M_buscar As TextBox
     Friend WithEvents combo_usuario As ComboBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

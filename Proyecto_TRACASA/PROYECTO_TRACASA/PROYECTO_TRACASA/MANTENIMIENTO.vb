@@ -13,6 +13,10 @@ Public Class MANTENIMIENTO
 
     End Sub
 
+#Region "//PESTANA DE CHOFERES"
+
+#Region "//METODOS "
+
 
     Public Sub cargargrid()
 
@@ -21,7 +25,6 @@ Public Class MANTENIMIENTO
 
 
     End Sub
-
     Public Sub inserta_choferes()
 
         Dim ingresar As New Cho_Choferes
@@ -155,15 +158,6 @@ Public Class MANTENIMIENTO
         txt_M_boleta.Text = ""
 
     End Sub
-    Private Sub btn_M_agregar_Click(sender As Object, e As EventArgs) Handles btn_M_agregar.Click
-        inserta_choferes()
-    End Sub
-
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        cargargrid()
-
-    End Sub
 
     Private Sub datagridchoferes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridchoferes.CellClick
 
@@ -190,6 +184,21 @@ Public Class MANTENIMIENTO
 
 
     End Sub
+
+#End Region
+
+#Region "//BOTONES"
+
+    Private Sub btn_M_agregar_Click(sender As Object, e As EventArgs) Handles btn_M_agregar.Click
+        inserta_choferes()
+    End Sub
+
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        cargargrid()
+
+    End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim men As New MENU
@@ -231,4 +240,24 @@ Public Class MANTENIMIENTO
         End Try
 
     End Sub
+#End Region
+
+#End Region
+
+#Region "//PESTANA DE USUARIOS"
+
+    Public Sub ingresa_usuarios()
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
+#End Region
 End Class

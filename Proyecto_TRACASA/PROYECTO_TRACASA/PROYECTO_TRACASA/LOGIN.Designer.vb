@@ -47,6 +47,7 @@ Partial Class LOGIN
         '
         Me.combo_tipoUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.combo_tipoUsuario.FormattingEnabled = True
+        Me.combo_tipoUsuario.Items.AddRange(New Object() {"ADMINISTRADOR", "RECIBIDOR"})
         Me.combo_tipoUsuario.Location = New System.Drawing.Point(261, 35)
         Me.combo_tipoUsuario.Name = "combo_tipoUsuario"
         Me.combo_tipoUsuario.Size = New System.Drawing.Size(225, 33)
@@ -99,6 +100,7 @@ Partial Class LOGIN
         '
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"GUAPILES", "SIQUIRRES", "LIMON"})
         Me.ComboBox1.Location = New System.Drawing.Point(261, 96)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(225, 33)

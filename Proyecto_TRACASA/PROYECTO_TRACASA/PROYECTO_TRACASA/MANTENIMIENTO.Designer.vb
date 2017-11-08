@@ -56,9 +56,10 @@ Partial Class MANTENIMIENTO
         Me.datagridusuarios = New System.Windows.Forms.DataGridView()
         Me.btn_agregar_usu = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.combo_usuario = New System.Windows.Forms.ComboBox()
         Me.txt_zona = New System.Windows.Forms.TextBox()
         Me.txt_contra = New System.Windows.Forms.TextBox()
-        Me.txt_usuario = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tab_M_choferes.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -378,7 +379,7 @@ Partial Class MANTENIMIENTO
         'datagridusuarios
         '
         Me.datagridusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridusuarios.Location = New System.Drawing.Point(610, 74)
+        Me.datagridusuarios.Location = New System.Drawing.Point(673, 52)
         Me.datagridusuarios.Name = "datagridusuarios"
         Me.datagridusuarios.RowTemplate.Height = 24
         Me.datagridusuarios.Size = New System.Drawing.Size(431, 172)
@@ -386,7 +387,7 @@ Partial Class MANTENIMIENTO
         '
         'btn_agregar_usu
         '
-        Me.btn_agregar_usu.Location = New System.Drawing.Point(727, 337)
+        Me.btn_agregar_usu.Location = New System.Drawing.Point(793, 268)
         Me.btn_agregar_usu.Name = "btn_agregar_usu"
         Me.btn_agregar_usu.Size = New System.Drawing.Size(204, 90)
         Me.btn_agregar_usu.TabIndex = 1
@@ -395,36 +396,48 @@ Partial Class MANTENIMIENTO
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.combo_usuario)
         Me.GroupBox1.Controls.Add(Me.txt_zona)
         Me.GroupBox1.Controls.Add(Me.txt_contra)
-        Me.GroupBox1.Controls.Add(Me.txt_usuario)
-        Me.GroupBox1.Location = New System.Drawing.Point(72, 108)
+        Me.GroupBox1.Location = New System.Drawing.Point(102, 52)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(470, 344)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
         '
+        'combo_usuario
+        '
+        Me.combo_usuario.FormattingEnabled = True
+        Me.combo_usuario.Items.AddRange(New Object() {"ADMINISTRADOR", "RECIBIDOR"})
+        Me.combo_usuario.Location = New System.Drawing.Point(233, 73)
+        Me.combo_usuario.Name = "combo_usuario"
+        Me.combo_usuario.Size = New System.Drawing.Size(197, 24)
+        Me.combo_usuario.TabIndex = 3
+        '
         'txt_zona
         '
-        Me.txt_zona.Location = New System.Drawing.Point(77, 195)
+        Me.txt_zona.Location = New System.Drawing.Point(233, 189)
         Me.txt_zona.Name = "txt_zona"
         Me.txt_zona.Size = New System.Drawing.Size(197, 22)
         Me.txt_zona.TabIndex = 2
         '
         'txt_contra
         '
-        Me.txt_contra.Location = New System.Drawing.Point(77, 145)
+        Me.txt_contra.Location = New System.Drawing.Point(233, 134)
         Me.txt_contra.Name = "txt_contra"
         Me.txt_contra.Size = New System.Drawing.Size(197, 22)
         Me.txt_contra.TabIndex = 1
         '
-        'txt_usuario
+        'Label11
         '
-        Me.txt_usuario.Location = New System.Drawing.Point(77, 94)
-        Me.txt_usuario.Name = "txt_usuario"
-        Me.txt_usuario.Size = New System.Drawing.Size(197, 22)
-        Me.txt_usuario.TabIndex = 0
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(26, 79)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(129, 17)
+        Me.Label11.TabIndex = 4
+        Me.Label11.Text = "TIPO DE USUARIO"
         '
         'MANTENIMIENTO
         '
@@ -482,10 +495,11 @@ Partial Class MANTENIMIENTO
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents txt_zona As TextBox
     Friend WithEvents txt_contra As TextBox
-    Friend WithEvents txt_usuario As TextBox
     Friend WithEvents datagridusuarios As DataGridView
     Friend WithEvents Button2 As Button
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents btn_buscar As Button
     Friend WithEvents txt_M_buscar As TextBox
+    Friend WithEvents combo_usuario As ComboBox
+    Friend WithEvents Label11 As Label
 End Class

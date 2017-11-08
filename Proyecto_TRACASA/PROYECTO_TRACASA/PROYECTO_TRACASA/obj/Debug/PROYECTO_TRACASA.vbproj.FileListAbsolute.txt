@@ -31,3 +31,4 @@ C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA
 C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.xml
 C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbprojResolveAssemblyReference.cache

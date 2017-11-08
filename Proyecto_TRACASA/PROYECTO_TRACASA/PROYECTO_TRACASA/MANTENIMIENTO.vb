@@ -17,7 +17,8 @@ Public Class MANTENIMIENTO
     Public Sub cargargrid()
 
         Dim cargar = (From datos In db.Cho_Choferes Select datos)
-        datagridchoferes.DataSource = cargar
+        datagridchoferes.DataSource = cargar.ToList()
+
 
     End Sub
 
@@ -50,6 +51,8 @@ Public Class MANTENIMIENTO
                 db.Cho_Choferes.InsertOnSubmit(ingresar)
                 db.SubmitChanges()
                 MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
+                cargargrid()
+                limpiar()
 
             End If
         Catch ex As Exception
@@ -59,6 +62,21 @@ Public Class MANTENIMIENTO
 
     End Sub
 
+    Public Sub eliminarChofer(ByVal id As Integer)
+
+        Dim eliminar = (From dato In db.Cho_Choferes
+                        Where dato.Cho_Cedula = id
+                        Select dato).FirstOrDefault
+
+        db.Cho_Choferes.DeleteOnSubmit(eliminar)
+        db.SubmitChanges()
+        MsgBox("DATOS DEL CHOFER BORRADOS EXITOSAMENTE")
+
+        cargargrid()
+        limpiar()
+
+
+    End Sub
     Public Sub buscar(ByVal buscar_cedula As Integer)
 
         Try
@@ -201,6 +219,16 @@ Public Class MANTENIMIENTO
             End Try
 
         End If
+
+    End Sub
+
+    Private Sub btn_M_eliminar_Click(sender As Object, e As EventArgs) Handles btn_M_eliminar.Click
+        Try
+            eliminarChofer(Convert.ToInt32(txt_M_cedula.Text))
+
+        Catch ex As Exception
+            MsgBox("NO HAY DATOS QUE BORRAR")
+        End Try
 
     End Sub
 End Class

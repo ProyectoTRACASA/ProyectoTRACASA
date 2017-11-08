@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -89,18 +90,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="A_Abono.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ca_Carreras.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cho_Choferes.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Info_Informe_Barras.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
     <Compile Include="LOGIN.Designer.vb">
       <DependentUpon>LOGIN.vb</DependentUpon>
     </Compile>
@@ -134,38 +123,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Pla_Planilla.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
     <Compile Include="PRINCIPAL.Designer.vb">
       <DependentUpon>PRINCIPAL.vb</DependentUpon>
     </Compile>
     <Compile Include="PRINCIPAL.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sist_Control_Ingresos1.0.Designer.vb">
+    <Compile Include="SistemaControl.designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Sist_Control_Ingresos1.0.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Sist_Control_Ingresos1.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sist_Control_Ingresos1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sist_Control_Ingresos1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="U_Usuario.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Zo_Zona.vb">
-      <DependentUpon>Sist_Control_Ingresos1.tt</DependentUpon>
+      <DependentUpon>SistemaControl.dbml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +154,9 @@
     <EmbeddedResource Include="PRINCIPAL.resx">
       <DependentUpon>PRINCIPAL.vb</DependentUpon>
     </EmbeddedResource>
+    <None Include="SistemaControl.dbml.layout">
+      <DependentUpon>SistemaControl.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -198,30 +168,18 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="Sist_Control_Ingresos1.0.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Sist_Control_Ingresos1.0.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Sist_Control_Ingresos1.0.edmx.diagram">
-      <DependentUpon>Sist_Control_Ingresos1.0.edmx</DependentUpon>
+    <None Include="SistemaControl.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>SistemaControl.designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Iconblock-Remixed-Bus.ico" />
-    <Content Include="Sist_Control_Ingresos1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Sist_Control_Ingresos1.0.edmx</DependentUpon>
-      <LastGenOutput>Sist_Control_Ingresos1.Context.vb</LastGenOutput>
-    </Content>
-    <Content Include="Sist_Control_Ingresos1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Sist_Control_Ingresos1.0.edmx</DependentUpon>
-      <LastGenOutput>Sist_Control_Ingresos1.vb</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

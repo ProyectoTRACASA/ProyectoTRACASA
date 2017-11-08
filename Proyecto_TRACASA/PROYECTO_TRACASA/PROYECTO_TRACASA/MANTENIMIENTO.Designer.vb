@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MANTENIMIENTO
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,39 +20,53 @@ Partial Class MANTENIMIENTO
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tab_M_choferes = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btn_buscar = New System.Windows.Forms.Button()
+        Me.txt_M_buscar = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btn_M_modificar = New System.Windows.Forms.Button()
-        Me.btn_M_eliminar = New System.Windows.Forms.Button()
-        Me.btn_M_agregar = New System.Windows.Forms.Button()
+        Me.datagridchoferes = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txt_M_cedula = New System.Windows.Forms.TextBox()
+        Me.txt_M_codigo = New System.Windows.Forms.TextBox()
+        Me.btn_M_eliminar = New System.Windows.Forms.Button()
+        Me.btn_M_modificar = New System.Windows.Forms.Button()
+        Me.txt_M_nombre = New System.Windows.Forms.TextBox()
+        Me.txt_M_folio = New System.Windows.Forms.TextBox()
+        Me.txt_M_1apellido = New System.Windows.Forms.TextBox()
+        Me.txt_M_2apellido = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txt_M_cedula = New System.Windows.Forms.TextBox()
+        Me.btn_M_agregar = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txt_M_compania = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txt_M_codigo = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txt_M_boleta = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txt_M_nombre = New System.Windows.Forms.TextBox()
-        Me.txt_M_folio = New System.Windows.Forms.TextBox()
-        Me.txt_M_1apellido = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txt_M_2apellido = New System.Windows.Forms.TextBox()
         Me.tab_M_usuario = New System.Windows.Forms.TabPage()
+        Me.datagridusuarios = New System.Windows.Forms.DataGridView()
+        Me.btn_agregar_usu = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txt_zona = New System.Windows.Forms.TextBox()
+        Me.txt_contra = New System.Windows.Forms.TextBox()
+        Me.txt_usuario = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.tab_M_choferes.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.datagridchoferes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.tab_M_usuario.SuspendLayout()
+        CType(Me.datagridusuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -68,11 +82,10 @@ Partial Class MANTENIMIENTO
         'tab_M_choferes
         '
         Me.tab_M_choferes.BackColor = System.Drawing.Color.Transparent
+        Me.tab_M_choferes.Controls.Add(Me.GroupBox3)
+        Me.tab_M_choferes.Controls.Add(Me.Button2)
         Me.tab_M_choferes.Controls.Add(Me.Label10)
-        Me.tab_M_choferes.Controls.Add(Me.DataGridView1)
-        Me.tab_M_choferes.Controls.Add(Me.btn_M_modificar)
-        Me.tab_M_choferes.Controls.Add(Me.btn_M_eliminar)
-        Me.tab_M_choferes.Controls.Add(Me.btn_M_agregar)
+        Me.tab_M_choferes.Controls.Add(Me.datagridchoferes)
         Me.tab_M_choferes.Controls.Add(Me.Button1)
         Me.tab_M_choferes.Controls.Add(Me.GroupBox2)
         Me.tab_M_choferes.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -83,50 +96,60 @@ Partial Class MANTENIMIENTO
         Me.tab_M_choferes.TabIndex = 0
         Me.tab_M_choferes.Text = "CHOFERES"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.BackColor = System.Drawing.Color.RosyBrown
+        Me.GroupBox3.Controls.Add(Me.btn_buscar)
+        Me.GroupBox3.Controls.Add(Me.txt_M_buscar)
+        Me.GroupBox3.Location = New System.Drawing.Point(650, 6)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(440, 123)
+        Me.GroupBox3.TabIndex = 25
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Ingrese Numero de Cedula"
+        '
+        'btn_buscar
+        '
+        Me.btn_buscar.Location = New System.Drawing.Point(337, 60)
+        Me.btn_buscar.Name = "btn_buscar"
+        Me.btn_buscar.Size = New System.Drawing.Size(80, 31)
+        Me.btn_buscar.TabIndex = 1
+        Me.btn_buscar.Text = "Buscar"
+        Me.btn_buscar.UseVisualStyleBackColor = True
+        '
+        'txt_M_buscar
+        '
+        Me.txt_M_buscar.Location = New System.Drawing.Point(19, 60)
+        Me.txt_M_buscar.Name = "txt_M_buscar"
+        Me.txt_M_buscar.Size = New System.Drawing.Size(297, 30)
+        Me.txt_M_buscar.TabIndex = 0
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(988, 156)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(102, 30)
+        Me.Button2.TabIndex = 24
+        Me.Button2.Text = "Cargar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(794, 50)
+        Me.Label10.Location = New System.Drawing.Point(646, 160)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(250, 22)
         Me.Label10.TabIndex = 23
         Me.Label10.Text = "DATOS DE LOS CHOFERES"
         '
-        'DataGridView1
+        'datagridchoferes
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(602, 87)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(722, 153)
-        Me.DataGridView1.TabIndex = 22
-        '
-        'btn_M_modificar
-        '
-        Me.btn_M_modificar.Location = New System.Drawing.Point(880, 277)
-        Me.btn_M_modificar.Name = "btn_M_modificar"
-        Me.btn_M_modificar.Size = New System.Drawing.Size(148, 52)
-        Me.btn_M_modificar.TabIndex = 21
-        Me.btn_M_modificar.Text = "MODIFICAR"
-        Me.btn_M_modificar.UseVisualStyleBackColor = True
-        '
-        'btn_M_eliminar
-        '
-        Me.btn_M_eliminar.Location = New System.Drawing.Point(1098, 277)
-        Me.btn_M_eliminar.Name = "btn_M_eliminar"
-        Me.btn_M_eliminar.Size = New System.Drawing.Size(148, 52)
-        Me.btn_M_eliminar.TabIndex = 20
-        Me.btn_M_eliminar.Text = "ELIMINAR"
-        Me.btn_M_eliminar.UseVisualStyleBackColor = True
-        '
-        'btn_M_agregar
-        '
-        Me.btn_M_agregar.Location = New System.Drawing.Point(650, 277)
-        Me.btn_M_agregar.Name = "btn_M_agregar"
-        Me.btn_M_agregar.Size = New System.Drawing.Size(148, 52)
-        Me.btn_M_agregar.TabIndex = 19
-        Me.btn_M_agregar.Text = "AGREGAR"
-        Me.btn_M_agregar.UseVisualStyleBackColor = True
+        Me.datagridchoferes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.datagridchoferes.Location = New System.Drawing.Point(650, 204)
+        Me.datagridchoferes.Name = "datagridchoferes"
+        Me.datagridchoferes.RowTemplate.Height = 24
+        Me.datagridchoferes.Size = New System.Drawing.Size(681, 390)
+        Me.datagridchoferes.TabIndex = 22
         '
         'Button1
         '
@@ -140,28 +163,91 @@ Partial Class MANTENIMIENTO
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.RosyBrown
+        Me.GroupBox2.Controls.Add(Me.txt_M_cedula)
+        Me.GroupBox2.Controls.Add(Me.txt_M_codigo)
+        Me.GroupBox2.Controls.Add(Me.btn_M_eliminar)
+        Me.GroupBox2.Controls.Add(Me.btn_M_modificar)
+        Me.GroupBox2.Controls.Add(Me.txt_M_nombre)
+        Me.GroupBox2.Controls.Add(Me.txt_M_folio)
+        Me.GroupBox2.Controls.Add(Me.txt_M_1apellido)
+        Me.GroupBox2.Controls.Add(Me.txt_M_2apellido)
         Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.txt_M_cedula)
+        Me.GroupBox2.Controls.Add(Me.btn_M_agregar)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.txt_M_compania)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.txt_M_codigo)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.txt_M_boleta)
         Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.txt_M_nombre)
-        Me.GroupBox2.Controls.Add(Me.txt_M_folio)
-        Me.GroupBox2.Controls.Add(Me.txt_M_1apellido)
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.txt_M_2apellido)
-        Me.GroupBox2.Location = New System.Drawing.Point(30, 36)
+        Me.GroupBox2.Location = New System.Drawing.Point(30, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(548, 478)
+        Me.GroupBox2.Size = New System.Drawing.Size(557, 588)
         Me.GroupBox2.TabIndex = 18
         Me.GroupBox2.TabStop = False
+        '
+        'txt_M_cedula
+        '
+        Me.txt_M_cedula.Location = New System.Drawing.Point(293, 43)
+        Me.txt_M_cedula.Name = "txt_M_cedula"
+        Me.txt_M_cedula.Size = New System.Drawing.Size(214, 30)
+        Me.txt_M_cedula.TabIndex = 11
+        '
+        'txt_M_codigo
+        '
+        Me.txt_M_codigo.Location = New System.Drawing.Point(293, 93)
+        Me.txt_M_codigo.Name = "txt_M_codigo"
+        Me.txt_M_codigo.Size = New System.Drawing.Size(214, 30)
+        Me.txt_M_codigo.TabIndex = 10
+        '
+        'btn_M_eliminar
+        '
+        Me.btn_M_eliminar.Location = New System.Drawing.Point(378, 474)
+        Me.btn_M_eliminar.Name = "btn_M_eliminar"
+        Me.btn_M_eliminar.Size = New System.Drawing.Size(141, 45)
+        Me.btn_M_eliminar.TabIndex = 20
+        Me.btn_M_eliminar.Text = "ELIMINAR"
+        Me.btn_M_eliminar.UseVisualStyleBackColor = True
+        '
+        'btn_M_modificar
+        '
+        Me.btn_M_modificar.Location = New System.Drawing.Point(201, 474)
+        Me.btn_M_modificar.Name = "btn_M_modificar"
+        Me.btn_M_modificar.Size = New System.Drawing.Size(143, 45)
+        Me.btn_M_modificar.TabIndex = 21
+        Me.btn_M_modificar.Text = "MODIFICAR"
+        Me.btn_M_modificar.UseVisualStyleBackColor = True
+        '
+        'txt_M_nombre
+        '
+        Me.txt_M_nombre.Location = New System.Drawing.Point(293, 146)
+        Me.txt_M_nombre.Name = "txt_M_nombre"
+        Me.txt_M_nombre.Size = New System.Drawing.Size(214, 30)
+        Me.txt_M_nombre.TabIndex = 9
+        '
+        'txt_M_folio
+        '
+        Me.txt_M_folio.Location = New System.Drawing.Point(293, 300)
+        Me.txt_M_folio.Name = "txt_M_folio"
+        Me.txt_M_folio.Size = New System.Drawing.Size(214, 30)
+        Me.txt_M_folio.TabIndex = 14
+        '
+        'txt_M_1apellido
+        '
+        Me.txt_M_1apellido.Location = New System.Drawing.Point(293, 198)
+        Me.txt_M_1apellido.Name = "txt_M_1apellido"
+        Me.txt_M_1apellido.Size = New System.Drawing.Size(214, 30)
+        Me.txt_M_1apellido.TabIndex = 12
+        '
+        'txt_M_2apellido
+        '
+        Me.txt_M_2apellido.Location = New System.Drawing.Point(293, 248)
+        Me.txt_M_2apellido.Name = "txt_M_2apellido"
+        Me.txt_M_2apellido.Size = New System.Drawing.Size(214, 30)
+        Me.txt_M_2apellido.TabIndex = 13
         '
         'Label9
         '
@@ -203,13 +289,14 @@ Partial Class MANTENIMIENTO
         Me.Label7.TabIndex = 7
         Me.Label7.Text = "Boleta"
         '
-        'txt_M_cedula
+        'btn_M_agregar
         '
-        Me.txt_M_cedula.Location = New System.Drawing.Point(293, 43)
-        Me.txt_M_cedula.Name = "txt_M_cedula"
-        Me.txt_M_cedula.Size = New System.Drawing.Size(214, 30)
-        Me.txt_M_cedula.TabIndex = 11
-        Me.txt_M_cedula.Text = "123"
+        Me.btn_M_agregar.Location = New System.Drawing.Point(24, 474)
+        Me.btn_M_agregar.Name = "btn_M_agregar"
+        Me.btn_M_agregar.Size = New System.Drawing.Size(132, 45)
+        Me.btn_M_agregar.TabIndex = 19
+        Me.btn_M_agregar.Text = "AGREGAR"
+        Me.btn_M_agregar.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -227,7 +314,6 @@ Partial Class MANTENIMIENTO
         Me.txt_M_compania.Name = "txt_M_compania"
         Me.txt_M_compania.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_compania.TabIndex = 16
-        Me.txt_M_compania.Text = "hjk"
         '
         'Label5
         '
@@ -238,14 +324,6 @@ Partial Class MANTENIMIENTO
         Me.Label5.Size = New System.Drawing.Size(152, 22)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Segundo Apellido"
-        '
-        'txt_M_codigo
-        '
-        Me.txt_M_codigo.Location = New System.Drawing.Point(293, 93)
-        Me.txt_M_codigo.Name = "txt_M_codigo"
-        Me.txt_M_codigo.Size = New System.Drawing.Size(214, 30)
-        Me.txt_M_codigo.TabIndex = 10
-        Me.txt_M_codigo.Text = "123"
         '
         'Label4
         '
@@ -263,7 +341,6 @@ Partial Class MANTENIMIENTO
         Me.txt_M_boleta.Name = "txt_M_boleta"
         Me.txt_M_boleta.Size = New System.Drawing.Size(214, 30)
         Me.txt_M_boleta.TabIndex = 15
-        Me.txt_M_boleta.Text = "123"
         '
         'Label3
         '
@@ -275,30 +352,6 @@ Partial Class MANTENIMIENTO
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Nombre"
         '
-        'txt_M_nombre
-        '
-        Me.txt_M_nombre.Location = New System.Drawing.Point(293, 146)
-        Me.txt_M_nombre.Name = "txt_M_nombre"
-        Me.txt_M_nombre.Size = New System.Drawing.Size(214, 30)
-        Me.txt_M_nombre.TabIndex = 9
-        Me.txt_M_nombre.Text = "asd"
-        '
-        'txt_M_folio
-        '
-        Me.txt_M_folio.Location = New System.Drawing.Point(293, 300)
-        Me.txt_M_folio.Name = "txt_M_folio"
-        Me.txt_M_folio.Size = New System.Drawing.Size(214, 30)
-        Me.txt_M_folio.TabIndex = 14
-        Me.txt_M_folio.Text = "123"
-        '
-        'txt_M_1apellido
-        '
-        Me.txt_M_1apellido.Location = New System.Drawing.Point(293, 198)
-        Me.txt_M_1apellido.Name = "txt_M_1apellido"
-        Me.txt_M_1apellido.Size = New System.Drawing.Size(214, 30)
-        Me.txt_M_1apellido.TabIndex = 12
-        Me.txt_M_1apellido.Text = "asd"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -309,16 +362,11 @@ Partial Class MANTENIMIENTO
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Número de cédula"
         '
-        'txt_M_2apellido
-        '
-        Me.txt_M_2apellido.Location = New System.Drawing.Point(293, 248)
-        Me.txt_M_2apellido.Name = "txt_M_2apellido"
-        Me.txt_M_2apellido.Size = New System.Drawing.Size(214, 30)
-        Me.txt_M_2apellido.TabIndex = 13
-        Me.txt_M_2apellido.Text = "asd"
-        '
         'tab_M_usuario
         '
+        Me.tab_M_usuario.Controls.Add(Me.datagridusuarios)
+        Me.tab_M_usuario.Controls.Add(Me.btn_agregar_usu)
+        Me.tab_M_usuario.Controls.Add(Me.GroupBox1)
         Me.tab_M_usuario.Location = New System.Drawing.Point(4, 25)
         Me.tab_M_usuario.Name = "tab_M_usuario"
         Me.tab_M_usuario.Padding = New System.Windows.Forms.Padding(3)
@@ -326,6 +374,57 @@ Partial Class MANTENIMIENTO
         Me.tab_M_usuario.TabIndex = 1
         Me.tab_M_usuario.Text = "USUARIOS"
         Me.tab_M_usuario.UseVisualStyleBackColor = True
+        '
+        'datagridusuarios
+        '
+        Me.datagridusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.datagridusuarios.Location = New System.Drawing.Point(610, 74)
+        Me.datagridusuarios.Name = "datagridusuarios"
+        Me.datagridusuarios.RowTemplate.Height = 24
+        Me.datagridusuarios.Size = New System.Drawing.Size(431, 172)
+        Me.datagridusuarios.TabIndex = 2
+        '
+        'btn_agregar_usu
+        '
+        Me.btn_agregar_usu.Location = New System.Drawing.Point(727, 337)
+        Me.btn_agregar_usu.Name = "btn_agregar_usu"
+        Me.btn_agregar_usu.Size = New System.Drawing.Size(204, 90)
+        Me.btn_agregar_usu.TabIndex = 1
+        Me.btn_agregar_usu.Text = "Button2"
+        Me.btn_agregar_usu.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.txt_zona)
+        Me.GroupBox1.Controls.Add(Me.txt_contra)
+        Me.GroupBox1.Controls.Add(Me.txt_usuario)
+        Me.GroupBox1.Location = New System.Drawing.Point(72, 108)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(470, 344)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "GroupBox1"
+        '
+        'txt_zona
+        '
+        Me.txt_zona.Location = New System.Drawing.Point(77, 195)
+        Me.txt_zona.Name = "txt_zona"
+        Me.txt_zona.Size = New System.Drawing.Size(197, 22)
+        Me.txt_zona.TabIndex = 2
+        '
+        'txt_contra
+        '
+        Me.txt_contra.Location = New System.Drawing.Point(77, 145)
+        Me.txt_contra.Name = "txt_contra"
+        Me.txt_contra.Size = New System.Drawing.Size(197, 22)
+        Me.txt_contra.TabIndex = 1
+        '
+        'txt_usuario
+        '
+        Me.txt_usuario.Location = New System.Drawing.Point(77, 94)
+        Me.txt_usuario.Name = "txt_usuario"
+        Me.txt_usuario.Size = New System.Drawing.Size(197, 22)
+        Me.txt_usuario.TabIndex = 0
         '
         'MANTENIMIENTO
         '
@@ -339,9 +438,15 @@ Partial Class MANTENIMIENTO
         Me.TabControl1.ResumeLayout(False)
         Me.tab_M_choferes.ResumeLayout(False)
         Me.tab_M_choferes.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.datagridchoferes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.tab_M_usuario.ResumeLayout(False)
+        CType(Me.datagridusuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -371,6 +476,16 @@ Partial Class MANTENIMIENTO
     Friend WithEvents btn_M_modificar As Button
     Friend WithEvents btn_M_eliminar As Button
     Friend WithEvents btn_M_agregar As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents datagridchoferes As DataGridView
     Friend WithEvents Label10 As Label
+    Friend WithEvents btn_agregar_usu As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents txt_zona As TextBox
+    Friend WithEvents txt_contra As TextBox
+    Friend WithEvents txt_usuario As TextBox
+    Friend WithEvents datagridusuarios As DataGridView
+    Friend WithEvents Button2 As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents btn_buscar As Button
+    Friend WithEvents txt_M_buscar As TextBox
 End Class

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.625" name="SistemaControl">
+  <DataContextMoniker Name="/SistemaControlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="54a945c8-532a-4b99-85ba-3fefe6aacd7e" absoluteBounds="3.5, 1.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SistemaControlDataContext/A_Abono" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb8dee0f-337e-4548-9ea5-cc7477988cc1" absoluteBounds="3.515, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c3c4514-167f-4387-b356-4f0b18bccca7" absoluteBounds="0.75, 4.125, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/SistemaControlDataContext/Cho_Choferes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1391c4a4-2d22-4966-a795-f493f5f9349d" absoluteBounds="0.765, 4.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46bbc0de-726a-4d39-b141-dabcf9486230" absoluteBounds="3.5, 6.625, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/SistemaControlDataContext/Informe_Barras" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0db3d1cf-2c5e-4000-ac06-a63bd7e950e9" absoluteBounds="3.515, 7.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8b4b25a1-72de-4330-8a4b-fa77f0f071af" absoluteBounds="3.5, 3.5, 2, 2.347801106770834">
+      <DataClassMoniker Name="/SistemaControlDataContext/Planilla" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09ef5b6f-fca0-42ed-82b4-9ddf597acb2f" absoluteBounds="3.515, 3.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 4.125); (1.75 : 2.03929768880208); (3.5 : 2.03929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SistemaControlDataContext/Cho_Choferes/Cho_Choferes_A_Abono" />
+      <nodes>
+        <classShapeMoniker Id="1c3c4514-167f-4387-b356-4f0b18bccca7" />
+        <classShapeMoniker Id="54a945c8-532a-4b99-85ba-3fefe6aacd7e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 6.47280110677083); (1.75 : 7.99120198567708); (3.5 : 7.99120198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SistemaControlDataContext/Cho_Choferes/Cho_Choferes_Informe_Barras" />
+      <nodes>
+        <classShapeMoniker Id="1c3c4514-167f-4387-b356-4f0b18bccca7" />
+        <classShapeMoniker Id="46bbc0de-726a-4d39-b141-dabcf9486230" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.98640055338542); (3.5 : 4.98640055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SistemaControlDataContext/Cho_Choferes/Cho_Choferes_Planilla" />
+      <nodes>
+        <classShapeMoniker Id="1c3c4514-167f-4387-b356-4f0b18bccca7" />
+        <classShapeMoniker Id="8b4b25a1-72de-4330-8a4b-fa77f0f071af" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

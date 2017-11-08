@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SistemaControlModelStoreContainer" CdmEntityContainer="SistemaControlEntities">
+    <EntitySetMapping Name="A_Abono">
+      <EntityTypeMapping TypeName="SistemaControlModel.A_Abono">
+        <MappingFragment StoreEntitySet="A_Abono">
+          <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+          <ScalarProperty Name="A_Cedula_Cho" ColumnName="A_Cedula_Cho" />
+          <ScalarProperty Name="A_Monto_Abono" ColumnName="A_Monto_Abono" />
+          <ScalarProperty Name="A_Info_Vale" ColumnName="A_Info_Vale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cho_Choferes">
+      <EntityTypeMapping TypeName="SistemaControlModel.Cho_Choferes">
+        <MappingFragment StoreEntitySet="Cho_Choferes">
+          <ScalarProperty Name="Cho_Cedula" ColumnName="Cho_Cedula" />
+          <ScalarProperty Name="Cho_Num_Codigo" ColumnName="Cho_Num_Codigo" />
+          <ScalarProperty Name="Cho_Nombre" ColumnName="Cho_Nombre" />
+          <ScalarProperty Name="Cho_Apellido1" ColumnName="Cho_Apellido1" />
+          <ScalarProperty Name="Cho_Apellido2" ColumnName="Cho_Apellido2" />
+          <ScalarProperty Name="Cho_Num_folio" ColumnName="Cho_Num_folio" />
+          <ScalarProperty Name="Cho_Boleta" ColumnName="Cho_Boleta" />
+          <ScalarProperty Name="Cho_Compania" ColumnName="Cho_Compania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Informe_Barras">
+      <EntityTypeMapping TypeName="SistemaControlModel.Informe_Barras">
+        <MappingFragment StoreEntitySet="Informe_Barras">
+          <ScalarProperty Name="Fecha_Hora" ColumnName="Fecha_Hora" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Cod_Usuario" ColumnName="Cod_Usuario" />
+          <ScalarProperty Name="Boleta" ColumnName="Boleta" />
+          <ScalarProperty Name="Sobrante" ColumnName="Sobrante" />
+          <ScalarProperty Name="Vales" ColumnName="Vales" />
+          <ScalarProperty Name="Adultos_Mayores" ColumnName="Adultos_Mayores" />
+          <ScalarProperty Name="Info_ID_Chofer" ColumnName="Info_ID_Chofer" />
+          <ScalarProperty Name="Info_ID" ColumnName="Info_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planilla">
+      <EntityTypeMapping TypeName="SistemaControlModel.Planilla">
+        <MappingFragment StoreEntitySet="Planilla">
+          <ScalarProperty Name="Plan_ID" ColumnName="Plan_ID" />
+          <ScalarProperty Name="Pla_Cedula_Cho" ColumnName="Pla_Cedula_Cho" />
+          <ScalarProperty Name="Pla_Saldo_Vales" ColumnName="Pla_Saldo_Vales" />
+          <ScalarProperty Name="Pla_Saldo_Sobrantes" ColumnName="Pla_Saldo_Sobrantes" />
+          <ScalarProperty Name="Pla_Diferencia" ColumnName="Pla_Diferencia" />
+          <ScalarProperty Name="Pla_Bonificacion" ColumnName="Pla_Bonificacion" />
+          <ScalarProperty Name="Pla_Monto_Reinte" ColumnName="Pla_Monto_Reinte" />
+          <ScalarProperty Name="Pla_Monto_Rebajar" ColumnName="Pla_Monto_Rebajar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SistemaControlModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

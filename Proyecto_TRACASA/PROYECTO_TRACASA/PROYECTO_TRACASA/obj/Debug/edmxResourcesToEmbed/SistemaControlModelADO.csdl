@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemaControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="A_Abono">
+    <Key>
+      <PropertyRef Name="A_ID" />
+    </Key>
+    <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="A_Cedula_Cho" Type="Int32" Nullable="false" />
+    <Property Name="A_Monto_Abono" Type="Int32" Nullable="false" />
+    <Property Name="A_Info_Vale" Type="Int32" />
+    <NavigationProperty Name="Cho_Choferes" Relationship="Self.FK_A_Abono_Cho_Choferes" FromRole="A_Abono" ToRole="Cho_Choferes" />
+  </EntityType>
+  <EntityType Name="Cho_Choferes">
+    <Key>
+      <PropertyRef Name="Cho_Cedula" />
+    </Key>
+    <Property Name="Cho_Cedula" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Num_Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cho_Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cho_Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cho_Num_folio" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Boleta" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Compania" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="A_Abono" Relationship="Self.FK_A_Abono_Cho_Choferes" FromRole="Cho_Choferes" ToRole="A_Abono" />
+    <NavigationProperty Name="Informe_Barras" Relationship="Self.FK_Informe_Barras_Cho_Choferes" FromRole="Cho_Choferes" ToRole="Informe_Barras" />
+    <NavigationProperty Name="Planilla" Relationship="Self.FK_Planilla_Cho_Choferes" FromRole="Cho_Choferes" ToRole="Planilla" />
+  </EntityType>
+  <EntityType Name="Informe_Barras">
+    <Key>
+      <PropertyRef Name="Info_ID" />
+    </Key>
+    <Property Name="Fecha_Hora" Type="DateTime" Precision="3" />
+    <Property Name="Ruta" Type="Int32" />
+    <Property Name="Unidad" Type="Int32" />
+    <Property Name="Cod_Usuario" Type="Int32" />
+    <Property Name="Boleta" Type="Int32" />
+    <Property Name="Sobrante" Type="Double" />
+    <Property Name="Vales" Type="Double" />
+    <Property Name="Adultos_Mayores" Type="Int32" />
+    <Property Name="Info_ID_Chofer" Type="Int32" />
+    <Property Name="Info_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Cho_Choferes" Relationship="Self.FK_Informe_Barras_Cho_Choferes" FromRole="Informe_Barras" ToRole="Cho_Choferes" />
+  </EntityType>
+  <EntityType Name="Planilla">
+    <Key>
+      <PropertyRef Name="Plan_ID" />
+    </Key>
+    <Property Name="Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pla_Cedula_Cho" Type="Int32" />
+    <Property Name="Pla_Saldo_Vales" Type="Double" />
+    <Property Name="Pla_Saldo_Sobrantes" Type="Double" />
+    <Property Name="Pla_Diferencia" Type="Double" />
+    <Property Name="Pla_Bonificacion" Type="Double" />
+    <Property Name="Pla_Monto_Reinte" Type="Double" />
+    <Property Name="Pla_Monto_Rebajar" Type="Double" />
+    <NavigationProperty Name="Cho_Choferes" Relationship="Self.FK_Planilla_Cho_Choferes" FromRole="Planilla" ToRole="Cho_Choferes" />
+  </EntityType>
+  <Association Name="FK_A_Abono_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="1" />
+    <End Role="A_Abono" Type="Self.A_Abono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="A_Abono">
+        <PropertyRef Name="A_Cedula_Cho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informe_Barras_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="0..1" />
+    <End Role="Informe_Barras" Type="Self.Informe_Barras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="Informe_Barras">
+        <PropertyRef Name="Info_ID_Chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Planilla_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="0..1" />
+    <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="Planilla">
+        <PropertyRef Name="Pla_Cedula_Cho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SistemaControlEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="A_Abono" EntityType="Self.A_Abono" />
+    <EntitySet Name="Cho_Choferes" EntityType="Self.Cho_Choferes" />
+    <EntitySet Name="Informe_Barras" EntityType="Self.Informe_Barras" />
+    <EntitySet Name="Planilla" EntityType="Self.Planilla" />
+    <AssociationSet Name="FK_A_Abono_Cho_Choferes" Association="Self.FK_A_Abono_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="A_Abono" EntitySet="A_Abono" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informe_Barras_Cho_Choferes" Association="Self.FK_Informe_Barras_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="Informe_Barras" EntitySet="Informe_Barras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Planilla_Cho_Choferes" Association="Self.FK_Planilla_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="Planilla" EntitySet="Planilla" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

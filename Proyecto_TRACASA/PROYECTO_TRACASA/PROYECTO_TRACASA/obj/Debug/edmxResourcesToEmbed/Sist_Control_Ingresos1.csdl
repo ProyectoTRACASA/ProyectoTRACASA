@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemaIngresos" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="A_Abono">
+    <Key>
+      <PropertyRef Name="A_ID" />
+    </Key>
+    <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="A_ID_Cho" Type="Int32" Nullable="false" />
+    <Property Name="A_Monto_Abono" Type="Int32" Nullable="false" />
+    <Property Name="A_Info_Vale" Type="Int32" />
+    <NavigationProperty Name="Cho_Choferes" Relationship="Self.FK_A_Abono_Cho_Choferes" FromRole="A_Abono" ToRole="Cho_Choferes" />
+  </EntityType>
+  <EntityType Name="Ca_Carreras">
+    <Key>
+      <PropertyRef Name="Ca_ID" />
+    </Key>
+    <Property Name="Ca_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ca_Carrer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Info_Informe_Barras" Relationship="Self.FK_Info_Informe_Barras_Ca_Carreras" FromRole="Ca_Carreras" ToRole="Info_Informe_Barras" />
+    <NavigationProperty Name="Zo_Zona" Relationship="Self.FK_Zo_Zona_Ca_Carreras" FromRole="Ca_Carreras" ToRole="Zo_Zona" />
+  </EntityType>
+  <EntityType Name="Cho_Choferes">
+    <Key>
+      <PropertyRef Name="Cho_Cedula" />
+    </Key>
+    <Property Name="Cho_Cedula" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Num_Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cho_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cho_Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cho_Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cho_Num_folio" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Boleta" Type="Int32" Nullable="false" />
+    <Property Name="Cho_Compania" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="A_Abono" Relationship="Self.FK_A_Abono_Cho_Choferes" FromRole="Cho_Choferes" ToRole="A_Abono" />
+    <NavigationProperty Name="Info_Informe_Barras" Relationship="Self.FK_Info_Informe_Barras_Cho_Choferes" FromRole="Cho_Choferes" ToRole="Info_Informe_Barras" />
+  </EntityType>
+  <EntityType Name="Info_Informe_Barras">
+    <Key>
+      <PropertyRef Name="Info_ID" />
+    </Key>
+    <Property Name="Info_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Info_ID_Carreras" Type="Int32" />
+    <Property Name="Info_ID_Chofer" Type="Int32" />
+    <Property Name="Info_Fecha_Hora" Type="DateTime" Precision="3" />
+    <Property Name="Info_Ruta" Type="Int32" />
+    <Property Name="Info_Unidad" Type="Int32" />
+    <Property Name="Info_Cod_Usuario" Type="Int32" />
+    <Property Name="Info_Boleta" Type="Int32" />
+    <Property Name="Info_Sobrante" Type="Double" />
+    <Property Name="Info_Vales" Type="Double" />
+    <Property Name="Info_Adultos_Mayores" Type="Int32" />
+    <NavigationProperty Name="Ca_Carreras" Relationship="Self.FK_Info_Informe_Barras_Ca_Carreras" FromRole="Info_Informe_Barras" ToRole="Ca_Carreras" />
+    <NavigationProperty Name="Cho_Choferes" Relationship="Self.FK_Info_Informe_Barras_Cho_Choferes" FromRole="Info_Informe_Barras" ToRole="Cho_Choferes" />
+    <NavigationProperty Name="Pla_Planilla" Relationship="Self.FK_Pla_Planilla_Info_Informe_Barras" FromRole="Info_Informe_Barras" ToRole="Pla_Planilla" />
+  </EntityType>
+  <EntityType Name="Pla_Planilla">
+    <Key>
+      <PropertyRef Name="Plan_ID" />
+    </Key>
+    <Property Name="Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pla_ID_Informes" Type="Int32" />
+    <Property Name="Pla_Saldo_Vales" Type="Double" />
+    <Property Name="Pla_Saldo_Sobrantes" Type="Double" />
+    <Property Name="Pla_Diferencia" Type="Double" />
+    <Property Name="Pla_Bonificacion" Type="Double" />
+    <Property Name="Pla_Monto_Reinte" Type="Double" />
+    <Property Name="Pla_Monto_Rebajar" Type="Double" />
+    <NavigationProperty Name="Info_Informe_Barras" Relationship="Self.FK_Pla_Planilla_Info_Informe_Barras" FromRole="Pla_Planilla" ToRole="Info_Informe_Barras" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="U_Usuario">
+    <Key>
+      <PropertyRef Name="U_ID" />
+    </Key>
+    <Property Name="U_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Usuario1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="U_Contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="U_ID_Zona" Type="Int32" />
+    <NavigationProperty Name="Zo_Zona" Relationship="Self.FK_U_Usuario_Zo_Zona" FromRole="U_Usuario" ToRole="Zo_Zona" />
+  </EntityType>
+  <EntityType Name="Zo_Zona">
+    <Key>
+      <PropertyRef Name="Zo_ID" />
+    </Key>
+    <Property Name="Zo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Zo_Zona1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Zo_ID_Carrera" Type="Int32" />
+    <NavigationProperty Name="Ca_Carreras" Relationship="Self.FK_Zo_Zona_Ca_Carreras" FromRole="Zo_Zona" ToRole="Ca_Carreras" />
+    <NavigationProperty Name="U_Usuario" Relationship="Self.FK_U_Usuario_Zo_Zona" FromRole="Zo_Zona" ToRole="U_Usuario" />
+  </EntityType>
+  <Association Name="FK_A_Abono_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="1" />
+    <End Role="A_Abono" Type="Self.A_Abono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="A_Abono">
+        <PropertyRef Name="A_ID_Cho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Info_Informe_Barras_Ca_Carreras">
+    <End Role="Ca_Carreras" Type="Self.Ca_Carreras" Multiplicity="0..1" />
+    <End Role="Info_Informe_Barras" Type="Self.Info_Informe_Barras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ca_Carreras">
+        <PropertyRef Name="Ca_ID" />
+      </Principal>
+      <Dependent Role="Info_Informe_Barras">
+        <PropertyRef Name="Info_ID_Carreras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zo_Zona_Ca_Carreras">
+    <End Role="Ca_Carreras" Type="Self.Ca_Carreras" Multiplicity="1" />
+    <End Role="Zo_Zona" Type="Self.Zo_Zona" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ca_Carreras">
+        <PropertyRef Name="Ca_ID" />
+      </Principal>
+      <Dependent Role="Zo_Zona">
+        <PropertyRef Name="Zo_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Info_Informe_Barras_Cho_Choferes">
+    <End Role="Cho_Choferes" Type="Self.Cho_Choferes" Multiplicity="0..1" />
+    <End Role="Info_Informe_Barras" Type="Self.Info_Informe_Barras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cho_Choferes">
+        <PropertyRef Name="Cho_Cedula" />
+      </Principal>
+      <Dependent Role="Info_Informe_Barras">
+        <PropertyRef Name="Info_ID_Chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pla_Planilla_Info_Informe_Barras">
+    <End Role="Info_Informe_Barras" Type="Self.Info_Informe_Barras" Multiplicity="0..1" />
+    <End Role="Pla_Planilla" Type="Self.Pla_Planilla" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Info_Informe_Barras">
+        <PropertyRef Name="Info_ID" />
+      </Principal>
+      <Dependent Role="Pla_Planilla">
+        <PropertyRef Name="Pla_ID_Informes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_U_Usuario_Zo_Zona">
+    <End Role="Zo_Zona" Type="Self.Zo_Zona" Multiplicity="0..1" />
+    <End Role="U_Usuario" Type="Self.U_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zo_Zona">
+        <PropertyRef Name="Zo_ID" />
+      </Principal>
+      <Dependent Role="U_Usuario">
+        <PropertyRef Name="U_ID_Zona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="model4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="A_Abono" EntityType="Self.A_Abono" />
+    <EntitySet Name="Ca_Carreras" EntityType="Self.Ca_Carreras" />
+    <EntitySet Name="Cho_Choferes" EntityType="Self.Cho_Choferes" />
+    <EntitySet Name="Info_Informe_Barras" EntityType="Self.Info_Informe_Barras" />
+    <EntitySet Name="Pla_Planilla" EntityType="Self.Pla_Planilla" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="U_Usuario" EntityType="Self.U_Usuario" />
+    <EntitySet Name="Zo_Zona" EntityType="Self.Zo_Zona" />
+    <AssociationSet Name="FK_A_Abono_Cho_Choferes" Association="Self.FK_A_Abono_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="A_Abono" EntitySet="A_Abono" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Info_Informe_Barras_Ca_Carreras" Association="Self.FK_Info_Informe_Barras_Ca_Carreras">
+      <End Role="Ca_Carreras" EntitySet="Ca_Carreras" />
+      <End Role="Info_Informe_Barras" EntitySet="Info_Informe_Barras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zo_Zona_Ca_Carreras" Association="Self.FK_Zo_Zona_Ca_Carreras">
+      <End Role="Ca_Carreras" EntitySet="Ca_Carreras" />
+      <End Role="Zo_Zona" EntitySet="Zo_Zona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Info_Informe_Barras_Cho_Choferes" Association="Self.FK_Info_Informe_Barras_Cho_Choferes">
+      <End Role="Cho_Choferes" EntitySet="Cho_Choferes" />
+      <End Role="Info_Informe_Barras" EntitySet="Info_Informe_Barras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pla_Planilla_Info_Informe_Barras" Association="Self.FK_Pla_Planilla_Info_Informe_Barras">
+      <End Role="Info_Informe_Barras" EntitySet="Info_Informe_Barras" />
+      <End Role="Pla_Planilla" EntitySet="Pla_Planilla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_U_Usuario_Zo_Zona" Association="Self.FK_U_Usuario_Zo_Zona">
+      <End Role="Zo_Zona" EntitySet="Zo_Zona" />
+      <End Role="U_Usuario" EntitySet="U_Usuario" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SistemaIngresos.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SistemaIngresos.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

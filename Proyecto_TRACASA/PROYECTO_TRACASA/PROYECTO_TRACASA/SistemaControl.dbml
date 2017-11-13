@@ -2,82 +2,87 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7E9EQF0\SQLEXPRESS;Initial Catalog=Sist_Control_Ingresos1.0;Integrated Security=True" SettingsObjectName="PROYECTO_TRACASA.My.MySettings" SettingsPropertyName="Sist_Control_Ingresos1_0ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.A_Abono" Member="A_Abono">
     <Type Name="A_Abono">
-      <Column Name="A_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="A_ID_Cho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="A_Monto_Abono" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="A_Info_Vale" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Info_Informe_Barras_A_Abono" Member="Info_Informe_Barras" ThisKey="A_ID" OtherKey="Info_ID" Type="Info_Informe_Barras" IsForeignKey="true" />
+      <Column Name="Boletas" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Vales" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Sobrantes" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="[Abono-Diferencia]" Member="Abono_Diferencia" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Diferencia" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Bonificacion" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Reintegrar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Rebajar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Cho_Choferes_A_Abono" Member="Cho_Choferes" ThisKey="Boletas" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
+      <Association Name="Co_Control_A_Abono" Member="Co_Control" ThisKey="Boletas" OtherKey="ID" Type="Co_Control" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Ca_Carreras" Member="Ca_Carreras">
     <Type Name="Ca_Carreras">
-      <Column Name="Ca_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Ca_Carrer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Ca_Carreras_Info_Informe_Barras" Member="Info_Informe_Barras" ThisKey="Ca_ID" OtherKey="Info_ID_Carreras" Type="Info_Informe_Barras" />
-      <Association Name="Ca_Carreras_Zo_Zona" Member="Zo_Zona" ThisKey="Ca_ID" OtherKey="Zo_ID" Type="Zo_Zona" Cardinality="One" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Carrer" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Otros" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Ca_Carreras_Zo_Zona" Member="Zo_Zona" ThisKey="ID" OtherKey="ID_Carrera" Type="Zo_Zona" />
     </Type>
   </Table>
   <Table Name="dbo.Cho_Choferes" Member="Cho_Choferes">
     <Type Name="Cho_Choferes">
-      <Column Name="Cho_Cedula" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Cho_Num_Codigo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cho_Nombre" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Cho_Apellido1" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Cho_Apellido2" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Cho_Num_folio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cho_Boleta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cho_Compania" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Num_folio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Compania" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Cho_Choferes_A_Abono" Member="A_Abono" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Boletas" Type="A_Abono" Cardinality="One" />
+      <Association Name="Cho_Choferes_Co_Control" Member="Co_Control" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Co_Control" />
     </Type>
   </Table>
-  <Table Name="dbo.Info_Informe_Barras" Member="Info_Informe_Barras">
-    <Type Name="Info_Informe_Barras">
-      <Column Name="Info_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Info_ID_Carreras" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_ID_Chofer" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Fecha_Hora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Info_Ruta" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Unidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Cod_Usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Boleta" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Monto_Entregar" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Monto_Entregado" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Info_Sobrante" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Info_Vales" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Info_Adultos_Mayores" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Info_Informe_Barras_A_Abono" Member="A_Abono" ThisKey="Info_ID" OtherKey="A_ID" Type="A_Abono" Cardinality="One" />
-      <Association Name="Info_Informe_Barras_Pla_Planilla" Member="Pla_Planilla" ThisKey="Info_ID" OtherKey="Pla_ID_Informes" Type="Pla_Planilla" />
-      <Association Name="Ca_Carreras_Info_Informe_Barras" Member="Ca_Carreras" ThisKey="Info_ID_Carreras" OtherKey="Ca_ID" Type="Ca_Carreras" IsForeignKey="true" />
+  <Table Name="dbo.Co_Control" Member="Co_Control">
+    <Type Name="Co_Control">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Numero_de_Ruta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Adultos_Mayores" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Entregar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Entregado" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Pasajeros" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Costo_Pasaje" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Hora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Codigo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ID_Zona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Co_Control_A_Abono" Member="A_Abono" ThisKey="ID" OtherKey="Boletas" Type="A_Abono" Cardinality="One" />
+      <Association Name="Cho_Choferes_Co_Control" Member="Cho_Choferes" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
+      <Association Name="Zo_Zona_Co_Control" Member="Zo_Zona" ThisKey="ID_Zona" OtherKey="Zona_ID" Type="Zo_Zona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Pla_Planilla" Member="Pla_Planilla">
     <Type Name="Pla_Planilla">
-      <Column Name="Plan_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Pla_ID_Informes" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Pla_Saldo_Vales" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Pla_Saldo_Sobrantes" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Pla_Diferencia" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Pla_Bonificacion" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Pla_Monto_Reinte" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Pla_Monto_Rebajar" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Info_Informe_Barras_Pla_Planilla" Member="Info_Informe_Barras" ThisKey="Pla_ID_Informes" OtherKey="Info_ID" Type="Info_Informe_Barras" IsForeignKey="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Informes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Saldo_Vales_Informes" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Saldo_Sobrantes_Informes" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Diferencia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bonificacion" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Monto_Reinte" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Monto_Rebajar" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.U_Usuario" Member="U_Usuario">
     <Type Name="U_Usuario">
-      <Column Name="U_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="U_Usuario" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="U_Contrasena" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="U_ID_Zona" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Zo_Zona_U_Usuario" Member="Zo_Zona" ThisKey="U_ID_Zona" OtherKey="Zo_ID" Type="Zo_Zona" IsForeignKey="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Contrasena" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Zona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Zo_Zona_U_Usuario" Member="Zo_Zona" ThisKey="ID_Zona" OtherKey="Zona_ID" Type="Zo_Zona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Zo_Zona" Member="Zo_Zona">
     <Type Name="Zo_Zona">
-      <Column Name="Zo_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Zo_Zona" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Zo_ID_Carrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Zo_Zona_U_Usuario" Member="U_Usuario" ThisKey="Zo_ID" OtherKey="U_ID_Zona" Type="U_Usuario" />
-      <Association Name="Ca_Carreras_Zo_Zona" Member="Ca_Carreras" ThisKey="Zo_ID" OtherKey="Ca_ID" Type="Ca_Carreras" IsForeignKey="true" />
+      <Column Name="Zona_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Zona" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Carrera" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Zo_Zona_Co_Control" Member="Co_Control" ThisKey="Zona_ID" OtherKey="ID_Zona" Type="Co_Control" />
+      <Association Name="Zo_Zona_U_Usuario" Member="U_Usuario" ThisKey="Zona_ID" OtherKey="ID_Zona" Type="U_Usuario" />
+      <Association Name="Ca_Carreras_Zo_Zona" Member="Ca_Carreras" ThisKey="ID_Carrera" OtherKey="ID" Type="Ca_Carreras" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

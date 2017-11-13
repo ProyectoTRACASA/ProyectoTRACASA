@@ -1,6 +1,6 @@
 ﻿Imports System.Data
 
-'Arreglar error al dar click en la ultima fila del datagrid
+'Arreglar error al dar click en la ultima fila del datagrid ----  RESUELTO ------ poner .tolist()
 'no se puede poner 01 en los campos de texto, aplicar con double o float'
 
 Public Class MANTENIMIENTO
@@ -12,6 +12,7 @@ Public Class MANTENIMIENTO
         InitializeComponent()
 
     End Sub
+
 
 #Region "//PESTANA DE CHOFERES"
 
@@ -39,17 +40,17 @@ Public Class MANTENIMIENTO
 
         Try
 
-            If txt_M_cedula.Text = "" Then
+            If txt_M_idchofer.Text = "" Then
                 MsgBox("No ha ingresado el numero de cedula, Por favor ingreselo para poder registrarlo")
             Else
-                ingresar.Cho_Nombre = txt_M_nombre.Text
-                ingresar.Cho_Cedula = txt_M_cedula.Text
-                ingresar.Cho_Num_Codigo = txt_M_codigo.Text
-                ingresar.Cho_Apellido1 = txt_M_1apellido.Text
-                ingresar.Cho_Apellido2 = txt_M_2apellido.Text
-                ingresar.Cho_Num_folio = txt_M_folio.Text
-                ingresar.Cho_Boleta = txt_M_boleta.Text
-                ingresar.Cho_Compania = txt_M_compania.Text
+                ingresar.Cod_Usuario_ID_Chofer = txt_M_idchofer.Text
+                ingresar.Nombre = txt_M_nombre.Text
+                ingresar.Cedula = txt_M_cedula.Text
+                ingresar.Num_folio = txt_M_folio.Text
+                ingresar.Primer_Apellido = txt_M_1apellido.Text
+                ingresar.Segundo_Apellido = txt_M_2apellido.Text
+                ingresar.Compania = txt_M_compania.Text
+
 
                 db.Cho_Choferes.InsertOnSubmit(ingresar)
                 db.SubmitChanges()
@@ -68,7 +69,7 @@ Public Class MANTENIMIENTO
     Public Sub eliminarChofer(ByVal id As Integer)
 
         Dim eliminar = (From dato In db.Cho_Choferes
-                        Where dato.Cho_Cedula = id
+                        Where dato.Cod_Usuario_ID_Chofer = id
                         Select dato).FirstOrDefault
 
         db.Cho_Choferes.DeleteOnSubmit(eliminar)
@@ -86,10 +87,10 @@ Public Class MANTENIMIENTO
 
 
             Dim buscar = (From dato In db.Cho_Choferes
-                          Where dato.Cho_Cedula = buscar_cedula
+                          Where dato.Cod_Usuario_ID_Chofer = buscar_cedula
                           Select dato)
 
-            datagridchoferes.DataSource = buscar
+            datagridchoferes.DataSource = buscar.ToList()
 
 
         Catch ex As Exception
@@ -100,27 +101,27 @@ Public Class MANTENIMIENTO
 
     End Sub
 
-    Public Sub modificar(ByVal cedula As Integer)
+    Public Sub modificar(ByVal codigo As Integer)
 
         Try
             Dim modificar = (From dato In db.Cho_Choferes
-                             Where dato.Cho_Cedula = cedula
+                             Where dato.Cod_Usuario_ID_Chofer = codigo
                              Select dato).FirstOrDefault
 
-            modificar.Cho_Nombre = txt_M_nombre.Text
-            modificar.Cho_Cedula = txt_M_cedula.Text
-            modificar.Cho_Num_Codigo = txt_M_codigo.Text
-            modificar.Cho_Apellido1 = txt_M_1apellido.Text
-            modificar.Cho_Apellido2 = txt_M_2apellido.Text
-            modificar.Cho_Num_folio = txt_M_folio.Text
-            modificar.Cho_Boleta = txt_M_boleta.Text
-            modificar.Cho_Compania = txt_M_compania.Text
+
+            modificar.Cod_Usuario_ID_Chofer = txt_M_idchofer.Text
+            modificar.Nombre = txt_M_nombre.Text
+            modificar.Cedula = txt_M_cedula.Text
+            modificar.Num_folio = txt_M_folio.Text
+            modificar.Primer_Apellido = txt_M_1apellido.Text
+            modificar.Segundo_Apellido = txt_M_2apellido.Text
+            modificar.Compania = txt_M_compania.Text
 
             db.SubmitChanges()
             MsgBox("Modificado correctamente")
 
             Dim buscarid = (From dato In db.Cho_Choferes
-                            Where dato.Cho_Cedula = cedula
+                            Where dato.Cod_Usuario_ID_Chofer = codigo
                             Select dato)
 
             datagridchoferes.DataSource = buscarid
@@ -147,15 +148,14 @@ Public Class MANTENIMIENTO
 
 
     Public Sub limpiar()
-
+        txt_M_idchofer.Text = ""
         txt_M_cedula.Text = ""
-        txt_M_codigo.Text = ""
         txt_M_nombre.Text = ""
         txt_M_1apellido.Text = ""
         txt_M_2apellido.Text = ""
         txt_M_folio.Text = ""
         txt_M_compania.Text = ""
-        txt_M_boleta.Text = ""
+
 
     End Sub
 
@@ -170,16 +170,13 @@ Public Class MANTENIMIENTO
             Dim selectedRow As DataGridViewRow
             selectedRow = datagridchoferes.Rows(index)
 
-            txt_M_cedula.Text = selectedRow.Cells(0).Value.ToString()
-            txt_M_codigo.Text = selectedRow.Cells(1).Value.ToString()
-            txt_M_nombre.Text = selectedRow.Cells(2).Value.ToString()
-            txt_M_1apellido.Text = selectedRow.Cells(3).Value.ToString()
-            txt_M_2apellido.Text = selectedRow.Cells(4).Value.ToString()
+            txt_M_idchofer.Text = selectedRow.Cells(0).Value.ToString()
+            txt_M_nombre.Text = selectedRow.Cells(1).Value.ToString()
+            txt_M_1apellido.Text = selectedRow.Cells(2).Value.ToString()
+            txt_M_2apellido.Text = selectedRow.Cells(3).Value.ToString()
+            txt_M_cedula.Text = selectedRow.Cells(4).Value.ToString()
             txt_M_folio.Text = selectedRow.Cells(5).Value.ToString()
-            txt_M_boleta.Text = selectedRow.Cells(6).Value.ToString()
-            txt_M_compania.Text = selectedRow.Cells(7).Value.ToString()
-
-
+            txt_M_compania.Text = selectedRow.Cells(6).Value.ToString()
         End If
 
 
@@ -209,7 +206,7 @@ Public Class MANTENIMIENTO
 
     Private Sub btn_M_modificar_Click(sender As Object, e As EventArgs) Handles btn_M_modificar.Click
         Try
-            modificar(Convert.ToInt32(txt_M_cedula.Text))
+            modificar(Convert.ToInt32(txt_M_idchofer.Text))
         Catch ex As Exception
             MsgBox("NO HAY DATOS QUE MODIFICAR")
         End Try
@@ -233,7 +230,7 @@ Public Class MANTENIMIENTO
 
     Private Sub btn_M_eliminar_Click(sender As Object, e As EventArgs) Handles btn_M_eliminar.Click
         Try
-            eliminarChofer(Convert.ToInt32(txt_M_cedula.Text))
+            eliminarChofer(Convert.ToInt32(txt_M_idchofer.Text))
 
         Catch ex As Exception
             MsgBox("NO HAY DATOS QUE BORRAR")
@@ -248,8 +245,8 @@ Public Class MANTENIMIENTO
 
     Public Sub ingresa_usuarios()
 
-    End Sub
 
+    End Sub
 
 
 

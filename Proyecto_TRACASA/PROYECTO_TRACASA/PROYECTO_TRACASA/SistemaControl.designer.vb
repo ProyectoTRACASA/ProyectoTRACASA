@@ -49,11 +49,11 @@ Partial Public Class SistemaControlDataContext
     End Sub
   Partial Private Sub DeleteCho_Choferes(instance As Cho_Choferes)
     End Sub
-  Partial Private Sub InsertInfo_Informe_Barras(instance As Info_Informe_Barras)
+  Partial Private Sub InsertCo_Control(instance As Co_Control)
     End Sub
-  Partial Private Sub UpdateInfo_Informe_Barras(instance As Info_Informe_Barras)
+  Partial Private Sub UpdateCo_Control(instance As Co_Control)
     End Sub
-  Partial Private Sub DeleteInfo_Informe_Barras(instance As Info_Informe_Barras)
+  Partial Private Sub DeleteCo_Control(instance As Co_Control)
     End Sub
   Partial Private Sub InsertPla_Planilla(instance As Pla_Planilla)
     End Sub
@@ -118,9 +118,9 @@ Partial Public Class SistemaControlDataContext
 		End Get
 	End Property
 	
-	Public ReadOnly Property Info_Informe_Barras() As System.Data.Linq.Table(Of Info_Informe_Barras)
+	Public ReadOnly Property Co_Control() As System.Data.Linq.Table(Of Co_Control)
 		Get
-			Return Me.GetTable(Of Info_Informe_Barras)
+			Return Me.GetTable(Of Co_Control)
 		End Get
 	End Property
 	
@@ -149,15 +149,25 @@ Partial Public Class A_Abono
 	
 	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
 	
-	Private _A_ID As Integer
+	Private _Boletas As Integer
 	
-	Private _A_ID_Cho As Integer
+	Private _Vales As Double
 	
-	Private _A_Monto_Abono As Integer
+	Private _Sobrantes As Double
 	
-	Private _A_Info_Vale As System.Nullable(Of Integer)
+	Private _Abono_Diferencia As Double
 	
-	Private _Info_Informe_Barras As EntityRef(Of Info_Informe_Barras)
+	Private _Diferencia As Double
+	
+	Private _Bonificacion As Double
+	
+	Private _Monto_Reintegrar As Double
+	
+	Private _Monto_Rebajar As Double
+	
+	Private _Cho_Choferes As EntityRef(Of Cho_Choferes)
+	
+	Private _Co_Control As EntityRef(Of Co_Control)
 	
     #Region "Definiciones de métodos de extensibilidad"
     Partial Private Sub OnLoaded()
@@ -166,124 +176,238 @@ Partial Public Class A_Abono
     End Sub
     Partial Private Sub OnCreated()
     End Sub
-    Partial Private Sub OnA_IDChanging(value As Integer)
+    Partial Private Sub OnBoletasChanging(value As Integer)
     End Sub
-    Partial Private Sub OnA_IDChanged()
+    Partial Private Sub OnBoletasChanged()
     End Sub
-    Partial Private Sub OnA_ID_ChoChanging(value As Integer)
+    Partial Private Sub OnValesChanging(value As Double)
     End Sub
-    Partial Private Sub OnA_ID_ChoChanged()
+    Partial Private Sub OnValesChanged()
     End Sub
-    Partial Private Sub OnA_Monto_AbonoChanging(value As Integer)
+    Partial Private Sub OnSobrantesChanging(value As Double)
     End Sub
-    Partial Private Sub OnA_Monto_AbonoChanged()
+    Partial Private Sub OnSobrantesChanged()
     End Sub
-    Partial Private Sub OnA_Info_ValeChanging(value As System.Nullable(Of Integer))
+    Partial Private Sub OnAbono_DiferenciaChanging(value As Double)
     End Sub
-    Partial Private Sub OnA_Info_ValeChanged()
+    Partial Private Sub OnAbono_DiferenciaChanged()
+    End Sub
+    Partial Private Sub OnDiferenciaChanging(value As Double)
+    End Sub
+    Partial Private Sub OnDiferenciaChanged()
+    End Sub
+    Partial Private Sub OnBonificacionChanging(value As Double)
+    End Sub
+    Partial Private Sub OnBonificacionChanged()
+    End Sub
+    Partial Private Sub OnMonto_ReintegrarChanging(value As Double)
+    End Sub
+    Partial Private Sub OnMonto_ReintegrarChanged()
+    End Sub
+    Partial Private Sub OnMonto_RebajarChanging(value As Double)
+    End Sub
+    Partial Private Sub OnMonto_RebajarChanged()
     End Sub
     #End Region
 	
 	Public Sub New()
 		MyBase.New
-		Me._Info_Informe_Barras = CType(Nothing, EntityRef(Of Info_Informe_Barras))
+		Me._Cho_Choferes = CType(Nothing, EntityRef(Of Cho_Choferes))
+		Me._Co_Control = CType(Nothing, EntityRef(Of Co_Control))
 		OnCreated
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_A_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property A_ID() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Boletas", DbType:="Int NOT NULL", IsPrimaryKey:=true)>  _
+	Public Property Boletas() As Integer
 		Get
-			Return Me._A_ID
+			Return Me._Boletas
 		End Get
 		Set
-			If ((Me._A_ID = value)  _
+			If ((Me._Boletas = value)  _
 						= false) Then
-				If Me._Info_Informe_Barras.HasLoadedOrAssignedValue Then
+				If (Me._Cho_Choferes.HasLoadedOrAssignedValue OrElse Me._Co_Control.HasLoadedOrAssignedValue) Then
 					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
 				End If
-				Me.OnA_IDChanging(value)
+				Me.OnBoletasChanging(value)
 				Me.SendPropertyChanging
-				Me._A_ID = value
-				Me.SendPropertyChanged("A_ID")
-				Me.OnA_IDChanged
+				Me._Boletas = value
+				Me.SendPropertyChanged("Boletas")
+				Me.OnBoletasChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_A_ID_Cho", DbType:="Int NOT NULL")>  _
-	Public Property A_ID_Cho() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Vales", DbType:="Float NOT NULL")>  _
+	Public Property Vales() As Double
 		Get
-			Return Me._A_ID_Cho
+			Return Me._Vales
 		End Get
 		Set
-			If ((Me._A_ID_Cho = value)  _
+			If ((Me._Vales = value)  _
 						= false) Then
-				Me.OnA_ID_ChoChanging(value)
+				Me.OnValesChanging(value)
 				Me.SendPropertyChanging
-				Me._A_ID_Cho = value
-				Me.SendPropertyChanged("A_ID_Cho")
-				Me.OnA_ID_ChoChanged
+				Me._Vales = value
+				Me.SendPropertyChanged("Vales")
+				Me.OnValesChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_A_Monto_Abono", DbType:="Int NOT NULL")>  _
-	Public Property A_Monto_Abono() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Sobrantes", DbType:="Float NOT NULL")>  _
+	Public Property Sobrantes() As Double
 		Get
-			Return Me._A_Monto_Abono
+			Return Me._Sobrantes
 		End Get
 		Set
-			If ((Me._A_Monto_Abono = value)  _
+			If ((Me._Sobrantes = value)  _
 						= false) Then
-				Me.OnA_Monto_AbonoChanging(value)
+				Me.OnSobrantesChanging(value)
 				Me.SendPropertyChanging
-				Me._A_Monto_Abono = value
-				Me.SendPropertyChanged("A_Monto_Abono")
-				Me.OnA_Monto_AbonoChanged
+				Me._Sobrantes = value
+				Me.SendPropertyChanged("Sobrantes")
+				Me.OnSobrantesChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_A_Info_Vale", DbType:="Int")>  _
-	Public Property A_Info_Vale() As System.Nullable(Of Integer)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Name:="[Abono-Diferencia]", Storage:="_Abono_Diferencia", DbType:="Float NOT NULL")>  _
+	Public Property Abono_Diferencia() As Double
 		Get
-			Return Me._A_Info_Vale
+			Return Me._Abono_Diferencia
 		End Get
 		Set
-			If (Me._A_Info_Vale.Equals(value) = false) Then
-				Me.OnA_Info_ValeChanging(value)
+			If ((Me._Abono_Diferencia = value)  _
+						= false) Then
+				Me.OnAbono_DiferenciaChanging(value)
 				Me.SendPropertyChanging
-				Me._A_Info_Vale = value
-				Me.SendPropertyChanged("A_Info_Vale")
-				Me.OnA_Info_ValeChanged
+				Me._Abono_Diferencia = value
+				Me.SendPropertyChanged("Abono_Diferencia")
+				Me.OnAbono_DiferenciaChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Info_Informe_Barras_A_Abono", Storage:="_Info_Informe_Barras", ThisKey:="A_ID", OtherKey:="Info_ID", IsForeignKey:=true)>  _
-	Public Property Info_Informe_Barras() As Info_Informe_Barras
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Diferencia", DbType:="Float NOT NULL")>  _
+	Public Property Diferencia() As Double
 		Get
-			Return Me._Info_Informe_Barras.Entity
+			Return Me._Diferencia
 		End Get
 		Set
-			Dim previousValue As Info_Informe_Barras = Me._Info_Informe_Barras.Entity
+			If ((Me._Diferencia = value)  _
+						= false) Then
+				Me.OnDiferenciaChanging(value)
+				Me.SendPropertyChanging
+				Me._Diferencia = value
+				Me.SendPropertyChanged("Diferencia")
+				Me.OnDiferenciaChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Bonificacion", DbType:="Float NOT NULL")>  _
+	Public Property Bonificacion() As Double
+		Get
+			Return Me._Bonificacion
+		End Get
+		Set
+			If ((Me._Bonificacion = value)  _
+						= false) Then
+				Me.OnBonificacionChanging(value)
+				Me.SendPropertyChanging
+				Me._Bonificacion = value
+				Me.SendPropertyChanged("Bonificacion")
+				Me.OnBonificacionChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Monto_Reintegrar", DbType:="Float NOT NULL")>  _
+	Public Property Monto_Reintegrar() As Double
+		Get
+			Return Me._Monto_Reintegrar
+		End Get
+		Set
+			If ((Me._Monto_Reintegrar = value)  _
+						= false) Then
+				Me.OnMonto_ReintegrarChanging(value)
+				Me.SendPropertyChanging
+				Me._Monto_Reintegrar = value
+				Me.SendPropertyChanged("Monto_Reintegrar")
+				Me.OnMonto_ReintegrarChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Monto_Rebajar", DbType:="Float NOT NULL")>  _
+	Public Property Monto_Rebajar() As Double
+		Get
+			Return Me._Monto_Rebajar
+		End Get
+		Set
+			If ((Me._Monto_Rebajar = value)  _
+						= false) Then
+				Me.OnMonto_RebajarChanging(value)
+				Me.SendPropertyChanging
+				Me._Monto_Rebajar = value
+				Me.SendPropertyChanged("Monto_Rebajar")
+				Me.OnMonto_RebajarChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Cho_Choferes_A_Abono", Storage:="_Cho_Choferes", ThisKey:="Boletas", OtherKey:="Cod_Usuario_ID_Chofer", IsForeignKey:=true)>  _
+	Public Property Cho_Choferes() As Cho_Choferes
+		Get
+			Return Me._Cho_Choferes.Entity
+		End Get
+		Set
+			Dim previousValue As Cho_Choferes = Me._Cho_Choferes.Entity
 			If ((Object.Equals(previousValue, value) = false)  _
-						OrElse (Me._Info_Informe_Barras.HasLoadedOrAssignedValue = false)) Then
+						OrElse (Me._Cho_Choferes.HasLoadedOrAssignedValue = false)) Then
 				Me.SendPropertyChanging
 				If ((previousValue Is Nothing)  _
 							= false) Then
-					Me._Info_Informe_Barras.Entity = Nothing
+					Me._Cho_Choferes.Entity = Nothing
 					previousValue.A_Abono = Nothing
 				End If
-				Me._Info_Informe_Barras.Entity = value
+				Me._Cho_Choferes.Entity = value
 				If ((value Is Nothing)  _
 							= false) Then
 					value.A_Abono = Me
-					Me._A_ID = value.Info_ID
+					Me._Boletas = value.Cod_Usuario_ID_Chofer
 				Else
-					Me._A_ID = CType(Nothing, Integer)
+					Me._Boletas = CType(Nothing, Integer)
 				End If
-				Me.SendPropertyChanged("Info_Informe_Barras")
+				Me.SendPropertyChanged("Cho_Choferes")
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Co_Control_A_Abono", Storage:="_Co_Control", ThisKey:="Boletas", OtherKey:="ID", IsForeignKey:=true)>  _
+	Public Property Co_Control() As Co_Control
+		Get
+			Return Me._Co_Control.Entity
+		End Get
+		Set
+			Dim previousValue As Co_Control = Me._Co_Control.Entity
+			If ((Object.Equals(previousValue, value) = false)  _
+						OrElse (Me._Co_Control.HasLoadedOrAssignedValue = false)) Then
+				Me.SendPropertyChanging
+				If ((previousValue Is Nothing)  _
+							= false) Then
+					Me._Co_Control.Entity = Nothing
+					previousValue.A_Abono = Nothing
+				End If
+				Me._Co_Control.Entity = value
+				If ((value Is Nothing)  _
+							= false) Then
+					value.A_Abono = Me
+					Me._Boletas = value.ID
+				Else
+					Me._Boletas = CType(Nothing, Integer)
+				End If
+				Me.SendPropertyChanged("Co_Control")
 			End If
 		End Set
 	End Property
@@ -313,11 +437,406 @@ Partial Public Class Ca_Carreras
 	
 	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
 	
-	Private _Ca_ID As Integer
+	Private _ID As Integer
 	
-	Private _Ca_Carrer As String
+	Private _Carrer As String
 	
-	Private _Info_Informe_Barras As EntitySet(Of Info_Informe_Barras)
+	Private _Otros As String
+	
+	Private _Zo_Zona As EntitySet(Of Zo_Zona)
+	
+    #Region "Definiciones de métodos de extensibilidad"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnIDChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnIDChanged()
+    End Sub
+    Partial Private Sub OnCarrerChanging(value As String)
+    End Sub
+    Partial Private Sub OnCarrerChanged()
+    End Sub
+    Partial Private Sub OnOtrosChanging(value As String)
+    End Sub
+    Partial Private Sub OnOtrosChanged()
+    End Sub
+    #End Region
+	
+	Public Sub New()
+		MyBase.New
+		Me._Zo_Zona = New EntitySet(Of Zo_Zona)(AddressOf Me.attach_Zo_Zona, AddressOf Me.detach_Zo_Zona)
+		OnCreated
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+	Public Property ID() As Integer
+		Get
+			Return Me._ID
+		End Get
+		Set
+			If ((Me._ID = value)  _
+						= false) Then
+				Me.OnIDChanging(value)
+				Me.SendPropertyChanging
+				Me._ID = value
+				Me.SendPropertyChanged("ID")
+				Me.OnIDChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Carrer", DbType:="NVarChar(50) NOT NULL", CanBeNull:=false)>  _
+	Public Property Carrer() As String
+		Get
+			Return Me._Carrer
+		End Get
+		Set
+			If (String.Equals(Me._Carrer, value) = false) Then
+				Me.OnCarrerChanging(value)
+				Me.SendPropertyChanging
+				Me._Carrer = value
+				Me.SendPropertyChanged("Carrer")
+				Me.OnCarrerChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Otros", DbType:="NVarChar(30)")>  _
+	Public Property Otros() As String
+		Get
+			Return Me._Otros
+		End Get
+		Set
+			If (String.Equals(Me._Otros, value) = false) Then
+				Me.OnOtrosChanging(value)
+				Me.SendPropertyChanging
+				Me._Otros = value
+				Me.SendPropertyChanged("Otros")
+				Me.OnOtrosChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Ca_Carreras_Zo_Zona", Storage:="_Zo_Zona", ThisKey:="ID", OtherKey:="ID_Carrera")>  _
+	Public Property Zo_Zona() As EntitySet(Of Zo_Zona)
+		Get
+			Return Me._Zo_Zona
+		End Get
+		Set
+			Me._Zo_Zona.Assign(value)
+		End Set
+	End Property
+	
+	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+	
+	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+	
+	Protected Overridable Sub SendPropertyChanging()
+		If ((Me.PropertyChangingEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+		End If
+	End Sub
+	
+	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+		If ((Me.PropertyChangedEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+		End If
+	End Sub
+	
+	Private Sub attach_Zo_Zona(ByVal entity As Zo_Zona)
+		Me.SendPropertyChanging
+		entity.Ca_Carreras = Me
+	End Sub
+	
+	Private Sub detach_Zo_Zona(ByVal entity As Zo_Zona)
+		Me.SendPropertyChanging
+		entity.Ca_Carreras = Nothing
+	End Sub
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Cho_Choferes")>  _
+Partial Public Class Cho_Choferes
+	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	
+	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+	
+	Private _Cod_Usuario_ID_Chofer As Integer
+	
+	Private _Nombre As String
+	
+	Private _Primer_Apellido As String
+	
+	Private _Segundo_Apellido As String
+	
+	Private _Cedula As String
+	
+	Private _Num_folio As System.Nullable(Of Integer)
+	
+	Private _Compania As String
+	
+	Private _A_Abono As EntityRef(Of A_Abono)
+	
+	Private _Co_Control As EntitySet(Of Co_Control)
+	
+    #Region "Definiciones de métodos de extensibilidad"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnCod_Usuario_ID_ChoferChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnCod_Usuario_ID_ChoferChanged()
+    End Sub
+    Partial Private Sub OnNombreChanging(value As String)
+    End Sub
+    Partial Private Sub OnNombreChanged()
+    End Sub
+    Partial Private Sub OnPrimer_ApellidoChanging(value As String)
+    End Sub
+    Partial Private Sub OnPrimer_ApellidoChanged()
+    End Sub
+    Partial Private Sub OnSegundo_ApellidoChanging(value As String)
+    End Sub
+    Partial Private Sub OnSegundo_ApellidoChanged()
+    End Sub
+    Partial Private Sub OnCedulaChanging(value As String)
+    End Sub
+    Partial Private Sub OnCedulaChanged()
+    End Sub
+    Partial Private Sub OnNum_folioChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnNum_folioChanged()
+    End Sub
+    Partial Private Sub OnCompaniaChanging(value As String)
+    End Sub
+    Partial Private Sub OnCompaniaChanged()
+    End Sub
+    #End Region
+	
+	Public Sub New()
+		MyBase.New
+		Me._A_Abono = CType(Nothing, EntityRef(Of A_Abono))
+		Me._Co_Control = New EntitySet(Of Co_Control)(AddressOf Me.attach_Co_Control, AddressOf Me.detach_Co_Control)
+		OnCreated
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cod_Usuario_ID_Chofer", DbType:="Int NOT NULL", IsPrimaryKey:=true)>  _
+	Public Property Cod_Usuario_ID_Chofer() As Integer
+		Get
+			Return Me._Cod_Usuario_ID_Chofer
+		End Get
+		Set
+			If ((Me._Cod_Usuario_ID_Chofer = value)  _
+						= false) Then
+				Me.OnCod_Usuario_ID_ChoferChanging(value)
+				Me.SendPropertyChanging
+				Me._Cod_Usuario_ID_Chofer = value
+				Me.SendPropertyChanged("Cod_Usuario_ID_Chofer")
+				Me.OnCod_Usuario_ID_ChoferChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Nombre", DbType:="NVarChar(30) NOT NULL", CanBeNull:=false)>  _
+	Public Property Nombre() As String
+		Get
+			Return Me._Nombre
+		End Get
+		Set
+			If (String.Equals(Me._Nombre, value) = false) Then
+				Me.OnNombreChanging(value)
+				Me.SendPropertyChanging
+				Me._Nombre = value
+				Me.SendPropertyChanged("Nombre")
+				Me.OnNombreChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Primer_Apellido", DbType:="NVarChar(30) NOT NULL", CanBeNull:=false)>  _
+	Public Property Primer_Apellido() As String
+		Get
+			Return Me._Primer_Apellido
+		End Get
+		Set
+			If (String.Equals(Me._Primer_Apellido, value) = false) Then
+				Me.OnPrimer_ApellidoChanging(value)
+				Me.SendPropertyChanging
+				Me._Primer_Apellido = value
+				Me.SendPropertyChanged("Primer_Apellido")
+				Me.OnPrimer_ApellidoChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Segundo_Apellido", DbType:="NVarChar(30) NOT NULL", CanBeNull:=false)>  _
+	Public Property Segundo_Apellido() As String
+		Get
+			Return Me._Segundo_Apellido
+		End Get
+		Set
+			If (String.Equals(Me._Segundo_Apellido, value) = false) Then
+				Me.OnSegundo_ApellidoChanging(value)
+				Me.SendPropertyChanging
+				Me._Segundo_Apellido = value
+				Me.SendPropertyChanged("Segundo_Apellido")
+				Me.OnSegundo_ApellidoChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cedula", DbType:="NVarChar(20) NOT NULL", CanBeNull:=false)>  _
+	Public Property Cedula() As String
+		Get
+			Return Me._Cedula
+		End Get
+		Set
+			If (String.Equals(Me._Cedula, value) = false) Then
+				Me.OnCedulaChanging(value)
+				Me.SendPropertyChanging
+				Me._Cedula = value
+				Me.SendPropertyChanged("Cedula")
+				Me.OnCedulaChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Num_folio", DbType:="Int")>  _
+	Public Property Num_folio() As System.Nullable(Of Integer)
+		Get
+			Return Me._Num_folio
+		End Get
+		Set
+			If (Me._Num_folio.Equals(value) = false) Then
+				Me.OnNum_folioChanging(value)
+				Me.SendPropertyChanging
+				Me._Num_folio = value
+				Me.SendPropertyChanged("Num_folio")
+				Me.OnNum_folioChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Compania", DbType:="NVarChar(20) NOT NULL", CanBeNull:=false)>  _
+	Public Property Compania() As String
+		Get
+			Return Me._Compania
+		End Get
+		Set
+			If (String.Equals(Me._Compania, value) = false) Then
+				Me.OnCompaniaChanging(value)
+				Me.SendPropertyChanging
+				Me._Compania = value
+				Me.SendPropertyChanged("Compania")
+				Me.OnCompaniaChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Cho_Choferes_A_Abono", Storage:="_A_Abono", ThisKey:="Cod_Usuario_ID_Chofer", OtherKey:="Boletas", IsUnique:=true, IsForeignKey:=false)>  _
+	Public Property A_Abono() As A_Abono
+		Get
+			Return Me._A_Abono.Entity
+		End Get
+		Set
+			Dim previousValue As A_Abono = Me._A_Abono.Entity
+			If ((Object.Equals(previousValue, value) = false)  _
+						OrElse (Me._A_Abono.HasLoadedOrAssignedValue = false)) Then
+				Me.SendPropertyChanging
+				If ((previousValue Is Nothing)  _
+							= false) Then
+					Me._A_Abono.Entity = Nothing
+					previousValue.Cho_Choferes = Nothing
+				End If
+				Me._A_Abono.Entity = value
+				If (Object.Equals(value, Nothing) = false) Then
+					value.Cho_Choferes = Me
+				End If
+				Me.SendPropertyChanged("A_Abono")
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Cho_Choferes_Co_Control", Storage:="_Co_Control", ThisKey:="Cod_Usuario_ID_Chofer", OtherKey:="Cod_Usuario_ID_Chofer")>  _
+	Public Property Co_Control() As EntitySet(Of Co_Control)
+		Get
+			Return Me._Co_Control
+		End Get
+		Set
+			Me._Co_Control.Assign(value)
+		End Set
+	End Property
+	
+	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+	
+	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+	
+	Protected Overridable Sub SendPropertyChanging()
+		If ((Me.PropertyChangingEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+		End If
+	End Sub
+	
+	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+		If ((Me.PropertyChangedEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+		End If
+	End Sub
+	
+	Private Sub attach_Co_Control(ByVal entity As Co_Control)
+		Me.SendPropertyChanging
+		entity.Cho_Choferes = Me
+	End Sub
+	
+	Private Sub detach_Co_Control(ByVal entity As Co_Control)
+		Me.SendPropertyChanging
+		entity.Cho_Choferes = Nothing
+	End Sub
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Co_Control")>  _
+Partial Public Class Co_Control
+	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	
+	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+	
+	Private _ID As Integer
+	
+	Private _Numero_de_Ruta As Integer
+	
+	Private _Unidad As Integer
+	
+	Private _Adultos_Mayores As Integer
+	
+	Private _Monto_Entregar As Double
+	
+	Private _Monto_Entregado As Double
+	
+	Private _Pasajeros As Integer
+	
+	Private _Costo_Pasaje As Double
+	
+	Private _Fecha_Hora As System.Nullable(Of Date)
+	
+	Private _Codigo As System.Nullable(Of Double)
+	
+	Private _ID_Zona As System.Nullable(Of Integer)
+	
+	Private _Cod_Usuario_ID_Chofer As System.Nullable(Of Integer)
+	
+	Private _A_Abono As EntityRef(Of A_Abono)
+	
+	Private _Cho_Choferes As EntityRef(Of Cho_Choferes)
 	
 	Private _Zo_Zona As EntityRef(Of Zo_Zona)
 	
@@ -328,67 +847,323 @@ Partial Public Class Ca_Carreras
     End Sub
     Partial Private Sub OnCreated()
     End Sub
-    Partial Private Sub OnCa_IDChanging(value As Integer)
+    Partial Private Sub OnIDChanging(value As Integer)
     End Sub
-    Partial Private Sub OnCa_IDChanged()
+    Partial Private Sub OnIDChanged()
     End Sub
-    Partial Private Sub OnCa_CarrerChanging(value As String)
+    Partial Private Sub OnNumero_de_RutaChanging(value As Integer)
     End Sub
-    Partial Private Sub OnCa_CarrerChanged()
+    Partial Private Sub OnNumero_de_RutaChanged()
+    End Sub
+    Partial Private Sub OnUnidadChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnUnidadChanged()
+    End Sub
+    Partial Private Sub OnAdultos_MayoresChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnAdultos_MayoresChanged()
+    End Sub
+    Partial Private Sub OnMonto_EntregarChanging(value As Double)
+    End Sub
+    Partial Private Sub OnMonto_EntregarChanged()
+    End Sub
+    Partial Private Sub OnMonto_EntregadoChanging(value As Double)
+    End Sub
+    Partial Private Sub OnMonto_EntregadoChanged()
+    End Sub
+    Partial Private Sub OnPasajerosChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnPasajerosChanged()
+    End Sub
+    Partial Private Sub OnCosto_PasajeChanging(value As Double)
+    End Sub
+    Partial Private Sub OnCosto_PasajeChanged()
+    End Sub
+    Partial Private Sub OnFecha_HoraChanging(value As System.Nullable(Of Date))
+    End Sub
+    Partial Private Sub OnFecha_HoraChanged()
+    End Sub
+    Partial Private Sub OnCodigoChanging(value As System.Nullable(Of Double))
+    End Sub
+    Partial Private Sub OnCodigoChanged()
+    End Sub
+    Partial Private Sub OnID_ZonaChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnID_ZonaChanged()
+    End Sub
+    Partial Private Sub OnCod_Usuario_ID_ChoferChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnCod_Usuario_ID_ChoferChanged()
     End Sub
     #End Region
 	
 	Public Sub New()
 		MyBase.New
-		Me._Info_Informe_Barras = New EntitySet(Of Info_Informe_Barras)(AddressOf Me.attach_Info_Informe_Barras, AddressOf Me.detach_Info_Informe_Barras)
+		Me._A_Abono = CType(Nothing, EntityRef(Of A_Abono))
+		Me._Cho_Choferes = CType(Nothing, EntityRef(Of Cho_Choferes))
 		Me._Zo_Zona = CType(Nothing, EntityRef(Of Zo_Zona))
 		OnCreated
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ca_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property Ca_ID() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID", DbType:="Int NOT NULL", IsPrimaryKey:=true)>  _
+	Public Property ID() As Integer
 		Get
-			Return Me._Ca_ID
+			Return Me._ID
 		End Get
 		Set
-			If ((Me._Ca_ID = value)  _
+			If ((Me._ID = value)  _
 						= false) Then
-				Me.OnCa_IDChanging(value)
+				Me.OnIDChanging(value)
 				Me.SendPropertyChanging
-				Me._Ca_ID = value
-				Me.SendPropertyChanged("Ca_ID")
-				Me.OnCa_IDChanged
+				Me._ID = value
+				Me.SendPropertyChanged("ID")
+				Me.OnIDChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ca_Carrer", DbType:="NVarChar(50)")>  _
-	Public Property Ca_Carrer() As String
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Numero_de_Ruta", DbType:="Int NOT NULL")>  _
+	Public Property Numero_de_Ruta() As Integer
 		Get
-			Return Me._Ca_Carrer
+			Return Me._Numero_de_Ruta
 		End Get
 		Set
-			If (String.Equals(Me._Ca_Carrer, value) = false) Then
-				Me.OnCa_CarrerChanging(value)
+			If ((Me._Numero_de_Ruta = value)  _
+						= false) Then
+				Me.OnNumero_de_RutaChanging(value)
 				Me.SendPropertyChanging
-				Me._Ca_Carrer = value
-				Me.SendPropertyChanged("Ca_Carrer")
-				Me.OnCa_CarrerChanged
+				Me._Numero_de_Ruta = value
+				Me.SendPropertyChanged("Numero_de_Ruta")
+				Me.OnNumero_de_RutaChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Ca_Carreras_Info_Informe_Barras", Storage:="_Info_Informe_Barras", ThisKey:="Ca_ID", OtherKey:="Info_ID_Carreras")>  _
-	Public Property Info_Informe_Barras() As EntitySet(Of Info_Informe_Barras)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Unidad", DbType:="Int NOT NULL")>  _
+	Public Property Unidad() As Integer
 		Get
-			Return Me._Info_Informe_Barras
+			Return Me._Unidad
 		End Get
 		Set
-			Me._Info_Informe_Barras.Assign(value)
+			If ((Me._Unidad = value)  _
+						= false) Then
+				Me.OnUnidadChanging(value)
+				Me.SendPropertyChanging
+				Me._Unidad = value
+				Me.SendPropertyChanged("Unidad")
+				Me.OnUnidadChanged
+			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Ca_Carreras_Zo_Zona", Storage:="_Zo_Zona", ThisKey:="Ca_ID", OtherKey:="Zo_ID", IsUnique:=true, IsForeignKey:=false)>  _
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Adultos_Mayores", DbType:="Int NOT NULL")>  _
+	Public Property Adultos_Mayores() As Integer
+		Get
+			Return Me._Adultos_Mayores
+		End Get
+		Set
+			If ((Me._Adultos_Mayores = value)  _
+						= false) Then
+				Me.OnAdultos_MayoresChanging(value)
+				Me.SendPropertyChanging
+				Me._Adultos_Mayores = value
+				Me.SendPropertyChanged("Adultos_Mayores")
+				Me.OnAdultos_MayoresChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Monto_Entregar", DbType:="Float NOT NULL")>  _
+	Public Property Monto_Entregar() As Double
+		Get
+			Return Me._Monto_Entregar
+		End Get
+		Set
+			If ((Me._Monto_Entregar = value)  _
+						= false) Then
+				Me.OnMonto_EntregarChanging(value)
+				Me.SendPropertyChanging
+				Me._Monto_Entregar = value
+				Me.SendPropertyChanged("Monto_Entregar")
+				Me.OnMonto_EntregarChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Monto_Entregado", DbType:="Float NOT NULL")>  _
+	Public Property Monto_Entregado() As Double
+		Get
+			Return Me._Monto_Entregado
+		End Get
+		Set
+			If ((Me._Monto_Entregado = value)  _
+						= false) Then
+				Me.OnMonto_EntregadoChanging(value)
+				Me.SendPropertyChanging
+				Me._Monto_Entregado = value
+				Me.SendPropertyChanged("Monto_Entregado")
+				Me.OnMonto_EntregadoChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pasajeros", DbType:="Int NOT NULL")>  _
+	Public Property Pasajeros() As Integer
+		Get
+			Return Me._Pasajeros
+		End Get
+		Set
+			If ((Me._Pasajeros = value)  _
+						= false) Then
+				Me.OnPasajerosChanging(value)
+				Me.SendPropertyChanging
+				Me._Pasajeros = value
+				Me.SendPropertyChanged("Pasajeros")
+				Me.OnPasajerosChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Costo_Pasaje", DbType:="Float NOT NULL")>  _
+	Public Property Costo_Pasaje() As Double
+		Get
+			Return Me._Costo_Pasaje
+		End Get
+		Set
+			If ((Me._Costo_Pasaje = value)  _
+						= false) Then
+				Me.OnCosto_PasajeChanging(value)
+				Me.SendPropertyChanging
+				Me._Costo_Pasaje = value
+				Me.SendPropertyChanged("Costo_Pasaje")
+				Me.OnCosto_PasajeChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Fecha_Hora", DbType:="DateTime")>  _
+	Public Property Fecha_Hora() As System.Nullable(Of Date)
+		Get
+			Return Me._Fecha_Hora
+		End Get
+		Set
+			If (Me._Fecha_Hora.Equals(value) = false) Then
+				Me.OnFecha_HoraChanging(value)
+				Me.SendPropertyChanging
+				Me._Fecha_Hora = value
+				Me.SendPropertyChanged("Fecha_Hora")
+				Me.OnFecha_HoraChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Codigo", DbType:="Float")>  _
+	Public Property Codigo() As System.Nullable(Of Double)
+		Get
+			Return Me._Codigo
+		End Get
+		Set
+			If (Me._Codigo.Equals(value) = false) Then
+				Me.OnCodigoChanging(value)
+				Me.SendPropertyChanging
+				Me._Codigo = value
+				Me.SendPropertyChanged("Codigo")
+				Me.OnCodigoChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID_Zona", DbType:="Int")>  _
+	Public Property ID_Zona() As System.Nullable(Of Integer)
+		Get
+			Return Me._ID_Zona
+		End Get
+		Set
+			If (Me._ID_Zona.Equals(value) = false) Then
+				If Me._Zo_Zona.HasLoadedOrAssignedValue Then
+					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
+				End If
+				Me.OnID_ZonaChanging(value)
+				Me.SendPropertyChanging
+				Me._ID_Zona = value
+				Me.SendPropertyChanged("ID_Zona")
+				Me.OnID_ZonaChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cod_Usuario_ID_Chofer", DbType:="Int")>  _
+	Public Property Cod_Usuario_ID_Chofer() As System.Nullable(Of Integer)
+		Get
+			Return Me._Cod_Usuario_ID_Chofer
+		End Get
+		Set
+			If (Me._Cod_Usuario_ID_Chofer.Equals(value) = false) Then
+				If Me._Cho_Choferes.HasLoadedOrAssignedValue Then
+					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
+				End If
+				Me.OnCod_Usuario_ID_ChoferChanging(value)
+				Me.SendPropertyChanging
+				Me._Cod_Usuario_ID_Chofer = value
+				Me.SendPropertyChanged("Cod_Usuario_ID_Chofer")
+				Me.OnCod_Usuario_ID_ChoferChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Co_Control_A_Abono", Storage:="_A_Abono", ThisKey:="ID", OtherKey:="Boletas", IsUnique:=true, IsForeignKey:=false)>  _
+	Public Property A_Abono() As A_Abono
+		Get
+			Return Me._A_Abono.Entity
+		End Get
+		Set
+			Dim previousValue As A_Abono = Me._A_Abono.Entity
+			If ((Object.Equals(previousValue, value) = false)  _
+						OrElse (Me._A_Abono.HasLoadedOrAssignedValue = false)) Then
+				Me.SendPropertyChanging
+				If ((previousValue Is Nothing)  _
+							= false) Then
+					Me._A_Abono.Entity = Nothing
+					previousValue.Co_Control = Nothing
+				End If
+				Me._A_Abono.Entity = value
+				If (Object.Equals(value, Nothing) = false) Then
+					value.Co_Control = Me
+				End If
+				Me.SendPropertyChanged("A_Abono")
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Cho_Choferes_Co_Control", Storage:="_Cho_Choferes", ThisKey:="Cod_Usuario_ID_Chofer", OtherKey:="Cod_Usuario_ID_Chofer", IsForeignKey:=true)>  _
+	Public Property Cho_Choferes() As Cho_Choferes
+		Get
+			Return Me._Cho_Choferes.Entity
+		End Get
+		Set
+			Dim previousValue As Cho_Choferes = Me._Cho_Choferes.Entity
+			If ((Object.Equals(previousValue, value) = false)  _
+						OrElse (Me._Cho_Choferes.HasLoadedOrAssignedValue = false)) Then
+				Me.SendPropertyChanging
+				If ((previousValue Is Nothing)  _
+							= false) Then
+					Me._Cho_Choferes.Entity = Nothing
+					previousValue.Co_Control.Remove(Me)
+				End If
+				Me._Cho_Choferes.Entity = value
+				If ((value Is Nothing)  _
+							= false) Then
+					value.Co_Control.Add(Me)
+					Me._Cod_Usuario_ID_Chofer = value.Cod_Usuario_ID_Chofer
+				Else
+					Me._Cod_Usuario_ID_Chofer = CType(Nothing, Nullable(Of Integer))
+				End If
+				Me.SendPropertyChanged("Cho_Choferes")
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Zo_Zona_Co_Control", Storage:="_Zo_Zona", ThisKey:="ID_Zona", OtherKey:="Zona_ID", IsForeignKey:=true)>  _
 	Public Property Zo_Zona() As Zo_Zona
 		Get
 			Return Me._Zo_Zona.Entity
@@ -401,11 +1176,15 @@ Partial Public Class Ca_Carreras
 				If ((previousValue Is Nothing)  _
 							= false) Then
 					Me._Zo_Zona.Entity = Nothing
-					previousValue.Ca_Carreras = Nothing
+					previousValue.Co_Control.Remove(Me)
 				End If
 				Me._Zo_Zona.Entity = value
-				If (Object.Equals(value, Nothing) = false) Then
-					value.Ca_Carreras = Me
+				If ((value Is Nothing)  _
+							= false) Then
+					value.Co_Control.Add(Me)
+					Me._ID_Zona = value.Zona_ID
+				Else
+					Me._ID_Zona = CType(Nothing, Nullable(Of Integer))
 				End If
 				Me.SendPropertyChanged("Zo_Zona")
 			End If
@@ -429,645 +1208,6 @@ Partial Public Class Ca_Carreras
 			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
 		End If
 	End Sub
-	
-	Private Sub attach_Info_Informe_Barras(ByVal entity As Info_Informe_Barras)
-		Me.SendPropertyChanging
-		entity.Ca_Carreras = Me
-	End Sub
-	
-	Private Sub detach_Info_Informe_Barras(ByVal entity As Info_Informe_Barras)
-		Me.SendPropertyChanging
-		entity.Ca_Carreras = Nothing
-	End Sub
-End Class
-
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Cho_Choferes")>  _
-Partial Public Class Cho_Choferes
-	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-	
-	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
-	
-	Private _Cho_Cedula As Integer
-	
-	Private _Cho_Num_Codigo As Integer
-	
-	Private _Cho_Nombre As String
-	
-	Private _Cho_Apellido1 As String
-	
-	Private _Cho_Apellido2 As String
-	
-	Private _Cho_Num_folio As Integer
-	
-	Private _Cho_Boleta As Integer
-	
-	Private _Cho_Compania As String
-	
-    #Region "Definiciones de métodos de extensibilidad"
-    Partial Private Sub OnLoaded()
-    End Sub
-    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
-    End Sub
-    Partial Private Sub OnCreated()
-    End Sub
-    Partial Private Sub OnCho_CedulaChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnCho_CedulaChanged()
-    End Sub
-    Partial Private Sub OnCho_Num_CodigoChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnCho_Num_CodigoChanged()
-    End Sub
-    Partial Private Sub OnCho_NombreChanging(value As String)
-    End Sub
-    Partial Private Sub OnCho_NombreChanged()
-    End Sub
-    Partial Private Sub OnCho_Apellido1Changing(value As String)
-    End Sub
-    Partial Private Sub OnCho_Apellido1Changed()
-    End Sub
-    Partial Private Sub OnCho_Apellido2Changing(value As String)
-    End Sub
-    Partial Private Sub OnCho_Apellido2Changed()
-    End Sub
-    Partial Private Sub OnCho_Num_folioChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnCho_Num_folioChanged()
-    End Sub
-    Partial Private Sub OnCho_BoletaChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnCho_BoletaChanged()
-    End Sub
-    Partial Private Sub OnCho_CompaniaChanging(value As String)
-    End Sub
-    Partial Private Sub OnCho_CompaniaChanged()
-    End Sub
-    #End Region
-	
-	Public Sub New()
-		MyBase.New
-		OnCreated
-	End Sub
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Cedula", DbType:="Int NOT NULL", IsPrimaryKey:=true)>  _
-	Public Property Cho_Cedula() As Integer
-		Get
-			Return Me._Cho_Cedula
-		End Get
-		Set
-			If ((Me._Cho_Cedula = value)  _
-						= false) Then
-				Me.OnCho_CedulaChanging(value)
-				Me.SendPropertyChanging
-				Me._Cho_Cedula = value
-				Me.SendPropertyChanged("Cho_Cedula")
-				Me.OnCho_CedulaChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Num_Codigo", DbType:="Int NOT NULL")>  _
-	Public Property Cho_Num_Codigo() As Integer
-		Get
-			Return Me._Cho_Num_Codigo
-		End Get
-		Set
-			If ((Me._Cho_Num_Codigo = value)  _
-						= false) Then
-				Me.OnCho_Num_CodigoChanging(value)
-				Me.SendPropertyChanging
-				Me._Cho_Num_Codigo = value
-				Me.SendPropertyChanged("Cho_Num_Codigo")
-				Me.OnCho_Num_CodigoChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Nombre", DbType:="NVarChar(20) NOT NULL", CanBeNull:=false)>  _
-	Public Property Cho_Nombre() As String
-		Get
-			Return Me._Cho_Nombre
-		End Get
-		Set
-			If (String.Equals(Me._Cho_Nombre, value) = false) Then
-				Me.OnCho_NombreChanging(value)
-				Me.SendPropertyChanging
-				Me._Cho_Nombre = value
-				Me.SendPropertyChanged("Cho_Nombre")
-				Me.OnCho_NombreChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Apellido1", DbType:="NVarChar(20) NOT NULL", CanBeNull:=false)>  _
-	Public Property Cho_Apellido1() As String
-		Get
-			Return Me._Cho_Apellido1
-		End Get
-		Set
-			If (String.Equals(Me._Cho_Apellido1, value) = false) Then
-				Me.OnCho_Apellido1Changing(value)
-				Me.SendPropertyChanging
-				Me._Cho_Apellido1 = value
-				Me.SendPropertyChanged("Cho_Apellido1")
-				Me.OnCho_Apellido1Changed
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Apellido2", DbType:="NVarChar(20) NOT NULL", CanBeNull:=false)>  _
-	Public Property Cho_Apellido2() As String
-		Get
-			Return Me._Cho_Apellido2
-		End Get
-		Set
-			If (String.Equals(Me._Cho_Apellido2, value) = false) Then
-				Me.OnCho_Apellido2Changing(value)
-				Me.SendPropertyChanging
-				Me._Cho_Apellido2 = value
-				Me.SendPropertyChanged("Cho_Apellido2")
-				Me.OnCho_Apellido2Changed
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Num_folio", DbType:="Int NOT NULL")>  _
-	Public Property Cho_Num_folio() As Integer
-		Get
-			Return Me._Cho_Num_folio
-		End Get
-		Set
-			If ((Me._Cho_Num_folio = value)  _
-						= false) Then
-				Me.OnCho_Num_folioChanging(value)
-				Me.SendPropertyChanging
-				Me._Cho_Num_folio = value
-				Me.SendPropertyChanged("Cho_Num_folio")
-				Me.OnCho_Num_folioChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Boleta", DbType:="Int NOT NULL")>  _
-	Public Property Cho_Boleta() As Integer
-		Get
-			Return Me._Cho_Boleta
-		End Get
-		Set
-			If ((Me._Cho_Boleta = value)  _
-						= false) Then
-				Me.OnCho_BoletaChanging(value)
-				Me.SendPropertyChanging
-				Me._Cho_Boleta = value
-				Me.SendPropertyChanged("Cho_Boleta")
-				Me.OnCho_BoletaChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cho_Compania", DbType:="NVarChar(20)")>  _
-	Public Property Cho_Compania() As String
-		Get
-			Return Me._Cho_Compania
-		End Get
-		Set
-			If (String.Equals(Me._Cho_Compania, value) = false) Then
-				Me.OnCho_CompaniaChanging(value)
-				Me.SendPropertyChanging
-				Me._Cho_Compania = value
-				Me.SendPropertyChanged("Cho_Compania")
-				Me.OnCho_CompaniaChanged
-			End If
-		End Set
-	End Property
-	
-	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
-	
-	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-	
-	Protected Overridable Sub SendPropertyChanging()
-		If ((Me.PropertyChangingEvent Is Nothing)  _
-					= false) Then
-			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
-		End If
-	End Sub
-	
-	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
-		If ((Me.PropertyChangedEvent Is Nothing)  _
-					= false) Then
-			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
-		End If
-	End Sub
-End Class
-
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Info_Informe_Barras")>  _
-Partial Public Class Info_Informe_Barras
-	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-	
-	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
-	
-	Private _Info_ID As Integer
-	
-	Private _Info_ID_Carreras As System.Nullable(Of Integer)
-	
-	Private _Info_ID_Chofer As System.Nullable(Of Integer)
-	
-	Private _Info_Fecha_Hora As System.Nullable(Of Date)
-	
-	Private _Info_Ruta As System.Nullable(Of Integer)
-	
-	Private _Info_Unidad As System.Nullable(Of Integer)
-	
-	Private _Info_Cod_Usuario As System.Nullable(Of Integer)
-	
-	Private _Info_Boleta As System.Nullable(Of Integer)
-	
-	Private _Info_Monto_Entregar As System.Nullable(Of Integer)
-	
-	Private _Info_Monto_Entregado As System.Nullable(Of Integer)
-	
-	Private _Info_Sobrante As System.Nullable(Of Double)
-	
-	Private _Info_Vales As System.Nullable(Of Double)
-	
-	Private _Info_Adultos_Mayores As System.Nullable(Of Integer)
-	
-	Private _A_Abono As EntityRef(Of A_Abono)
-	
-	Private _Pla_Planilla As EntitySet(Of Pla_Planilla)
-	
-	Private _Ca_Carreras As EntityRef(Of Ca_Carreras)
-	
-    #Region "Definiciones de métodos de extensibilidad"
-    Partial Private Sub OnLoaded()
-    End Sub
-    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
-    End Sub
-    Partial Private Sub OnCreated()
-    End Sub
-    Partial Private Sub OnInfo_IDChanging(value As Integer)
-    End Sub
-    Partial Private Sub OnInfo_IDChanged()
-    End Sub
-    Partial Private Sub OnInfo_ID_CarrerasChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_ID_CarrerasChanged()
-    End Sub
-    Partial Private Sub OnInfo_ID_ChoferChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_ID_ChoferChanged()
-    End Sub
-    Partial Private Sub OnInfo_Fecha_HoraChanging(value As System.Nullable(Of Date))
-    End Sub
-    Partial Private Sub OnInfo_Fecha_HoraChanged()
-    End Sub
-    Partial Private Sub OnInfo_RutaChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_RutaChanged()
-    End Sub
-    Partial Private Sub OnInfo_UnidadChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_UnidadChanged()
-    End Sub
-    Partial Private Sub OnInfo_Cod_UsuarioChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_Cod_UsuarioChanged()
-    End Sub
-    Partial Private Sub OnInfo_BoletaChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_BoletaChanged()
-    End Sub
-    Partial Private Sub OnInfo_Monto_EntregarChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_Monto_EntregarChanged()
-    End Sub
-    Partial Private Sub OnInfo_Monto_EntregadoChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_Monto_EntregadoChanged()
-    End Sub
-    Partial Private Sub OnInfo_SobranteChanging(value As System.Nullable(Of Double))
-    End Sub
-    Partial Private Sub OnInfo_SobranteChanged()
-    End Sub
-    Partial Private Sub OnInfo_ValesChanging(value As System.Nullable(Of Double))
-    End Sub
-    Partial Private Sub OnInfo_ValesChanged()
-    End Sub
-    Partial Private Sub OnInfo_Adultos_MayoresChanging(value As System.Nullable(Of Integer))
-    End Sub
-    Partial Private Sub OnInfo_Adultos_MayoresChanged()
-    End Sub
-    #End Region
-	
-	Public Sub New()
-		MyBase.New
-		Me._A_Abono = CType(Nothing, EntityRef(Of A_Abono))
-		Me._Pla_Planilla = New EntitySet(Of Pla_Planilla)(AddressOf Me.attach_Pla_Planilla, AddressOf Me.detach_Pla_Planilla)
-		Me._Ca_Carreras = CType(Nothing, EntityRef(Of Ca_Carreras))
-		OnCreated
-	End Sub
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property Info_ID() As Integer
-		Get
-			Return Me._Info_ID
-		End Get
-		Set
-			If ((Me._Info_ID = value)  _
-						= false) Then
-				Me.OnInfo_IDChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_ID = value
-				Me.SendPropertyChanged("Info_ID")
-				Me.OnInfo_IDChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_ID_Carreras", DbType:="Int")>  _
-	Public Property Info_ID_Carreras() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_ID_Carreras
-		End Get
-		Set
-			If (Me._Info_ID_Carreras.Equals(value) = false) Then
-				If Me._Ca_Carreras.HasLoadedOrAssignedValue Then
-					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
-				End If
-				Me.OnInfo_ID_CarrerasChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_ID_Carreras = value
-				Me.SendPropertyChanged("Info_ID_Carreras")
-				Me.OnInfo_ID_CarrerasChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_ID_Chofer", DbType:="Int")>  _
-	Public Property Info_ID_Chofer() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_ID_Chofer
-		End Get
-		Set
-			If (Me._Info_ID_Chofer.Equals(value) = false) Then
-				Me.OnInfo_ID_ChoferChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_ID_Chofer = value
-				Me.SendPropertyChanged("Info_ID_Chofer")
-				Me.OnInfo_ID_ChoferChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Fecha_Hora", DbType:="DateTime")>  _
-	Public Property Info_Fecha_Hora() As System.Nullable(Of Date)
-		Get
-			Return Me._Info_Fecha_Hora
-		End Get
-		Set
-			If (Me._Info_Fecha_Hora.Equals(value) = false) Then
-				Me.OnInfo_Fecha_HoraChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Fecha_Hora = value
-				Me.SendPropertyChanged("Info_Fecha_Hora")
-				Me.OnInfo_Fecha_HoraChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Ruta", DbType:="Int")>  _
-	Public Property Info_Ruta() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Ruta
-		End Get
-		Set
-			If (Me._Info_Ruta.Equals(value) = false) Then
-				Me.OnInfo_RutaChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Ruta = value
-				Me.SendPropertyChanged("Info_Ruta")
-				Me.OnInfo_RutaChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Unidad", DbType:="Int")>  _
-	Public Property Info_Unidad() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Unidad
-		End Get
-		Set
-			If (Me._Info_Unidad.Equals(value) = false) Then
-				Me.OnInfo_UnidadChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Unidad = value
-				Me.SendPropertyChanged("Info_Unidad")
-				Me.OnInfo_UnidadChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Cod_Usuario", DbType:="Int")>  _
-	Public Property Info_Cod_Usuario() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Cod_Usuario
-		End Get
-		Set
-			If (Me._Info_Cod_Usuario.Equals(value) = false) Then
-				Me.OnInfo_Cod_UsuarioChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Cod_Usuario = value
-				Me.SendPropertyChanged("Info_Cod_Usuario")
-				Me.OnInfo_Cod_UsuarioChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Boleta", DbType:="Int")>  _
-	Public Property Info_Boleta() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Boleta
-		End Get
-		Set
-			If (Me._Info_Boleta.Equals(value) = false) Then
-				Me.OnInfo_BoletaChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Boleta = value
-				Me.SendPropertyChanged("Info_Boleta")
-				Me.OnInfo_BoletaChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Monto_Entregar", DbType:="Int")>  _
-	Public Property Info_Monto_Entregar() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Monto_Entregar
-		End Get
-		Set
-			If (Me._Info_Monto_Entregar.Equals(value) = false) Then
-				Me.OnInfo_Monto_EntregarChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Monto_Entregar = value
-				Me.SendPropertyChanged("Info_Monto_Entregar")
-				Me.OnInfo_Monto_EntregarChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Monto_Entregado", DbType:="Int")>  _
-	Public Property Info_Monto_Entregado() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Monto_Entregado
-		End Get
-		Set
-			If (Me._Info_Monto_Entregado.Equals(value) = false) Then
-				Me.OnInfo_Monto_EntregadoChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Monto_Entregado = value
-				Me.SendPropertyChanged("Info_Monto_Entregado")
-				Me.OnInfo_Monto_EntregadoChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Sobrante", DbType:="Float")>  _
-	Public Property Info_Sobrante() As System.Nullable(Of Double)
-		Get
-			Return Me._Info_Sobrante
-		End Get
-		Set
-			If (Me._Info_Sobrante.Equals(value) = false) Then
-				Me.OnInfo_SobranteChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Sobrante = value
-				Me.SendPropertyChanged("Info_Sobrante")
-				Me.OnInfo_SobranteChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Vales", DbType:="Float")>  _
-	Public Property Info_Vales() As System.Nullable(Of Double)
-		Get
-			Return Me._Info_Vales
-		End Get
-		Set
-			If (Me._Info_Vales.Equals(value) = false) Then
-				Me.OnInfo_ValesChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Vales = value
-				Me.SendPropertyChanged("Info_Vales")
-				Me.OnInfo_ValesChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Info_Adultos_Mayores", DbType:="Int")>  _
-	Public Property Info_Adultos_Mayores() As System.Nullable(Of Integer)
-		Get
-			Return Me._Info_Adultos_Mayores
-		End Get
-		Set
-			If (Me._Info_Adultos_Mayores.Equals(value) = false) Then
-				Me.OnInfo_Adultos_MayoresChanging(value)
-				Me.SendPropertyChanging
-				Me._Info_Adultos_Mayores = value
-				Me.SendPropertyChanged("Info_Adultos_Mayores")
-				Me.OnInfo_Adultos_MayoresChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Info_Informe_Barras_A_Abono", Storage:="_A_Abono", ThisKey:="Info_ID", OtherKey:="A_ID", IsUnique:=true, IsForeignKey:=false)>  _
-	Public Property A_Abono() As A_Abono
-		Get
-			Return Me._A_Abono.Entity
-		End Get
-		Set
-			Dim previousValue As A_Abono = Me._A_Abono.Entity
-			If ((Object.Equals(previousValue, value) = false)  _
-						OrElse (Me._A_Abono.HasLoadedOrAssignedValue = false)) Then
-				Me.SendPropertyChanging
-				If ((previousValue Is Nothing)  _
-							= false) Then
-					Me._A_Abono.Entity = Nothing
-					previousValue.Info_Informe_Barras = Nothing
-				End If
-				Me._A_Abono.Entity = value
-				If (Object.Equals(value, Nothing) = false) Then
-					value.Info_Informe_Barras = Me
-				End If
-				Me.SendPropertyChanged("A_Abono")
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Info_Informe_Barras_Pla_Planilla", Storage:="_Pla_Planilla", ThisKey:="Info_ID", OtherKey:="Pla_ID_Informes")>  _
-	Public Property Pla_Planilla() As EntitySet(Of Pla_Planilla)
-		Get
-			Return Me._Pla_Planilla
-		End Get
-		Set
-			Me._Pla_Planilla.Assign(value)
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Ca_Carreras_Info_Informe_Barras", Storage:="_Ca_Carreras", ThisKey:="Info_ID_Carreras", OtherKey:="Ca_ID", IsForeignKey:=true)>  _
-	Public Property Ca_Carreras() As Ca_Carreras
-		Get
-			Return Me._Ca_Carreras.Entity
-		End Get
-		Set
-			Dim previousValue As Ca_Carreras = Me._Ca_Carreras.Entity
-			If ((Object.Equals(previousValue, value) = false)  _
-						OrElse (Me._Ca_Carreras.HasLoadedOrAssignedValue = false)) Then
-				Me.SendPropertyChanging
-				If ((previousValue Is Nothing)  _
-							= false) Then
-					Me._Ca_Carreras.Entity = Nothing
-					previousValue.Info_Informe_Barras.Remove(Me)
-				End If
-				Me._Ca_Carreras.Entity = value
-				If ((value Is Nothing)  _
-							= false) Then
-					value.Info_Informe_Barras.Add(Me)
-					Me._Info_ID_Carreras = value.Ca_ID
-				Else
-					Me._Info_ID_Carreras = CType(Nothing, Nullable(Of Integer))
-				End If
-				Me.SendPropertyChanged("Ca_Carreras")
-			End If
-		End Set
-	End Property
-	
-	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
-	
-	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-	
-	Protected Overridable Sub SendPropertyChanging()
-		If ((Me.PropertyChangingEvent Is Nothing)  _
-					= false) Then
-			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
-		End If
-	End Sub
-	
-	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
-		If ((Me.PropertyChangedEvent Is Nothing)  _
-					= false) Then
-			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
-		End If
-	End Sub
-	
-	Private Sub attach_Pla_Planilla(ByVal entity As Pla_Planilla)
-		Me.SendPropertyChanging
-		entity.Info_Informe_Barras = Me
-	End Sub
-	
-	Private Sub detach_Pla_Planilla(ByVal entity As Pla_Planilla)
-		Me.SendPropertyChanging
-		entity.Info_Informe_Barras = Nothing
-	End Sub
 End Class
 
 <Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Pla_Planilla")>  _
@@ -1076,23 +1216,21 @@ Partial Public Class Pla_Planilla
 	
 	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
 	
-	Private _Plan_ID As Integer
+	Private _ID As Integer
 	
-	Private _Pla_ID_Informes As System.Nullable(Of Integer)
+	Private _ID_Informes As System.Nullable(Of Integer)
 	
-	Private _Pla_Saldo_Vales As System.Nullable(Of Double)
+	Private _Saldo_Vales_Informes As System.Nullable(Of Double)
 	
-	Private _Pla_Saldo_Sobrantes As System.Nullable(Of Double)
+	Private _Saldo_Sobrantes_Informes As System.Nullable(Of Double)
 	
-	Private _Pla_Diferencia As System.Nullable(Of Double)
+	Private _Diferencia As System.Nullable(Of Double)
 	
-	Private _Pla_Bonificacion As System.Nullable(Of Double)
+	Private _Bonificacion As System.Nullable(Of Double)
 	
-	Private _Pla_Monto_Reinte As System.Nullable(Of Double)
+	Private _Monto_Reinte As System.Nullable(Of Double)
 	
-	Private _Pla_Monto_Rebajar As System.Nullable(Of Double)
-	
-	Private _Info_Informe_Barras As EntityRef(Of Info_Informe_Barras)
+	Private _Monto_Rebajar As System.Nullable(Of Double)
 	
     #Region "Definiciones de métodos de extensibilidad"
     Partial Private Sub OnLoaded()
@@ -1101,202 +1239,170 @@ Partial Public Class Pla_Planilla
     End Sub
     Partial Private Sub OnCreated()
     End Sub
-    Partial Private Sub OnPlan_IDChanging(value As Integer)
+    Partial Private Sub OnIDChanging(value As Integer)
     End Sub
-    Partial Private Sub OnPlan_IDChanged()
+    Partial Private Sub OnIDChanged()
     End Sub
-    Partial Private Sub OnPla_ID_InformesChanging(value As System.Nullable(Of Integer))
+    Partial Private Sub OnID_InformesChanging(value As System.Nullable(Of Integer))
     End Sub
-    Partial Private Sub OnPla_ID_InformesChanged()
+    Partial Private Sub OnID_InformesChanged()
     End Sub
-    Partial Private Sub OnPla_Saldo_ValesChanging(value As System.Nullable(Of Double))
+    Partial Private Sub OnSaldo_Vales_InformesChanging(value As System.Nullable(Of Double))
     End Sub
-    Partial Private Sub OnPla_Saldo_ValesChanged()
+    Partial Private Sub OnSaldo_Vales_InformesChanged()
     End Sub
-    Partial Private Sub OnPla_Saldo_SobrantesChanging(value As System.Nullable(Of Double))
+    Partial Private Sub OnSaldo_Sobrantes_InformesChanging(value As System.Nullable(Of Double))
     End Sub
-    Partial Private Sub OnPla_Saldo_SobrantesChanged()
+    Partial Private Sub OnSaldo_Sobrantes_InformesChanged()
     End Sub
-    Partial Private Sub OnPla_DiferenciaChanging(value As System.Nullable(Of Double))
+    Partial Private Sub OnDiferenciaChanging(value As System.Nullable(Of Double))
     End Sub
-    Partial Private Sub OnPla_DiferenciaChanged()
+    Partial Private Sub OnDiferenciaChanged()
     End Sub
-    Partial Private Sub OnPla_BonificacionChanging(value As System.Nullable(Of Double))
+    Partial Private Sub OnBonificacionChanging(value As System.Nullable(Of Double))
     End Sub
-    Partial Private Sub OnPla_BonificacionChanged()
+    Partial Private Sub OnBonificacionChanged()
     End Sub
-    Partial Private Sub OnPla_Monto_ReinteChanging(value As System.Nullable(Of Double))
+    Partial Private Sub OnMonto_ReinteChanging(value As System.Nullable(Of Double))
     End Sub
-    Partial Private Sub OnPla_Monto_ReinteChanged()
+    Partial Private Sub OnMonto_ReinteChanged()
     End Sub
-    Partial Private Sub OnPla_Monto_RebajarChanging(value As System.Nullable(Of Double))
+    Partial Private Sub OnMonto_RebajarChanging(value As System.Nullable(Of Double))
     End Sub
-    Partial Private Sub OnPla_Monto_RebajarChanged()
+    Partial Private Sub OnMonto_RebajarChanged()
     End Sub
     #End Region
 	
 	Public Sub New()
 		MyBase.New
-		Me._Info_Informe_Barras = CType(Nothing, EntityRef(Of Info_Informe_Barras))
 		OnCreated
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Plan_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property Plan_ID() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+	Public Property ID() As Integer
 		Get
-			Return Me._Plan_ID
+			Return Me._ID
 		End Get
 		Set
-			If ((Me._Plan_ID = value)  _
+			If ((Me._ID = value)  _
 						= false) Then
-				Me.OnPlan_IDChanging(value)
+				Me.OnIDChanging(value)
 				Me.SendPropertyChanging
-				Me._Plan_ID = value
-				Me.SendPropertyChanged("Plan_ID")
-				Me.OnPlan_IDChanged
+				Me._ID = value
+				Me.SendPropertyChanged("ID")
+				Me.OnIDChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_ID_Informes", DbType:="Int")>  _
-	Public Property Pla_ID_Informes() As System.Nullable(Of Integer)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID_Informes", DbType:="Int")>  _
+	Public Property ID_Informes() As System.Nullable(Of Integer)
 		Get
-			Return Me._Pla_ID_Informes
+			Return Me._ID_Informes
 		End Get
 		Set
-			If (Me._Pla_ID_Informes.Equals(value) = false) Then
-				If Me._Info_Informe_Barras.HasLoadedOrAssignedValue Then
-					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
-				End If
-				Me.OnPla_ID_InformesChanging(value)
+			If (Me._ID_Informes.Equals(value) = false) Then
+				Me.OnID_InformesChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_ID_Informes = value
-				Me.SendPropertyChanged("Pla_ID_Informes")
-				Me.OnPla_ID_InformesChanged
+				Me._ID_Informes = value
+				Me.SendPropertyChanged("ID_Informes")
+				Me.OnID_InformesChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_Saldo_Vales", DbType:="Float")>  _
-	Public Property Pla_Saldo_Vales() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Saldo_Vales_Informes", DbType:="Float")>  _
+	Public Property Saldo_Vales_Informes() As System.Nullable(Of Double)
 		Get
-			Return Me._Pla_Saldo_Vales
+			Return Me._Saldo_Vales_Informes
 		End Get
 		Set
-			If (Me._Pla_Saldo_Vales.Equals(value) = false) Then
-				Me.OnPla_Saldo_ValesChanging(value)
+			If (Me._Saldo_Vales_Informes.Equals(value) = false) Then
+				Me.OnSaldo_Vales_InformesChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_Saldo_Vales = value
-				Me.SendPropertyChanged("Pla_Saldo_Vales")
-				Me.OnPla_Saldo_ValesChanged
+				Me._Saldo_Vales_Informes = value
+				Me.SendPropertyChanged("Saldo_Vales_Informes")
+				Me.OnSaldo_Vales_InformesChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_Saldo_Sobrantes", DbType:="Float")>  _
-	Public Property Pla_Saldo_Sobrantes() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Saldo_Sobrantes_Informes", DbType:="Float")>  _
+	Public Property Saldo_Sobrantes_Informes() As System.Nullable(Of Double)
 		Get
-			Return Me._Pla_Saldo_Sobrantes
+			Return Me._Saldo_Sobrantes_Informes
 		End Get
 		Set
-			If (Me._Pla_Saldo_Sobrantes.Equals(value) = false) Then
-				Me.OnPla_Saldo_SobrantesChanging(value)
+			If (Me._Saldo_Sobrantes_Informes.Equals(value) = false) Then
+				Me.OnSaldo_Sobrantes_InformesChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_Saldo_Sobrantes = value
-				Me.SendPropertyChanged("Pla_Saldo_Sobrantes")
-				Me.OnPla_Saldo_SobrantesChanged
+				Me._Saldo_Sobrantes_Informes = value
+				Me.SendPropertyChanged("Saldo_Sobrantes_Informes")
+				Me.OnSaldo_Sobrantes_InformesChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_Diferencia", DbType:="Float")>  _
-	Public Property Pla_Diferencia() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Diferencia", DbType:="Float")>  _
+	Public Property Diferencia() As System.Nullable(Of Double)
 		Get
-			Return Me._Pla_Diferencia
+			Return Me._Diferencia
 		End Get
 		Set
-			If (Me._Pla_Diferencia.Equals(value) = false) Then
-				Me.OnPla_DiferenciaChanging(value)
+			If (Me._Diferencia.Equals(value) = false) Then
+				Me.OnDiferenciaChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_Diferencia = value
-				Me.SendPropertyChanged("Pla_Diferencia")
-				Me.OnPla_DiferenciaChanged
+				Me._Diferencia = value
+				Me.SendPropertyChanged("Diferencia")
+				Me.OnDiferenciaChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_Bonificacion", DbType:="Float")>  _
-	Public Property Pla_Bonificacion() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Bonificacion", DbType:="Float")>  _
+	Public Property Bonificacion() As System.Nullable(Of Double)
 		Get
-			Return Me._Pla_Bonificacion
+			Return Me._Bonificacion
 		End Get
 		Set
-			If (Me._Pla_Bonificacion.Equals(value) = false) Then
-				Me.OnPla_BonificacionChanging(value)
+			If (Me._Bonificacion.Equals(value) = false) Then
+				Me.OnBonificacionChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_Bonificacion = value
-				Me.SendPropertyChanged("Pla_Bonificacion")
-				Me.OnPla_BonificacionChanged
+				Me._Bonificacion = value
+				Me.SendPropertyChanged("Bonificacion")
+				Me.OnBonificacionChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_Monto_Reinte", DbType:="Float")>  _
-	Public Property Pla_Monto_Reinte() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Monto_Reinte", DbType:="Float")>  _
+	Public Property Monto_Reinte() As System.Nullable(Of Double)
 		Get
-			Return Me._Pla_Monto_Reinte
+			Return Me._Monto_Reinte
 		End Get
 		Set
-			If (Me._Pla_Monto_Reinte.Equals(value) = false) Then
-				Me.OnPla_Monto_ReinteChanging(value)
+			If (Me._Monto_Reinte.Equals(value) = false) Then
+				Me.OnMonto_ReinteChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_Monto_Reinte = value
-				Me.SendPropertyChanged("Pla_Monto_Reinte")
-				Me.OnPla_Monto_ReinteChanged
+				Me._Monto_Reinte = value
+				Me.SendPropertyChanged("Monto_Reinte")
+				Me.OnMonto_ReinteChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pla_Monto_Rebajar", DbType:="Float")>  _
-	Public Property Pla_Monto_Rebajar() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Monto_Rebajar", DbType:="Float")>  _
+	Public Property Monto_Rebajar() As System.Nullable(Of Double)
 		Get
-			Return Me._Pla_Monto_Rebajar
+			Return Me._Monto_Rebajar
 		End Get
 		Set
-			If (Me._Pla_Monto_Rebajar.Equals(value) = false) Then
-				Me.OnPla_Monto_RebajarChanging(value)
+			If (Me._Monto_Rebajar.Equals(value) = false) Then
+				Me.OnMonto_RebajarChanging(value)
 				Me.SendPropertyChanging
-				Me._Pla_Monto_Rebajar = value
-				Me.SendPropertyChanged("Pla_Monto_Rebajar")
-				Me.OnPla_Monto_RebajarChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Info_Informe_Barras_Pla_Planilla", Storage:="_Info_Informe_Barras", ThisKey:="Pla_ID_Informes", OtherKey:="Info_ID", IsForeignKey:=true)>  _
-	Public Property Info_Informe_Barras() As Info_Informe_Barras
-		Get
-			Return Me._Info_Informe_Barras.Entity
-		End Get
-		Set
-			Dim previousValue As Info_Informe_Barras = Me._Info_Informe_Barras.Entity
-			If ((Object.Equals(previousValue, value) = false)  _
-						OrElse (Me._Info_Informe_Barras.HasLoadedOrAssignedValue = false)) Then
-				Me.SendPropertyChanging
-				If ((previousValue Is Nothing)  _
-							= false) Then
-					Me._Info_Informe_Barras.Entity = Nothing
-					previousValue.Pla_Planilla.Remove(Me)
-				End If
-				Me._Info_Informe_Barras.Entity = value
-				If ((value Is Nothing)  _
-							= false) Then
-					value.Pla_Planilla.Add(Me)
-					Me._Pla_ID_Informes = value.Info_ID
-				Else
-					Me._Pla_ID_Informes = CType(Nothing, Nullable(Of Integer))
-				End If
-				Me.SendPropertyChanged("Info_Informe_Barras")
+				Me._Monto_Rebajar = value
+				Me.SendPropertyChanged("Monto_Rebajar")
+				Me.OnMonto_RebajarChanged
 			End If
 		End Set
 	End Property
@@ -1326,13 +1432,13 @@ Partial Public Class U_Usuario
 	
 	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
 	
-	Private _U_ID As Integer
+	Private _ID As Integer
 	
-	Private _U_Usuario As String
+	Private _Usuario As String
 	
-	Private _U_Contrasena As String
+	Private _Contrasena As String
 	
-	Private _U_ID_Zona As System.Nullable(Of Integer)
+	Private _ID_Zona As System.Nullable(Of Integer)
 	
 	Private _Zo_Zona As EntityRef(Of Zo_Zona)
 	
@@ -1343,21 +1449,21 @@ Partial Public Class U_Usuario
     End Sub
     Partial Private Sub OnCreated()
     End Sub
-    Partial Private Sub OnU_IDChanging(value As Integer)
+    Partial Private Sub OnIDChanging(value As Integer)
     End Sub
-    Partial Private Sub OnU_IDChanged()
+    Partial Private Sub OnIDChanged()
     End Sub
-    Partial Private Sub OnU_UsuarioChanging(value As String)
+    Partial Private Sub OnUsuarioChanging(value As String)
     End Sub
-    Partial Private Sub OnU_UsuarioChanged()
+    Partial Private Sub OnUsuarioChanged()
     End Sub
-    Partial Private Sub OnU_ContrasenaChanging(value As String)
+    Partial Private Sub OnContrasenaChanging(value As String)
     End Sub
-    Partial Private Sub OnU_ContrasenaChanged()
+    Partial Private Sub OnContrasenaChanged()
     End Sub
-    Partial Private Sub OnU_ID_ZonaChanging(value As System.Nullable(Of Integer))
+    Partial Private Sub OnID_ZonaChanging(value As System.Nullable(Of Integer))
     End Sub
-    Partial Private Sub OnU_ID_ZonaChanged()
+    Partial Private Sub OnID_ZonaChanged()
     End Sub
     #End Region
 	
@@ -1367,75 +1473,75 @@ Partial Public Class U_Usuario
 		OnCreated
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_U_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property U_ID() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+	Public Property ID() As Integer
 		Get
-			Return Me._U_ID
+			Return Me._ID
 		End Get
 		Set
-			If ((Me._U_ID = value)  _
+			If ((Me._ID = value)  _
 						= false) Then
-				Me.OnU_IDChanging(value)
+				Me.OnIDChanging(value)
 				Me.SendPropertyChanging
-				Me._U_ID = value
-				Me.SendPropertyChanged("U_ID")
-				Me.OnU_IDChanged
+				Me._ID = value
+				Me.SendPropertyChanged("ID")
+				Me.OnIDChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_U_Usuario", DbType:="NVarChar(30)")>  _
-	Public Property U_Usuario() As String
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Usuario", DbType:="NVarChar(30) NOT NULL", CanBeNull:=false)>  _
+	Public Property Usuario() As String
 		Get
-			Return Me._U_Usuario
+			Return Me._Usuario
 		End Get
 		Set
-			If (String.Equals(Me._U_Usuario, value) = false) Then
-				Me.OnU_UsuarioChanging(value)
+			If (String.Equals(Me._Usuario, value) = false) Then
+				Me.OnUsuarioChanging(value)
 				Me.SendPropertyChanging
-				Me._U_Usuario = value
-				Me.SendPropertyChanged("U_Usuario")
-				Me.OnU_UsuarioChanged
+				Me._Usuario = value
+				Me.SendPropertyChanged("Usuario")
+				Me.OnUsuarioChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_U_Contrasena", DbType:="NVarChar(30)")>  _
-	Public Property U_Contrasena() As String
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Contrasena", DbType:="NVarChar(30) NOT NULL", CanBeNull:=false)>  _
+	Public Property Contrasena() As String
 		Get
-			Return Me._U_Contrasena
+			Return Me._Contrasena
 		End Get
 		Set
-			If (String.Equals(Me._U_Contrasena, value) = false) Then
-				Me.OnU_ContrasenaChanging(value)
+			If (String.Equals(Me._Contrasena, value) = false) Then
+				Me.OnContrasenaChanging(value)
 				Me.SendPropertyChanging
-				Me._U_Contrasena = value
-				Me.SendPropertyChanged("U_Contrasena")
-				Me.OnU_ContrasenaChanged
+				Me._Contrasena = value
+				Me.SendPropertyChanged("Contrasena")
+				Me.OnContrasenaChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_U_ID_Zona", DbType:="Int")>  _
-	Public Property U_ID_Zona() As System.Nullable(Of Integer)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID_Zona", DbType:="Int")>  _
+	Public Property ID_Zona() As System.Nullable(Of Integer)
 		Get
-			Return Me._U_ID_Zona
+			Return Me._ID_Zona
 		End Get
 		Set
-			If (Me._U_ID_Zona.Equals(value) = false) Then
+			If (Me._ID_Zona.Equals(value) = false) Then
 				If Me._Zo_Zona.HasLoadedOrAssignedValue Then
 					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
 				End If
-				Me.OnU_ID_ZonaChanging(value)
+				Me.OnID_ZonaChanging(value)
 				Me.SendPropertyChanging
-				Me._U_ID_Zona = value
-				Me.SendPropertyChanged("U_ID_Zona")
-				Me.OnU_ID_ZonaChanged
+				Me._ID_Zona = value
+				Me.SendPropertyChanged("ID_Zona")
+				Me.OnID_ZonaChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Zo_Zona_U_Usuario", Storage:="_Zo_Zona", ThisKey:="U_ID_Zona", OtherKey:="Zo_ID", IsForeignKey:=true)>  _
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Zo_Zona_U_Usuario", Storage:="_Zo_Zona", ThisKey:="ID_Zona", OtherKey:="Zona_ID", IsForeignKey:=true)>  _
 	Public Property Zo_Zona() As Zo_Zona
 		Get
 			Return Me._Zo_Zona.Entity
@@ -1454,9 +1560,9 @@ Partial Public Class U_Usuario
 				If ((value Is Nothing)  _
 							= false) Then
 					value.U_Usuario.Add(Me)
-					Me._U_ID_Zona = value.Zo_ID
+					Me._ID_Zona = value.Zona_ID
 				Else
-					Me._U_ID_Zona = CType(Nothing, Nullable(Of Integer))
+					Me._ID_Zona = CType(Nothing, Nullable(Of Integer))
 				End If
 				Me.SendPropertyChanged("Zo_Zona")
 			End If
@@ -1488,11 +1594,13 @@ Partial Public Class Zo_Zona
 	
 	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
 	
-	Private _Zo_ID As Integer
+	Private _Zona_ID As Integer
 	
-	Private _Zo_Zona As String
+	Private _Zona As String
 	
-	Private _Zo_ID_Carrera As System.Nullable(Of Integer)
+	Private _ID_Carrera As Integer
+	
+	Private _Co_Control As EntitySet(Of Co_Control)
 	
 	Private _U_Usuario As EntitySet(Of U_Usuario)
 	
@@ -1505,80 +1613,92 @@ Partial Public Class Zo_Zona
     End Sub
     Partial Private Sub OnCreated()
     End Sub
-    Partial Private Sub OnZo_IDChanging(value As Integer)
+    Partial Private Sub OnZona_IDChanging(value As Integer)
     End Sub
-    Partial Private Sub OnZo_IDChanged()
+    Partial Private Sub OnZona_IDChanged()
     End Sub
-    Partial Private Sub OnZo_ZonaChanging(value As String)
+    Partial Private Sub OnZonaChanging(value As String)
     End Sub
-    Partial Private Sub OnZo_ZonaChanged()
+    Partial Private Sub OnZonaChanged()
     End Sub
-    Partial Private Sub OnZo_ID_CarreraChanging(value As System.Nullable(Of Integer))
+    Partial Private Sub OnID_CarreraChanging(value As Integer)
     End Sub
-    Partial Private Sub OnZo_ID_CarreraChanged()
+    Partial Private Sub OnID_CarreraChanged()
     End Sub
     #End Region
 	
 	Public Sub New()
 		MyBase.New
+		Me._Co_Control = New EntitySet(Of Co_Control)(AddressOf Me.attach_Co_Control, AddressOf Me.detach_Co_Control)
 		Me._U_Usuario = New EntitySet(Of U_Usuario)(AddressOf Me.attach_U_Usuario, AddressOf Me.detach_U_Usuario)
 		Me._Ca_Carreras = CType(Nothing, EntityRef(Of Ca_Carreras))
 		OnCreated
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Zo_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
-	Public Property Zo_ID() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Zona_ID", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+	Public Property Zona_ID() As Integer
 		Get
-			Return Me._Zo_ID
+			Return Me._Zona_ID
 		End Get
 		Set
-			If ((Me._Zo_ID = value)  _
+			If ((Me._Zona_ID = value)  _
+						= false) Then
+				Me.OnZona_IDChanging(value)
+				Me.SendPropertyChanging
+				Me._Zona_ID = value
+				Me.SendPropertyChanged("Zona_ID")
+				Me.OnZona_IDChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Zona", DbType:="NVarChar(50) NOT NULL", CanBeNull:=false)>  _
+	Public Property Zona() As String
+		Get
+			Return Me._Zona
+		End Get
+		Set
+			If (String.Equals(Me._Zona, value) = false) Then
+				Me.OnZonaChanging(value)
+				Me.SendPropertyChanging
+				Me._Zona = value
+				Me.SendPropertyChanged("Zona")
+				Me.OnZonaChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID_Carrera", DbType:="Int NOT NULL")>  _
+	Public Property ID_Carrera() As Integer
+		Get
+			Return Me._ID_Carrera
+		End Get
+		Set
+			If ((Me._ID_Carrera = value)  _
 						= false) Then
 				If Me._Ca_Carreras.HasLoadedOrAssignedValue Then
 					Throw New System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException()
 				End If
-				Me.OnZo_IDChanging(value)
+				Me.OnID_CarreraChanging(value)
 				Me.SendPropertyChanging
-				Me._Zo_ID = value
-				Me.SendPropertyChanged("Zo_ID")
-				Me.OnZo_IDChanged
+				Me._ID_Carrera = value
+				Me.SendPropertyChanged("ID_Carrera")
+				Me.OnID_CarreraChanged
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Zo_Zona", DbType:="NVarChar(20)")>  _
-	Public Property Zo_Zona() As String
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Zo_Zona_Co_Control", Storage:="_Co_Control", ThisKey:="Zona_ID", OtherKey:="ID_Zona")>  _
+	Public Property Co_Control() As EntitySet(Of Co_Control)
 		Get
-			Return Me._Zo_Zona
+			Return Me._Co_Control
 		End Get
 		Set
-			If (String.Equals(Me._Zo_Zona, value) = false) Then
-				Me.OnZo_ZonaChanging(value)
-				Me.SendPropertyChanging
-				Me._Zo_Zona = value
-				Me.SendPropertyChanged("Zo_Zona")
-				Me.OnZo_ZonaChanged
-			End If
+			Me._Co_Control.Assign(value)
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Zo_ID_Carrera", DbType:="Int")>  _
-	Public Property Zo_ID_Carrera() As System.Nullable(Of Integer)
-		Get
-			Return Me._Zo_ID_Carrera
-		End Get
-		Set
-			If (Me._Zo_ID_Carrera.Equals(value) = false) Then
-				Me.OnZo_ID_CarreraChanging(value)
-				Me.SendPropertyChanging
-				Me._Zo_ID_Carrera = value
-				Me.SendPropertyChanged("Zo_ID_Carrera")
-				Me.OnZo_ID_CarreraChanged
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Zo_Zona_U_Usuario", Storage:="_U_Usuario", ThisKey:="Zo_ID", OtherKey:="U_ID_Zona")>  _
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Zo_Zona_U_Usuario", Storage:="_U_Usuario", ThisKey:="Zona_ID", OtherKey:="ID_Zona")>  _
 	Public Property U_Usuario() As EntitySet(Of U_Usuario)
 		Get
 			Return Me._U_Usuario
@@ -1588,7 +1708,7 @@ Partial Public Class Zo_Zona
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Ca_Carreras_Zo_Zona", Storage:="_Ca_Carreras", ThisKey:="Zo_ID", OtherKey:="Ca_ID", IsForeignKey:=true)>  _
+	<Global.System.Data.Linq.Mapping.AssociationAttribute(Name:="Ca_Carreras_Zo_Zona", Storage:="_Ca_Carreras", ThisKey:="ID_Carrera", OtherKey:="ID", IsForeignKey:=true)>  _
 	Public Property Ca_Carreras() As Ca_Carreras
 		Get
 			Return Me._Ca_Carreras.Entity
@@ -1601,15 +1721,15 @@ Partial Public Class Zo_Zona
 				If ((previousValue Is Nothing)  _
 							= false) Then
 					Me._Ca_Carreras.Entity = Nothing
-					previousValue.Zo_Zona = Nothing
+					previousValue.Zo_Zona.Remove(Me)
 				End If
 				Me._Ca_Carreras.Entity = value
 				If ((value Is Nothing)  _
 							= false) Then
-					value.Zo_Zona = Me
-					Me._Zo_ID = value.Ca_ID
+					value.Zo_Zona.Add(Me)
+					Me._ID_Carrera = value.ID
 				Else
-					Me._Zo_ID = CType(Nothing, Integer)
+					Me._ID_Carrera = CType(Nothing, Integer)
 				End If
 				Me.SendPropertyChanged("Ca_Carreras")
 			End If
@@ -1632,6 +1752,16 @@ Partial Public Class Zo_Zona
 					= false) Then
 			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
 		End If
+	End Sub
+	
+	Private Sub attach_Co_Control(ByVal entity As Co_Control)
+		Me.SendPropertyChanging
+		entity.Zo_Zona = Me
+	End Sub
+	
+	Private Sub detach_Co_Control(ByVal entity As Co_Control)
+		Me.SendPropertyChanging
+		entity.Zo_Zona = Nothing
 	End Sub
 	
 	Private Sub attach_U_Usuario(ByVal entity As U_Usuario)

@@ -75,6 +75,17 @@ Namespace My
                 Return CType(Me("SistemaControlConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=FER-PC\;Initial Catalog=Sist_Control_Ingresos1.0;Integrated Security="& _ 
+            "True")>  _
+        Public ReadOnly Property Sist_Control_Ingresos1_0ConnectionString1() As String
+            Get
+                Return CType(Me("Sist_Control_Ingresos1_0ConnectionString1"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

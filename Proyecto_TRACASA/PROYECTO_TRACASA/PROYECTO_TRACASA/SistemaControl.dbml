@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sist_Control_Ingresos1.0" Class="SistemaControlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7E9EQF0\SQLEXPRESS;Initial Catalog=Sist_Control_Ingresos1.0;Integrated Security=True" SettingsObjectName="PROYECTO_TRACASA.My.MySettings" SettingsPropertyName="Sist_Control_Ingresos1_0ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=FER-PC\;Initial Catalog=Sist_Control_Ingresos1.0;Integrated Security=True" SettingsObjectName="PROYECTO_TRACASA.My.MySettings" SettingsPropertyName="Sist_Control_Ingresos1_0ConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.A_Abono" Member="A_Abono">
     <Type Name="A_Abono">
-      <Column Name="Boletas" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Boleta_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Vales" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Sobrantes" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="[Abono-Diferencia]" Member="Abono_Diferencia" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
@@ -10,8 +10,8 @@
       <Column Name="Bonificacion" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Monto_Reintegrar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Monto_Rebajar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Association Name="Cho_Choferes_A_Abono" Member="Cho_Choferes" ThisKey="Boletas" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
-      <Association Name="Co_Control_A_Abono" Member="Co_Control" ThisKey="Boletas" OtherKey="ID" Type="Co_Control" IsForeignKey="true" />
+      <Column Name="ID_Control" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Co_Control_A_Abono" Member="Co_Control" ThisKey="ID_Control" OtherKey="Cod_Usu_ID_Chofer" Type="Co_Control" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Ca_Carreras" Member="Ca_Carreras">
@@ -29,28 +29,27 @@
       <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Num_folio" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Compania" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Cho_Choferes_A_Abono" Member="A_Abono" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Boletas" Type="A_Abono" Cardinality="One" />
-      <Association Name="Cho_Choferes_Co_Control" Member="Co_Control" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Co_Control" />
+      <Column Name="Num_folio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Cho_Choferes_Co_Control" Member="Co_Control" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usu_ID_Chofer" Type="Co_Control" Cardinality="One" />
     </Type>
   </Table>
   <Table Name="dbo.Co_Control" Member="Co_Control">
     <Type Name="Co_Control">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Cod_Usu_ID_Chofer" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Numero_de_Ruta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pasajeros" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Adultos_Mayores" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Costo_Pasaje" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Monto_Entregar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Monto_Entregado" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Pasajeros" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Costo_Pasaje" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha_Hora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Codigo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Codigo" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="ID_Zona" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Co_Control_A_Abono" Member="A_Abono" ThisKey="ID" OtherKey="Boletas" Type="A_Abono" Cardinality="One" />
-      <Association Name="Cho_Choferes_Co_Control" Member="Cho_Choferes" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
+      <Column Name="Nombre_chofer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Fecha_Hora" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Co_Control_A_Abono" Member="A_Abono" ThisKey="Cod_Usu_ID_Chofer" OtherKey="ID_Control" Type="A_Abono" />
+      <Association Name="Cho_Choferes_Co_Control" Member="Cho_Choferes" ThisKey="Cod_Usu_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
       <Association Name="Zo_Zona_Co_Control" Member="Zo_Zona" ThisKey="ID_Zona" OtherKey="Zona_ID" Type="Zo_Zona" IsForeignKey="true" />
     </Type>
   </Table>

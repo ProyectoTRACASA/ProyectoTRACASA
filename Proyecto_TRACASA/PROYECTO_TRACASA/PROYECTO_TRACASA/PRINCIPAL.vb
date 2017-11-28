@@ -15,6 +15,9 @@ Public Class PRINCIPAL
         InitializeComponent()
 
         Llenar_Cbx()
+
+
+
     End Sub
 
 #Region "//Control"
@@ -32,34 +35,34 @@ Public Class PRINCIPAL
 
         Dim Agregar As New Co_Control
 
-        Try
+        'Try
 
-            If txt_cod_Usuario.Text = "" Then
-                MsgBox("Porfavor ingrese el código de usuario")
-            Else
-                Agregar.Cod_Usu_ID_Chofer = Int32.Parse(txt_cod_Usuario.Text)
-                Agregar.Numero_de_Ruta = Int32.Parse(txt_Ruta.Text)
-                Agregar.Unidad = Int32.Parse(txt_unidad.Text)
+        '    If txt_cod_Usuario.Text = "" Then
+        '        MsgBox("Porfavor ingrese el código de usuario")
+        '    Else
+        Agregar.Cod_Usu_ID_Chofer = Integer.Parse(txt_cod_Usuario.Text)
+                Agregar.Numero_de_Ruta = Integer.Parse(txt_Ruta.Text)
+                Agregar.Unidad = Integer.Parse(txt_unidad.Text)
                 Agregar.Monto_Entregar = Convert.ToDecimal(txt_MEntregar.Text)
                 Agregar.Monto_Entregado = Convert.ToDecimal(txt_MEntregado.Text)
                 Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
-                Agregar.ID_Zona = Convert.ToInt32(cbx_carrera.SelectedValue)
-                Agregar.Nombre_chofer = Convert.ToString(txtnombre.Text)
+        Agregar.ID_Zona = (cbx_carrera.SelectedValue)
+        Agregar.Nombre_chofer = Convert.ToString(txtnombre.Text)
                 Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
 
                 db.Co_Control.InsertOnSubmit(Agregar)
                 db.SubmitChanges()
-                MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
-                CargarGControl()
+        'MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
+        CargarGControl()
 
 
 
 
 
-            End If
-        Catch ex As Exception
+        '    End If
+        'Catch ex As Exception
 
-        End Try
+        'End Try
 
 
     End Sub
@@ -76,41 +79,26 @@ Public Class PRINCIPAL
 
 
             Dim buscarCon = (From dato In db.Cho_Choferes
-                             Where dato.Co_Control.Cod_Usu_ID_Chofer = cod_U
+                             Where dato.Cod_Usuario_ID_Chofer = cod_U
                              Select dato)
+
+            Dim buscarDet = (From dato In db.Cho_Choferes
+                             Where dato.Cod_Usuario_ID_Chofer = cod_U
+                             Select dato).FirstOrDefault
+
+            txtnombre.Text = buscarDet.Nombre
+            txtced.Text = buscarDet.Cedula.ToString
 
             DGControl.DataSource = buscarCon.ToList
             DGAbo.DataSource = buscarCon.ToList
-            'txt_cod_Usuario.SelectedText = cod_U.ToString
-
-        Catch ex As Exception
-
-        End Try
-
-
-
-    End Sub
-
-    Public Sub buscarNom(ByVal nom As String)
-
-        Try
-
-
-            Dim buscarNom = (From dato In db.Cho_Choferes
-                             Where dato.Nombre = nom
-                             Select dato)
-
-            DGControl.DataSource = buscarNom.ToList
-
 
 
         Catch ex As Exception
 
         End Try
 
-
-
     End Sub
+
 
 
     Public Sub limpiar()
@@ -217,7 +205,7 @@ Public Class PRINCIPAL
             End Try
 
         End If
-        'buscarNom(txtnombre.Text)
+
     End Sub
 
     Private Sub btn_cargarc_Click(sender As Object, e As EventArgs) Handles btn_cargarc.Click
@@ -253,7 +241,14 @@ Public Class PRINCIPAL
     End Sub
 
 
+    Private Sub btnCalcular_Click(sender As Object, e As EventArgs) Handles btnCalcular.Click
 
+        MetodoCal()
+
+
+
+
+    End Sub
 
 
 
@@ -308,14 +303,7 @@ Public Class PRINCIPAL
         cargargridAbo()
     End Sub
 
-    Private Sub btnCalcular_Click(sender As Object, e As EventArgs) Handles btnCalcular.Click
 
-        MetodoCal()
-
-
-
-
-    End Sub
 
     Private Sub btn_buscar_sobfal_Click(sender As Object, e As EventArgs) Handles btn_buscar_sobfal.Click
 

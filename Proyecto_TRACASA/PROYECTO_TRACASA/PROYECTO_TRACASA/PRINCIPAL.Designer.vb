@@ -32,6 +32,7 @@ Partial Class PRINCIPAL
         Me.txt_abono = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnCalAbo = New System.Windows.Forms.Button()
         Me.txtBonificacion = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -202,6 +203,7 @@ Partial Class PRINCIPAL
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.GroupBox3.Controls.Add(Me.btnCalAbo)
         Me.GroupBox3.Controls.Add(Me.txtBonificacion)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.Label4)
@@ -220,6 +222,17 @@ Partial Class PRINCIPAL
         Me.GroupBox3.Size = New System.Drawing.Size(422, 285)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
+        '
+        'btnCalAbo
+        '
+        Me.btnCalAbo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCalAbo.Location = New System.Drawing.Point(340, 147)
+        Me.btnCalAbo.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnCalAbo.Name = "btnCalAbo"
+        Me.btnCalAbo.Size = New System.Drawing.Size(64, 30)
+        Me.btnCalAbo.TabIndex = 11
+        Me.btnCalAbo.Text = "Calcular"
+        Me.btnCalAbo.UseVisualStyleBackColor = True
         '
         'txtBonificacion
         '
@@ -378,7 +391,7 @@ Partial Class PRINCIPAL
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.InfoText
         Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(371, 298)
+        Me.GroupBox1.Size = New System.Drawing.Size(371, 330)
         Me.GroupBox1.TabIndex = 27
         Me.GroupBox1.TabStop = False
         '
@@ -936,4 +949,5 @@ Partial Class PRINCIPAL
     Friend WithEvents txtVales As TextBox
     Friend WithEvents txtBonificacion As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents btnCalAbo As Button
 End Class

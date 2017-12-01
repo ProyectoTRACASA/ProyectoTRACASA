@@ -40,19 +40,24 @@ Public Class PRINCIPAL
         '    If txt_cod_Usuario.Text = "" Then
         '        MsgBox("Porfavor ingrese el código de usuario")
         '    Else
-        Agregar.Cod_Usu_ID_Chofer = Integer.Parse(txt_cod_Usuario.Text)
-                Agregar.Numero_de_Ruta = Integer.Parse(txt_Ruta.Text)
-                Agregar.Unidad = Integer.Parse(txt_unidad.Text)
-                Agregar.Monto_Entregar = Convert.ToDecimal(txt_MEntregar.Text)
-                Agregar.Monto_Entregado = Convert.ToDecimal(txt_MEntregado.Text)
-                Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
-        Agregar.ID_Zona = (cbx_carrera.SelectedValue)
-        Agregar.Nombre_chofer = Convert.ToString(txtnombre.Text)
-                Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
+        Agregar.Cod_Usuario_ID_Chofer = Integer.Parse(txt_cod_Usuario.Text)
+        Agregar.Pasajeros = Integer.Parse(txtPasaj.Text)
+        Agregar.Costo_Pasaje = Convert.ToDecimal(txtCostoPasaj.Text)
+        Agregar.Adultos_Mayores = Integer.Parse(txt_adulto_mayor.Text)
+        Agregar.Numero_de_Ruta = Integer.Parse(txt_Ruta.Text)
+        Agregar.Unidad = Integer.Parse(txt_unidad.Text)
+        Agregar.Monto_Entregar = Convert.ToDecimal(txt_MEntregar.Text)
+        Agregar.Monto_Entregado = Convert.ToDecimal(txt_MEntregado.Text)
+        Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
 
-                db.Co_Control.InsertOnSubmit(Agregar)
-                db.SubmitChanges()
-        'MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
+        ''NO ME LO AGREGA hay error de converticion me lanza mensaje
+        'Agregar.ID_carrera = cbx_carrera.ToString()
+
+        Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
+
+        db.Co_Control.InsertOnSubmit(Agregar)
+        db.SubmitChanges()
+        MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
         CargarGControl()
 
 

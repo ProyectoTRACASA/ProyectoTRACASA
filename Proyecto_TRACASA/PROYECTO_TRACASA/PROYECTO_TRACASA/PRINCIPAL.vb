@@ -4,11 +4,7 @@
 
 Public Class PRINCIPAL
 
-
-
     Dim db As New SistemaControlDataContext
-
-
 
     Public Sub New()
 
@@ -17,18 +13,15 @@ Public Class PRINCIPAL
         Llenar_Cbx()
 
 
-
     End Sub
 
 #Region "//Control"
-#Region "//METODOS "
-
+#Region "//METODOS"
 
     Public Sub CargarGControl()
 
         Dim cargarc = (From datos In db.Co_Control Select datos)
         DGControl.DataSource = cargarc.ToList
-
 
     End Sub
     Public Sub insertar_Control()
@@ -40,6 +33,7 @@ Public Class PRINCIPAL
         '    If txt_cod_Usuario.Text = "" Then
         '        MsgBox("Porfavor ingrese el código de usuario")
         '    Else
+
         Agregar.Cod_Usuario_ID_Chofer = Integer.Parse(txt_cod_Usuario.Text)
         Agregar.Pasajeros = Integer.Parse(txtPasaj.Text)
         Agregar.Costo_Pasaje = Convert.ToDecimal(txtCostoPasaj.Text)
@@ -49,6 +43,7 @@ Public Class PRINCIPAL
         Agregar.Monto_Entregar = Convert.ToDecimal(txt_MEntregar.Text)
         Agregar.Monto_Entregado = Convert.ToDecimal(txt_MEntregado.Text)
         Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
+
 
         ''NO ME LO AGREGA hay error de converticion me lanza mensaje
         'Agregar.ID_carrera = cbx_carrera.ToString()
@@ -60,15 +55,10 @@ Public Class PRINCIPAL
         MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
         CargarGControl()
 
-
-
-
-
         '    End If
         'Catch ex As Exception
 
         'End Try
-
 
     End Sub
     Public Sub Llenar_Cbx()
@@ -81,7 +71,6 @@ Public Class PRINCIPAL
     Public Sub buscarC(ByVal cod_U As Integer)
 
         Try
-
 
             Dim buscarCon = (From dato In db.Cho_Choferes
                              Where dato.Cod_Usuario_ID_Chofer = cod_U
@@ -97,7 +86,6 @@ Public Class PRINCIPAL
             DGControl.DataSource = buscarCon.ToList
             DGAbo.DataSource = buscarCon.ToList
 
-
         Catch ex As Exception
 
         End Try
@@ -107,8 +95,6 @@ Public Class PRINCIPAL
 
 
     Public Sub limpiar()
-
-
 
         txt_cod_Usuario.Text = ""
         txtnombre.Text = ""
@@ -128,7 +114,6 @@ Public Class PRINCIPAL
         txt_MEntregar.Text = ""
         txt_MEntregado.Text = ""
         txt_adulto_mayor.Text = ""
-
 
     End Sub
 
@@ -175,9 +160,7 @@ Public Class PRINCIPAL
         'Dim toEnt As Decimal = Convert.ToDecimal(txt_MEntregar.Text)
         'Dim Entre As Decimal = Convert.ToDecimal(txt_MEntregado.Text)
 
-
         txt_MEntregar.Text = ((CanP * Cos) - (Adul * Cos)).ToString
-
 
     End Sub
 #End Region

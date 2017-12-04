@@ -97,8 +97,6 @@ Public Class MANTENIMIENTO
 
         End Try
 
-
-
     End Sub
 
     Public Sub modificar(ByVal codigo As Integer)

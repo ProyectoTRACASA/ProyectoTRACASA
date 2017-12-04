@@ -79,8 +79,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=FER-PC\;Initial Catalog=Sist_Control_Ingresos1.0;Integrated Security="& _ 
-            "True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7E9EQF0\SQLEXPRESS;Initial Catalog=Sist_Control_Ingresos1.0;I"& _ 
+            "ntegrated Security=True")>  _
         Public ReadOnly Property Sist_Control_Ingresos1_0ConnectionString1() As String
             Get
                 Return CType(Me("Sist_Control_Ingresos1_0ConnectionString1"),String)

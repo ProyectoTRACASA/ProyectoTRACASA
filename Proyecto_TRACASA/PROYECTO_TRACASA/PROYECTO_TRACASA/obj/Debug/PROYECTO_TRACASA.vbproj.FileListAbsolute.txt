@@ -51,3 +51,4 @@ C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACA
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.PRINCIPAL.resources
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbproj.GenerateResource.Cache
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config
+C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config

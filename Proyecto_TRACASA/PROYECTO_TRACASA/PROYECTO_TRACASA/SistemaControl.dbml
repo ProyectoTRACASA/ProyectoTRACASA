@@ -8,15 +8,49 @@
       <Column Name="Bonificacion" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Monto_Reintegrar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Monto_Rebajar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Co_Control_A_Abono" Member="Co_Control" ThisKey="Boletas" OtherKey="ID" Type="Co_Control" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Ca_Carreras" Member="Ca_Carreras">
     <Type Name="Ca_Carreras">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Carrer" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Otros" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Association Name="Ca_Carreras_Co_Control" Member="Co_Control" ThisKey="ID" OtherKey="ID_carrera" Type="Co_Control" />
       <Association Name="Ca_Carreras_Zo_Zona" Member="Zo_Zona" ThisKey="ID" OtherKey="Zona_ID" Type="Zo_Zona" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cho_Choferes" Member="Cho_Choferes">
+    <Type Name="Cho_Choferes">
+      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Num_folio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Compania" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Cho_Choferes_Co_Control" Member="Co_Control" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Co_Control" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Co_Control" Member="Co_Control">
+    <Type Name="Co_Control">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Numero_de_Ruta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Adultos_Mayores" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Entregar" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto_Entregado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pasajeros" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Costo_Pasaje" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Hora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Codigo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ID_carrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Vales" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sobrantes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Co_Control_A_Abono" Member="A_Abono" ThisKey="ID" OtherKey="Boletas" Type="A_Abono" Cardinality="One" />
+      <Association Name="Ca_Carreras_Co_Control" Member="Ca_Carreras" ThisKey="ID_carrera" OtherKey="ID" Type="Ca_Carreras" IsForeignKey="true" />
+      <Association Name="Cho_Choferes_Co_Control" Member="Cho_Choferes" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Pla_Planilla" Member="Pla_Planilla">
@@ -29,37 +63,6 @@
       <Column Name="Bonificacion" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Monto_Reinte" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Monto_Rebajar" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Co_Control" Member="Co_Control">
-    <Type Name="Co_Control">
-      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Numero_de_Ruta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Adultos_Mayores" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Monto_Entregar" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Monto_Entregado" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Pasajeros" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Costo_Pasaje" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha_Hora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Codigo" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ID_carrera" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Vales" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Sobrantes" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Ca_Carreras_Co_Control" Member="Ca_Carreras" ThisKey="ID_carrera" OtherKey="ID" Type="Ca_Carreras" IsForeignKey="true" />
-      <Association Name="Cho_Choferes_Co_Control" Member="Cho_Choferes" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Cho_Choferes" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Cho_Choferes" Member="Cho_Choferes">
-    <Type Name="Cho_Choferes">
-      <Column Name="Cod_Usuario_ID_Chofer" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Primer_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Segundo_Apellido" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Num_folio" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Compania" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Cho_Choferes_Co_Control" Member="Co_Control" ThisKey="Cod_Usuario_ID_Chofer" OtherKey="Cod_Usuario_ID_Chofer" Type="Co_Control" Cardinality="One" />
     </Type>
   </Table>
   <Table Name="dbo.U_Usuario" Member="U_Usuario">

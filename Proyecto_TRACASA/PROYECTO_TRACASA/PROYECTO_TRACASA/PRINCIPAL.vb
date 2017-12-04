@@ -30,44 +30,51 @@ Public Class PRINCIPAL
         DGControl.DataSource = cargarc.ToList
 
 
+
     End Sub
-    Public Sub insertar_Control()
+    Public Sub AgregarControl()
 
         Dim Agregar As New Co_Control
+        Dim vales As Integer
+        Dim sob As Integer
+        Try
 
-        'Try
-
-        '    If txt_cod_Usuario.Text = "" Then
-        '        MsgBox("Porfavor ingrese el código de usuario")
-        '    Else
-        Agregar.Cod_Usuario_ID_Chofer = Integer.Parse(txt_cod_Usuario.Text)
-        Agregar.Pasajeros = Integer.Parse(txtPasaj.Text)
-        Agregar.Costo_Pasaje = Convert.ToDecimal(txtCostoPasaj.Text)
-        Agregar.Adultos_Mayores = Integer.Parse(txt_adulto_mayor.Text)
-        Agregar.Numero_de_Ruta = Integer.Parse(txt_Ruta.Text)
-        Agregar.Unidad = Integer.Parse(txt_unidad.Text)
-        Agregar.Monto_Entregar = Convert.ToDecimal(txt_MEntregar.Text)
-        Agregar.Monto_Entregado = Convert.ToDecimal(txt_MEntregado.Text)
-        Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
-
-        ''NO ME LO AGREGA hay error de converticion me lanza mensaje
-        'Agregar.ID_carrera = cbx_carrera.ToString()
-
-        Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
-
-        db.Co_Control.InsertOnSubmit(Agregar)
-        db.SubmitChanges()
-        MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
-        CargarGControl()
+            If txt_cod_Usuario.Text = "" Then
+                MsgBox("Porfavor ingrese el código de usuario")
+            Else
+                Agregar.Cod_Usuario_ID_Chofer = Integer.Parse(txt_cod_Usuario.Text)
+                Agregar.Pasajeros = Integer.Parse(txtPasaj.Text)
+                Agregar.Costo_Pasaje = Integer.Parse(txtCostoPasaj.Text)
+                Agregar.Adultos_Mayores = Integer.Parse(txt_adulto_mayor.Text)
+                Agregar.Numero_de_Ruta = Integer.Parse(txt_Ruta.Text)
+                Agregar.Unidad = Integer.Parse(txt_unidad.Text)
+                Agregar.Monto_Entregar = Integer.Parse(txt_MEntregar.Text)
+                Agregar.Monto_Entregado = Integer.Parse(txt_MEntregado.Text)
+                Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
+                Agregar.Sobrantes = sob.ToString
+                Agregar.Vales = vales.ToString
 
 
 
 
 
-        '    End If
-        'Catch ex As Exception
+                ''NO ME LO AGREGA hay error de converticion me lanza mensaje
+                'Agregar.ID_carrera = cbx_carrera.ToString()
 
-        'End Try
+                Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
+
+                db.Co_Control.InsertOnSubmit(Agregar)
+                db.SubmitChanges()
+                MsgBox("DATOS DEL CHOFER INGRESADOS SATISFACTORIAMENTE")
+                CargarGControl()
+                'Met()
+                limpiar()
+
+
+            End If
+        Catch ex As Exception
+
+        End Try
 
 
     End Sub
@@ -92,9 +99,9 @@ Public Class PRINCIPAL
                              Select dato).FirstOrDefault
 
             txtnombre.Text = buscarDet.Nombre
+            txtAP.Text = buscarDet.Primer_Apellido
             txtced.Text = buscarDet.Cedula.ToString
 
-            DGControl.DataSource = buscarCon.ToList
             DGAbo.DataSource = buscarCon.ToList
 
 
@@ -104,93 +111,72 @@ Public Class PRINCIPAL
 
     End Sub
 
-
-
     Public Sub limpiar()
 
 
 
-        txt_cod_Usuario.Text = ""
-        txtnombre.Text = ""
-        txtnombre.Text = ""
-        txtnombre.Text = ""
-        txtced.Text = ""
-
-
+        txt_cod_Usuario.Clear()
+        txtnombre.Clear()
+        txtced.Clear()
         lbFecha.Text = ""
+        txt_Ruta.Clear()
+        txt_unidad.Clear()
+        txtCod.Clear()
+        txtPasaj.Clear()
+        txtCostoPasaj.Clear()
+        txt_MEntregar.Clear()
+        txt_MEntregado.Clear()
+        txt_adulto_mayor.Clear()
+        txtAP.Clear()
 
-        txt_Ruta.Text = ""
-        txt_unidad.Text = ""
-        txtCod.Text = ""
-        txtPasaj.Text = ""
-        txtCostoPasaj.Text = ""
-        txtCostoPasaj.Text = ""
-        txt_MEntregar.Text = ""
-        txt_MEntregado.Text = ""
-        txt_adulto_mayor.Text = ""
+
+    End Sub
+    Private Sub txt_MEntregar_TextChanged(sender As Object, e As EventArgs) Handles txt_MEntregar.TextChanged
+        'Public Sub entregar()
+
+        If txtPasaj.Text = "" Or txtCostoPasaj.Text = "" Or txt_adulto_mayor.Text = "" Then
+            Exit Sub
+        End If
+        Dim total As Integer = ((CInt(txtPasaj.Text) * CInt(txtCostoPasaj.Text)) - (CInt(txt_adulto_mayor.Text) * CInt(txtCostoPasaj.Text)))
+        txt_MEntregar.Text = total
 
 
     End Sub
 
-    'Private Sub datagridControl_CellClick(sender As Object, e As DataGridViewCellEventArgs)
+    Public Sub Met()
+
+        Dim meto As New Co_Control
+        Dim vales As Integer
+        Dim sob As Integer
+
+        meto.Sobrantes = sob.ToString
+        meto.Vales = vales.ToString
 
 
-    '    If e.RowIndex >= 0 Then
+        'If txt_MEntregar.Text = "" Or txt_MEntregado.Text = "" Or txt_adulto_mayor.Text = "" Then
 
-    '        Dim index As Integer
-    '        index = e.RowIndex
+        If (CInt(txt_MEntregar.Text) < CInt(txt_MEntregado.Text)) Then
 
-    '        Dim selectedRow As DataGridViewRow
+            vales = (CInt(txt_MEntregar.Text) - CInt(txt_MEntregado.Text))
 
-    '        selectedRow = datagridchoferes.rows(index)
+        Else
+            If (CInt(txt_MEntregado.Text) > CInt(txt_MEntregar.Text)) Then
 
+                sob = (CInt(txt_MEntregado.Text) - CInt(txt_MEntregar.Text))
 
-
-    '        txt_cod_Usuario.Text = selectedRow.Cells(0).Value.ToString()
-    '        txtnombre.Text = selectedRow.Cells(1).Value.ToString()
-    '        txtced.Text = selectedRow.Cells(2).Value.ToString()
-    '        cbx_carrera.SelectedValue = selectedRow.Cells(3).Value.ToString()
-    '        txt_Ruta.Text = selectedRow.Cells(4).Value.ToString()
-    '        txt_unidad.Text = selectedRow.Cells(5).Value.ToString()
-    '        txtCod.Text = selectedRow.Cells(6).Value.ToString()
-    '        txtPasaj.Text = selectedRow.Cells(7).Value.ToString()
-    '        txtCostoPasaj.Text = selectedRow.Cells(8).Value.ToString()
-    '        txt_MEntregar.Text = selectedRow.Cells(9).Value.ToString()
-    '        txt_MEntregado.Text = selectedRow.Cells(10).Value.ToString()
-    '        txt_adulto_mayor.Text = selectedRow.Cells(11).Value.ToString()
-    '        lbFecha.Text = selectedRow.Cells(12).Value.ToString()
-
-    '    End If
-
-
-    'End Sub
-
-
-
-    Public Sub MetodoCal()
-
-        Dim CanP As Decimal = Convert.ToDecimal(txtPasaj.Text)
-        Dim Cos As Decimal = Convert.ToDecimal(txtCostoPasaj.Text)
-        Dim Adul As Integer = Int32.Parse(txt_adulto_mayor.Text)
-        'Dim toEnt As Decimal = Convert.ToDecimal(txt_MEntregar.Text)
-        'Dim Entre As Decimal = Convert.ToDecimal(txt_MEntregado.Text)
-
-
-        txt_MEntregar.Text = ((CanP * Cos) - (Adul * Cos)).ToString
-
+            End If
+        End If
+        'End If
+        AgregarControl()
 
     End Sub
+
 #End Region
 
 #Region "//BOTONES Control"
 
-
-
-
-
-
     Private Sub btn_Agregar_Click(sender As Object, e As EventArgs) Handles btn_Agregar.Click
-        insertar_Control()
+        AgregarControl()
 
 
     End Sub
@@ -209,6 +195,7 @@ Public Class PRINCIPAL
                 MsgBox("INGRESE SOLO NUMEROS")
             End Try
 
+            lbFecha.Text = DateAndTime.Now().ToLocalTime
         End If
 
     End Sub
@@ -216,10 +203,6 @@ Public Class PRINCIPAL
     Private Sub btn_cargarc_Click(sender As Object, e As EventArgs) Handles btn_cargarc.Click
         CargarGControl()
     End Sub
-
-
-
-
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAtras.Click
         Dim men As New MENU
@@ -235,9 +218,6 @@ Public Class PRINCIPAL
 
     End Sub
 
-
-
-
     Private Sub PRINCIPAL_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         lbFecha.Text = DateAndTime.Now().ToLocalTime
@@ -245,15 +225,11 @@ Public Class PRINCIPAL
 
     End Sub
 
-
     Private Sub btnCalcular_Click(sender As Object, e As EventArgs) Handles btnCalcular.Click
-
-        MetodoCal()
-
-
-
+        'entregar()
 
     End Sub
+
 
 
 
@@ -273,34 +249,7 @@ Public Class PRINCIPAL
     End Sub
 
 
-    Public Sub Met()
 
-        Dim sob As Decimal = Convert.ToDecimal(txtSobrantes.Text)
-        Dim vales As Decimal = Convert.ToDecimal(txtVales.Text)
-        Dim AEntre As Decimal = Convert.ToDecimal(txt_MEntregado.Text)
-        Dim Entrega As Decimal = Convert.ToDecimal(txt_MEntregar.Text)
-        Dim Boni As Decimal = Convert.ToDecimal(txtBonificacion.Text)
-        Dim MonRe As Decimal = Convert.ToDecimal(txtBonificacion.Text)
-
-        If (Entrega < AEntre) Then
-
-            vales = (AEntre - Entrega)
-
-        Else
-            If (Entrega > AEntre) Then
-
-                MonRe = (Entrega - AEntre)
-            Else
-
-                If (Entrega = AEntre) Then
-                    Boni = (MonRe = 15000)
-                End If
-            End If
-
-
-        End If
-
-    End Sub
 
 
 #Region "//Botones Abono"
@@ -324,6 +273,10 @@ Public Class PRINCIPAL
 
         End If
     End Sub
+
+
+
+
 
 
 

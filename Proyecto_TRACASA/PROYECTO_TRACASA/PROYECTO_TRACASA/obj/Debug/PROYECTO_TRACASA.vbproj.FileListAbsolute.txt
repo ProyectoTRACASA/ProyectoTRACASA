@@ -51,3 +51,4 @@ C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACA
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.xml
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.pdb
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbprojResolveAssemblyReference.cache
+C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config

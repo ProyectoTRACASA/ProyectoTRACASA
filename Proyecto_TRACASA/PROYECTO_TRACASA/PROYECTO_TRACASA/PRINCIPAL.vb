@@ -8,15 +8,11 @@ Public Class PRINCIPAL
 
     Dim db As New SistemaControlDataContext
 
-
-
     Public Sub New()
 
         InitializeComponent()
 
         Llenar_Cbx()
-
-
 
     End Sub
 
@@ -28,8 +24,6 @@ Public Class PRINCIPAL
 
         Dim cargarc = (From datos In db.Co_Control Select datos)
         DGControl.DataSource = cargarc.ToList
-
-
 
     End Sub
     Public Sub AgregarControl()
@@ -51,17 +45,28 @@ Public Class PRINCIPAL
                 Agregar.Monto_Entregar = Integer.Parse(txt_MEntregar.Text)
                 Agregar.Monto_Entregado = Integer.Parse(txt_MEntregado.Text)
                 Agregar.Codigo = Convert.ToDecimal(txtCod.Text)
+
+                If (CInt(txt_MEntregar.Text) < CInt(txt_MEntregado.Text)) Then
+
+                    vales = (CInt(txt_MEntregar.Text) - CInt(txt_MEntregado.Text))
+
+                Else
+                    'If (CInt(txt_MEntregado.Text) > CInt(txt_MEntregar.Text)) Then
+
+                    sob = (CInt(txt_MEntregado.Text) - CInt(txt_MEntregar.Text))
+
+                End If
+
+                'End If
+                'End If
                 Agregar.Sobrantes = sob.ToString
                 Agregar.Vales = vales.ToString
+                'Agregar.Sobrantes = sob.ToString
+                'Agregar.Vales = vales.ToString
 
+                Agregar.Fecha_Hora = DateTimePicker1.Text
 
-
-
-
-                ''NO ME LO AGREGA hay error de converticion me lanza mensaje
-                'Agregar.ID_carrera = cbx_carrera.ToString()
-
-                Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
+                'Agregar.Fecha_Hora = Convert.ToDateTime(lbFecha.Text)
 
                 db.Co_Control.InsertOnSubmit(Agregar)
                 db.SubmitChanges()
@@ -82,13 +87,12 @@ Public Class PRINCIPAL
 
         cbx_carrera.SelectedValue = "ID "
         cbx_carrera.DisplayMember = "Carrer"
-        cbx_carrera.DataSource = db.Ca_Carreras.ToList
+        cbx_carrera.DataSource = db.Ca_Carreras.ToList()
 
     End Sub
     Public Sub buscarC(ByVal cod_U As Integer)
 
         Try
-
 
             Dim buscarCon = (From dato In db.Cho_Choferes
                              Where dato.Cod_Usuario_ID_Chofer = cod_U
@@ -104,21 +108,35 @@ Public Class PRINCIPAL
 
             DGAbo.DataSource = buscarCon.ToList
 
-
         Catch ex As Exception
 
         End Try
 
     End Sub
 
+    Public Sub cargar_rutas_dia()
+        Try
+            Dim buscar = (From datos In db.Co_Control
+                          Where datos.Fecha_Hora = DateTimePicker1.Text And datos.Cod_Usuario_ID_Chofer = txt_cod_Usuario.Text
+                          Select datos)
+
+
+            DGControl.DataSource = buscar.ToList
+
+        Catch ex As Exception
+
+
+        End Try
+
+
+    End Sub
+
     Public Sub limpiar()
-
-
 
         txt_cod_Usuario.Clear()
         txtnombre.Clear()
         txtced.Clear()
-        lbFecha.Text = ""
+
         txt_Ruta.Clear()
         txt_unidad.Clear()
         txtCod.Clear()
@@ -143,33 +161,6 @@ Public Class PRINCIPAL
 
     End Sub
 
-    Public Sub Met()
-
-        Dim meto As New Co_Control
-        Dim vales As Integer
-        Dim sob As Integer
-
-        meto.Sobrantes = sob.ToString
-        meto.Vales = vales.ToString
-
-
-        'If txt_MEntregar.Text = "" Or txt_MEntregado.Text = "" Or txt_adulto_mayor.Text = "" Then
-
-        If (CInt(txt_MEntregar.Text) < CInt(txt_MEntregado.Text)) Then
-
-            vales = (CInt(txt_MEntregar.Text) - CInt(txt_MEntregado.Text))
-
-        Else
-            If (CInt(txt_MEntregado.Text) > CInt(txt_MEntregar.Text)) Then
-
-                sob = (CInt(txt_MEntregado.Text) - CInt(txt_MEntregar.Text))
-
-            End If
-        End If
-        'End If
-        AgregarControl()
-
-    End Sub
 
 #End Region
 
@@ -178,15 +169,13 @@ Public Class PRINCIPAL
     Private Sub btn_Agregar_Click(sender As Object, e As EventArgs) Handles btn_Agregar.Click
         AgregarControl()
 
-
     End Sub
 
 
     Private Sub bt_buscar_Click(sender As Object, e As EventArgs) Handles bt_buscar.Click
 
-
         If txt_cod_Usuario.Text = "" Then
-            MsgBox("NO HA INGRESADO EL NUMERO DE CEDULA")
+            MsgBox("NO HA INGRESADO UN CODIGO DE CHOFER")
         Else
             Try
                 buscarC(Convert.ToInt32(txt_cod_Usuario.Text))
@@ -195,9 +184,9 @@ Public Class PRINCIPAL
                 MsgBox("INGRESE SOLO NUMEROS")
             End Try
 
-            lbFecha.Text = DateAndTime.Now().ToLocalTime
+            'lbFecha.Text = Date.Now().ToLocalTime
         End If
-
+        cargar_rutas_dia()
     End Sub
 
     Private Sub btn_cargarc_Click(sender As Object, e As EventArgs) Handles btn_cargarc.Click
@@ -220,7 +209,8 @@ Public Class PRINCIPAL
 
     Private Sub PRINCIPAL_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        lbFecha.Text = DateAndTime.Now().ToLocalTime
+        'lbFecha.Text = Date.Now().ToLocalTime
+        DateTimePicker1.Enabled = False
 
 
     End Sub
@@ -230,13 +220,7 @@ Public Class PRINCIPAL
 
     End Sub
 
-
-
-
-
 #End Region
-
-
 
 #Region "//Abonos"
 

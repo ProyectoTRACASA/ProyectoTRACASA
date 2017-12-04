@@ -71,6 +71,7 @@ Partial Class PRINCIPAL
         Me.btnAtras = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.grpLLenaControl = New System.Windows.Forms.GroupBox()
+        Me.txtAP = New System.Windows.Forms.TextBox()
         Me.txtCod = New System.Windows.Forms.TextBox()
         Me.lbCodig = New System.Windows.Forms.Label()
         Me.lbFecha = New System.Windows.Forms.Label()
@@ -646,6 +647,7 @@ Partial Class PRINCIPAL
         'grpLLenaControl
         '
         Me.grpLLenaControl.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.grpLLenaControl.Controls.Add(Me.txtAP)
         Me.grpLLenaControl.Controls.Add(Me.txtCod)
         Me.grpLLenaControl.Controls.Add(Me.lbCodig)
         Me.grpLLenaControl.Controls.Add(Me.lbFecha)
@@ -670,6 +672,14 @@ Partial Class PRINCIPAL
         Me.grpLLenaControl.Size = New System.Drawing.Size(369, 517)
         Me.grpLLenaControl.TabIndex = 0
         Me.grpLLenaControl.TabStop = False
+        '
+        'txtAP
+        '
+        Me.txtAP.Location = New System.Drawing.Point(154, 148)
+        Me.txtAP.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtAP.Name = "txtAP"
+        Me.txtAP.Size = New System.Drawing.Size(149, 27)
+        Me.txtAP.TabIndex = 41
         '
         'txtCod
         '
@@ -950,4 +960,5 @@ Partial Class PRINCIPAL
     Friend WithEvents txtBonificacion As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents btnCalAbo As Button
+    Friend WithEvents txtAP As TextBox
 End Class

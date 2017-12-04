@@ -32,9 +32,7 @@ C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA
 C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.xml
 C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbprojResolveAssemblyReference.cache
-C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.exe
-C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.xml
-C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.pdb
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.pdb
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.xml
@@ -43,12 +41,13 @@ C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACA
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\IrisSkin2.dll
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.xml
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbprojResolveAssemblyReference.cache
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.LOGIN.resources
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.MANTENIMIENTO.resources
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.MENU.resources
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.Resources.resources
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.PRINCIPAL.resources
 C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbproj.GenerateResource.Cache
-C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config
-C:\Users\ENVY\Documents\GitHub\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\bin\Debug\PROYECTO_TRACASA.exe.config
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.exe
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.xml
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.pdb
+C:\Users\Usuario\Documents\GitHub\ProyectoTRACASA\ProyectoTRACASA\Proyecto_TRACASA\PROYECTO_TRACASA\PROYECTO_TRACASA\obj\Debug\PROYECTO_TRACASA.vbprojResolveAssemblyReference.cache

@@ -4,8 +4,6 @@
 
 Public Class PRINCIPAL
 
-
-
     Dim db As New SistemaControlDataContext
 
     Public Sub New()
@@ -80,7 +78,6 @@ Public Class PRINCIPAL
         Catch ex As Exception
 
         End Try
-
 
     End Sub
     Public Sub Llenar_Cbx()
